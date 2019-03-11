@@ -7,7 +7,7 @@ docname: draft-richardson-rats-usecases-00
 
 ipr: trust200902
 area: Internet
-wg: 6tisch Working Group
+wg: RATS Working Group
 kw: Internet-Draft
 cat: info
 
@@ -30,6 +30,7 @@ normative:
 informative:
   RFC4291:
   RFC7217:
+  I-D.tschofenig-rats-psa-token:
 
 --- abstract
 
@@ -45,11 +46,23 @@ use cases that would be enabled by common formats.
 
 # Introduction
 
-BLAH BLAH.
+The recently chartered IETF RATS WG intends to create a system of
+attestations that can be shared across a multitude of different users.
+
+This document exists as place to collect use cases in support of the
+IETF RATS charter point 1.  This document is not expected to be published
+as an RFC, but remain open as a working document.  It could become
+an appendix to provide motivation for a protocol standards document.
 
 # Terminology          {#Terminology}
 
-Some terms and sources of terminology.
+Critical to dealing with and constrasting different technologies is to
+collect terms with are compatible, to distinguish those terms which are
+similar but used in different ways.
+
+This section will grow to include forward and external references to terms
+which have been seen.  When terms need to be disambiguated they will be
+prefixed with their source, such as "TCG(claim)" or "FIDO(relying party)"
 
 # Requirements Language {#rfc2119}
 
@@ -58,7 +71,57 @@ normative protocol requirements using terminology described in {{RFC2119}}.
 
 # Overview of Sources of Use Cases
 
-BLAH.
+The following specifications have been convered in this document:
+
+* The Trusted Computing Group "Network Attestation System" (private document)
+
+This document will be expanded to include summaries from:
+
+* Trusted Computing Group (TCG) Trusted Platform Module (TPM)/Trusted
+Software Stack (TSS)
+* Fast Identity Online (FIDO) Alliance attestation,
+* Android Keystore
+* ARM "Platform Security Architecture" {{I-D.tschofenig-rats-psa-token}}
+
+# Use case summaries
+
+## Trusted Computing Group (TCG)
+
+This proposal is a work-in-progress, and is available to TCG members only.
+The goal is to be multi-vendor, scalable and extensible.   The proposal
+intentionally limits itself to:
+
+* "non-privacy-preserving applications (i.e., networking, Industrial IoT )",
+* that the firmware is provided by the device manufacturer
+* that there is a physical Trusted Platform Module (TPM)
+
+The proposal is intended to provide an assurance to a network operator
+that the equipment on *their* network can be reliably identified.
+
+Specifically listed to be out of scope includes: Linux processes, assemblies
+of hardware/software created by end-customers, and equipment that is sleepy.
+
+The TCG Attestion leverages the TPM to make a series of measurements during
+the boot process, and to have the TPM sign those measurements.  The resulting
+"PCG" hashes are then available to an external verifier.
+
+The TCG uses the following terminology:
+
+* Device Manufacuter
+* Attester ("device under attestation")
+* Verifier (Network Management Station)
+* Reference Integrity Measurements (RIM), which are signed my device
+  manufacturer and integrated into firmware.
+* Quotes: measured values (having been signed), and RIMs
+* Reference Integrity Values (RIV)
+* devices have a Initial Attestion Key (IAK), which is provisioned at the
+same time as the IDevID.
+* PCR ?
+* PCG ?
+
+The TCG document builds upon a number of IETF technologies: SNMP (Attestion
+MIB), YANG, XML, JSON, CBOR, NETCONF, RESTCONF, CoAP, TLS and SSH.
+The TCG document leverages the 802.1AR IDevID and LDevID processes.
 
 # Privacy Considerations.
 
