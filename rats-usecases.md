@@ -31,6 +31,13 @@ informative:
   RFC4291:
   RFC7217:
   I-D.tschofenig-rats-psa-token:
+  keystore:
+    target: "https://developer.android.com/training/articles/keystore"
+    title: "Android Keystore System"
+    author:
+      ins: "Google"
+    date: 2019
+
 
 --- abstract
 
@@ -74,13 +81,13 @@ normative protocol requirements using terminology described in {{RFC2119}}.
 The following specifications have been convered in this document:
 
 * The Trusted Computing Group "Network Attestation System" (private document)
+* Android Keystore
 
 This document will be expanded to include summaries from:
 
 * Trusted Computing Group (TCG) Trusted Platform Module (TPM)/Trusted
 Software Stack (TSS)
 * Fast Identity Online (FIDO) Alliance attestation,
-* Android Keystore
 * ARM "Platform Security Architecture" {{I-D.tschofenig-rats-psa-token}}
 
 # Use case summaries
@@ -122,6 +129,26 @@ same time as the IDevID.
 The TCG document builds upon a number of IETF technologies: SNMP (Attestion
 MIB), YANG, XML, JSON, CBOR, NETCONF, RESTCONF, CoAP, TLS and SSH.
 The TCG document leverages the 802.1AR IDevID and LDevID processes.
+
+## Android Keystore system
+
+{{#keystore}} describes a system used in smart phones that run the Android
+operation system.   The system is primarily a software container to contain
+and control access to cryptographic keys, and therefore provides many of the
+same functions that a hardware Trusted Platform Module might provide.
+
+On hardware which is supported, the Android Keystore will make use of
+whatever trusted hardware is available, including use of Trusted Execution
+Environment (TEE) or Secure Element (SE)).  The Keystore therefore abstracts
+the hardware, and guarantees to applications that the same APIs can be used
+on both more and less capable devices.
+
+A great deal of focus from the Android Keystore seems to be on providing
+fine-grained authorization of what keys can be used by which applications.
+
+XXX - clearly there must be additional (intended?) use cases that provide
+some kind of attestion.
+
 
 # Privacy Considerations.
 
