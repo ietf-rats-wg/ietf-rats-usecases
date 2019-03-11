@@ -28,15 +28,39 @@ author:
 normative:
   RFC2119:
 informative:
-  RFC4291:
-  RFC7217:
   I-D.tschofenig-rats-psa-token:
   keystore:
     target: "https://developer.android.com/training/articles/keystore"
     title: "Android Keystore System"
     author:
       ins: "Google"
-    date: 2019
+      date: 2019
+  fido_w3c:
+    target: https://www.w3.org/TR/webauthn-1/
+    title: "Web Authentication: An API for accessing Public Key Credentials Level 1"
+    author:
+      ins: "W3C"
+      date: "2019"
+  fido:
+    target: "https://fidoalliance.org/specifications/"
+    title: "FIDO Specification Overview"
+    author:
+      ins: "FIDO Alliance"
+      date: 2019
+
+  fidoattestation:
+    target: "https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html"
+    title: "FIDO 2.0: Key Attestation"
+    author:
+      ins: "FIDO Alliance"
+      date: 2015
+
+  fidosignature:
+    target: "https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-signature-format-v2.0-ps-20150904.html"
+    title: "FIDO 2.0: Signature Format"
+    author:
+      ins: "FIDO Alliance"
+      date: 2019
 
 
 --- abstract
@@ -82,12 +106,12 @@ The following specifications have been convered in this document:
 
 * The Trusted Computing Group "Network Attestation System" (private document)
 * Android Keystore
+* Fast Identity Online (FIDO) Alliance attestation,
 
 This document will be expanded to include summaries from:
 
 * Trusted Computing Group (TCG) Trusted Platform Module (TPM)/Trusted
 Software Stack (TSS)
-* Fast Identity Online (FIDO) Alliance attestation,
 * ARM "Platform Security Architecture" {{I-D.tschofenig-rats-psa-token}}
 
 # Use case summaries
@@ -132,7 +156,7 @@ The TCG document leverages the 802.1AR IDevID and LDevID processes.
 
 ## Android Keystore system
 
-{{#keystore}} describes a system used in smart phones that run the Android
+{{keystore}} describes a system used in smart phones that run the Android
 operation system.   The system is primarily a software container to contain
 and control access to cryptographic keys, and therefore provides many of the
 same functions that a hardware Trusted Platform Module might provide.
@@ -149,6 +173,32 @@ fine-grained authorization of what keys can be used by which applications.
 XXX - clearly there must be additional (intended?) use cases that provide
 some kind of attestion.
 
+## Fast IDentity Online (FIDO) Alliance
+
+The FIDO Alliance {{fido}} has a number of specifications aimed primarily at
+eliminating the need for passwords for authentication to online services.
+The goal is to leverage asymmetric cryptographic operations in common
+browser and smart-phone platforms so that users can easily authentication.
+
+FIDO specifications extend to various hardware second factor authentication
+devices.
+
+Terminology includes:
+
+* "relying party" validates a claim
+* "relying party application" makes FIDO Authn calls
+* "browser" provides Web Authentication JS API
+* "platform" is the base system
+* "internal authenticator" is some credential built-in to the device
+* "external authenticator" may be connected by USB, bluetooth, wifi, and may
+  be an stand-alone device, USB connected key, phone or watch.
+
+FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
+{{fidosignature}}, but these have been combined into the W3C document
+{{fido_w3c}} specification.
+
+This specification is very much focused on authenticating user from devices with
+humans attached to them.
 
 # Privacy Considerations.
 
