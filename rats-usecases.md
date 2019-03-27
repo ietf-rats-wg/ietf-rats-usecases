@@ -236,3 +236,6 @@ TBD.
 
 --- back
 
+# Changes
+
+- added comments from Guy, Jessica, Henk and Ned on TCG description.
