@@ -217,8 +217,9 @@ FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
 {{fidosignature}}, but these have been combined into the W3C document
 {{fido_w3c}} specification.
 
-This specification is very much focused on authenticating user from devices with
-humans attached to them.
+The FIDO use case involves a relying party that wants to have the HW/SW
+implementation does a biometric check on the human to be strongly attested.
+
 
 # Privacy Considerations.
 
