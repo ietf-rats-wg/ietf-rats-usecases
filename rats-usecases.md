@@ -1,7 +1,7 @@
 ---
 title: Use cases for Remote Attestation common encodings
 abbrev: useful RATS
-docname: draft-richardson-rats-usecases-00
+docname: draft-richardson-rats-usecases-01
 
 # stand_alone: true
 
@@ -118,19 +118,39 @@ Software Stack (TSS)
 
 ## Trusted Computing Group (TCG)
 
+The TCG is trying to solve the problem of knowing if a networking device
+should be part a network.  If it belongs to the operator, and if it running
+approriate software.
+
 This proposal is a work-in-progress, and is available to TCG members only.
 The goal is to be multi-vendor, scalable and extensible.   The proposal
 intentionally limits itself to:
 
 * "non-privacy-preserving applications (i.e., networking, Industrial IoT )",
 * that the firmware is provided by the device manufacturer
-* that there is a physical Trusted Platform Module (TPM)
+* that there is a manufacturer installed hardware root of trust (such as a
+  TPM and boot room)
 
-The proposal is intended to provide an assurance to a network operator
-that the equipment on *their* network can be reliably identified.
+Service providers and enterprises deploy hundreds of routers, many of them in
+remote locations where they're difficult to access or secure.  The point of
+remote attestation is to:
+
+* identify a remote box in a way that's hard to spoof
+* report the inventory of software was launched on the box in a way that can
+  not be spoofed
+
+The use case described is to be able to monitor the authenticity of software
+versions and configurations running on each device.  This allows owners and
+auditors to detect deviation from approved software and firmware versions and
+configurations, potentially identifying infected devices.
+
+Attestation may be performed by network management systems.  Networking
+Equipment is often highly interconnected, so it’s also possible that
+attestation could be performed by neighboring devices.
 
 Specifically listed to be out of scope includes: Linux processes, assemblies
-of hardware/software created by end-customers, and equipment that is sleepy.
+of hardware/software created by end-customers, and equipment that is sleepy
+(check term).
 
 The TCG Attestion leverages the TPM to make a series of measurements during
 the boot process, and to have the TPM sign those measurements.  The resulting
@@ -147,12 +167,12 @@ The TCG uses the following terminology:
 * Reference Integrity Values (RIV)
 * devices have a Initial Attestion Key (IAK), which is provisioned at the
 same time as the IDevID.
-* PCR ?
-* PCG ?
+* PCR - Platform Configuration Registry (deals with hash chains)
 
 The TCG document builds upon a number of IETF technologies: SNMP (Attestion
 MIB), YANG, XML, JSON, CBOR, NETCONF, RESTCONF, CoAP, TLS and SSH.
 The TCG document leverages the 802.1AR IDevID and LDevID processes.
+
 
 ## Android Keystore system
 
