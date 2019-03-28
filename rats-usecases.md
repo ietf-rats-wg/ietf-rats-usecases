@@ -220,6 +220,8 @@ FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
 The FIDO use case involves a relying party that wants to have the HW/SW
 implementation does a biometric check on the human to be strongly attested.
 
+FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP protocols.
+
 
 # Privacy Considerations.
 
