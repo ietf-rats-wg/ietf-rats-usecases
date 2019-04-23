@@ -1752,9 +1752,11 @@ As with the Android Keystore attestations, Yubikey attestations take the form of
 certificate. As above, the certificate is presented here packaged along with an 
 intermediate CA certificate as a certificates-only SignedData message.  
 
-The attestation below was generated using code similar to that found in the 
-yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool).
+The attestations below were generated using code similar to that found in the 
+yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool). Details regarding 
+attestations are here: https://developers.yubico.com/PIV/Introduction/PIV_attestation.html
 
+### Yubikey 4
 ```
    0 1576: SEQUENCE {
    4    9:   OBJECT IDENTIFIER signedData (1 2 840 113549 1 7 2)
@@ -1803,21 +1805,16 @@ yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool).
          :                   rsaEncryption (1 2 840 113549 1 1 1)
  215    0:                 NULL
          :                 }
- 217  271:               BIT STRING, encapsulates {
- 222  266:                 SEQUENCE {
- 226  257:                   INTEGER
-         :                   00 AB A9 0B 16 9B EF 31 CC 3E AC 18 5A 2D 45 80
-         :                   75 70 C7 58 B0 6C 3F 1B 59 0D 49 B9 89 E8 6F CE
-         :                   BB 27 6F D8 3C 60 3A 85 00 EF 5C BC 40 99 3D 41
-         :                   EE EA C0 81 7F 76 48 E4 A9 4C BC D5 6B E1 1F 0A
-         :                   60 93 C6 FE AA D2 8D 8E E2 B7 CD 8B 2B F7 9B DD
-         :                   5A AB 2F CF B9 0E 54 CE EC 8D F5 5E D7 7B 91 C3
-         :                   A7 56 9C DC C1 06 86 76 36 44 53 FB 08 25 D8 06
-         :                   B9 06 8C 81 FD 63 67 CA 3C A8 B8 EA 1C A6 CA DB
-         :                           [ Another 129 bytes skipped ]
- 487    3:                   INTEGER 65537
-         :                   }
-         :                 }
+ 217  271:               BIT STRING
+         :                 30 82 01 0A 02 82 01 01 00 AB A9 0B 16 9B EF 31
+         :                 CC 3E AC 18 5A 2D 45 80 75 70 C7 58 B0 6C 3F 1B
+         :                 59 0D 49 B9 89 E8 6F CE BB 27 6F D8 3C 60 3A 85
+         :                 00 EF 5C BC 40 99 3D 41 EE EA C0 81 7F 76 48 E4
+         :                 A9 4C BC D5 6B E1 1F 0A 60 93 C6 FE AA D2 8D 8E
+         :                 E2 B7 CD 8B 2B F7 9B DD 5A AB 2F CF B9 0E 54 CE
+         :                 EC 8D F5 5E D7 7B 91 C3 A7 56 9C DC C1 06 86 76
+         :                 36 44 53 FB 08 25 D8 06 B9 06 8C 81 FD 63 67 CA
+         :                         [ Another 142 bytes skipped ]
          :               }
  492   21:             [3] {
  494   19:               SEQUENCE {
@@ -1850,8 +1847,8 @@ yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool).
  801    1:               INTEGER 2
          :               }
  804   17:             INTEGER
-         :               00 DD 20 93 A9 F9 D0 22 95 A3 BB AD A4 41 AD 70
-         :               D2
+         :               00 FE B9 AF 03 3B 0B A7 79 04 02 F5 67 AE DF 72
+         :               ED
  823   13:             SEQUENCE {
  825    9:               OBJECT IDENTIFIER
          :                 sha256WithRSAEncryption (1 2 840 113549 1 1 11)
@@ -1883,37 +1880,30 @@ yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool).
          :                   rsaEncryption (1 2 840 113549 1 1 1)
  963    0:                 NULL
          :                 }
- 965  271:               BIT STRING, encapsulates {
- 970  266:                 SEQUENCE {
- 974  257:                   INTEGER
-         :                   00 98 06 A9 7B 9D 62 53 4F 36 37 B5 76 92 2A 3B
-         :                   B5 AA D0 44 5D CC B8 FC B7 30 10 A5 4B 2F A6 39
-         :                   4C EE 0F 98 6B 6E D6 0A FF 6F 02 66 A0 0D 6F 3D
-         :                   F1 95 A1 5B 08 BB F2 5E 95 37 17 BF E4 58 36 E7
-         :                   38 7A D8 29 C3 AA DD C3 27 6C 7F 71 37 D0 16 96
-         :                   1C 1E 59 FD 40 BC 4B 95 56 70 84 57 0D E6 72 7C
-         :                   62 D1 5C F4 EF 62 A9 95 D3 47 12 C3 5B A4 84 63
-         :                   97 3E AD 34 41 52 38 17 AE 56 1A 5B B9 65 C7 E1
-         :                           [ Another 129 bytes skipped ]
-1235    3:                   INTEGER 65537
-         :                   }
-         :                 }
+ 965  271:               BIT STRING
+         :                 30 82 01 0A 02 82 01 01 00 93 C4 C0 35 95 7E 26
+         :                 2A 7E A5 D0 29 C4 D7 E9 39 67 22 B1 09 45 46 4D
+         :                 DB A4 77 CB 0B A3 F1 D0 69 3C 24 8D A2 72 72 27
+         :                 E1 7F DE CB 67 A4 1D D2 E5 43 44 6F 21 39 F8 57
+         :                 34 01 0E 7E C3 81 63 63 6A 6D D7 40 20 7B AF 35
+         :                 61 9C 8D C1 D1 2B 25 48 EE 52 FC F3 72 6A 74 96
+         :                 01 CB 1C 1A B2 AD F9 18 96 EB 59 EF E3 3A CA BC
+         :                 AA 9B 42 FE FF 60 6E 28 89 49 0D C1 B1 B0 25 AE
+         :                         [ Another 142 bytes skipped ]
          :               }
 1240   60:             [3] {
 1242   58:               SEQUENCE {
 1244   17:                 SEQUENCE {
 1246   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 3'
-1258    3:                   OCTET STRING 04 03 03  -- firmware version
+1258    3:                   OCTET STRING 04 03 03			-- firmware version
          :                   }
 1263   19:                 SEQUENCE {
 1265   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 7'
-1277    5:                   OCTET STRING, encapsulates {
-1279    3:                     INTEGER 5250272      -- serial number
-         :                     }
+1277    5:                   OCTET STRING 02 03 4F 9B B5  	-- serial number
          :                   }
 1284   16:                 SEQUENCE {
 1286   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 8'
-1298    2:                   OCTET STRING 01 01     -- PIN and touch policy
+1298    2:                   OCTET STRING 01 01				-- PIN and touch policy
          :                   }
          :                 }
          :               }
@@ -1924,14 +1914,14 @@ yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool).
 1315    0:             NULL
          :             }
 1317  257:           BIT STRING
-         :             1F 34 74 DB C5 1E DB A1 44 33 14 1E C6 6F 2A 43
-         :             AA F3 3B BB 55 11 D0 A9 1C 85 46 18 E3 B9 EA 8E
-         :             CC 21 EA AD 1B 5F 05 6B C0 DC E1 E8 89 2A 2E 9F
-         :             24 0B D4 9D 39 82 05 F5 63 A7 69 DF 83 8D 5D 68
-         :             F1 D2 C7 3E 55 3E 01 37 AD 56 70 57 0C A4 62 B0
-         :             D8 D3 09 EE A7 77 97 B7 A8 6F 2F 7F E0 93 FF 19
-         :             A3 B3 62 D1 46 34 AB 08 76 D2 69 88 52 BD AF 7C
-         :             28 A5 6B C4 D8 4D 14 F5 B7 8B 56 E0 A3 37 00 30
+         :             1F 2B B8 1C 95 A1 01 74 3F 87 27 F6 B3 A6 A9 9D
+         :             11 B9 ED 68 92 B9 05 2D 22 36 51 28 23 3D B0 2F
+         :             7A 17 D5 8C 0C F4 3A 68 FD 2A 34 0D 80 3C F7 8F
+         :             B8 79 B0 76 E5 4D 61 94 C5 72 D6 9F 6E 26 76 5F
+         :             03 94 55 40 93 5C 04 EF CC 58 41 EB 7C 86 64 23
+         :             5F 23 5E 94 78 73 2E 77 8C 58 C5 45 87 22 CF BA
+         :             69 06 B8 C7 06 37 10 21 8C 74 AD 08 B9 85 F2 7B
+         :             99 02 4A 3E E8 96 09 D3 F4 C6 AB FA 49 68 E2 E0
          :                     [ Another 128 bytes skipped ]
          :           }
          :         }
@@ -1939,7 +1929,191 @@ yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool).
          :       }
          :     }
          :   }
+```
 
+
+### Yubikey 5
+
+```
+   0 1613: SEQUENCE {
+   4    9:   OBJECT IDENTIFIER signedData (1 2 840 113549 1 7 2)
+  15 1598:   [0] {
+  19 1594:     SEQUENCE {
+  23    1:       INTEGER 1
+  26    0:       SET {}
+  28   11:       SEQUENCE {
+  30    9:         OBJECT IDENTIFIER data (1 2 840 113549 1 7 1)
+         :         }
+  41 1570:       [0] {
+  45  762:         SEQUENCE {
+  49  482:           SEQUENCE {
+  53    3:             [0] {
+  55    1:               INTEGER 2
+         :               }
+  58    9:             INTEGER 00 86 77 17 E0 1D 19 2B 26
+  69   13:             SEQUENCE {
+  71    9:               OBJECT IDENTIFIER
+         :                 sha256WithRSAEncryption (1 2 840 113549 1 1 11)
+  82    0:               NULL
+         :               }
+  84   43:             SEQUENCE {
+  86   41:               SET {
+  88   39:                 SEQUENCE {
+  90    3:                   OBJECT IDENTIFIER commonName (2 5 4 3)
+  95   32:                   UTF8String 'Yubico PIV Root CA Serial 263751'
+         :                   }
+         :                 }
+         :               }
+ 129   32:             SEQUENCE {
+ 131   13:               UTCTime 14/03/2016 00:00:00 GMT
+ 146   15:               GeneralizedTime 17/04/2052 00:00:00 GMT
+         :               }
+ 163   33:             SEQUENCE {
+ 165   31:               SET {
+ 167   29:                 SEQUENCE {
+ 169    3:                   OBJECT IDENTIFIER commonName (2 5 4 3)
+ 174   22:                   UTF8String 'Yubico PIV Attestation'
+         :                   }
+         :                 }
+         :               }
+ 198  290:             SEQUENCE {
+ 202   13:               SEQUENCE {
+ 204    9:                 OBJECT IDENTIFIER
+         :                   rsaEncryption (1 2 840 113549 1 1 1)
+ 215    0:                 NULL
+         :                 }
+ 217  271:               BIT STRING
+         :                 30 82 01 0A 02 82 01 01 00 C5 5B 8D E9 B9 3C 53
+         :                 69 82 88 FE DA 70 FC 5C 88 78 41 25 A2 1D 7B 84
+         :                 8E 93 36 AD 67 2B 4C AB 45 BE B2 E0 D5 9C 1B A1
+         :                 68 D5 6B F8 63 5C 83 CB 83 38 62 B7 64 AE 83 37
+         :                 37 8E C8 60 80 E6 01 F8 75 AA AE F6 6E A7 D5 76
+         :                 C5 C1 25 AD AA 9E 9D DC B5 7E E9 8E 2A B4 3F 99
+         :                 0D F7 9F 20 A0 28 A0 9F B3 B1 22 5F AF 38 FB 73
+         :                 46 F4 C7 93 30 DD FA D0 86 E0 C9 C6 72 99 AF FB
+         :                         [ Another 142 bytes skipped ]
+         :               }
+ 492   41:             [3] {
+ 494   39:               SEQUENCE {
+ 496   17:                 SEQUENCE {
+ 498   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 3'
+ 510    3:                   OCTET STRING 05 01 02
+         :                   }
+ 515   18:                 SEQUENCE {
+ 517    3:                   OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+ 522    1:                   BOOLEAN TRUE
+ 525    8:                   OCTET STRING 30 06 01 01 FF 02 01 00
+         :                   }
+         :                 }
+         :               }
+         :             }
+ 535   13:           SEQUENCE {
+ 537    9:             OBJECT IDENTIFIER
+         :               sha256WithRSAEncryption (1 2 840 113549 1 1 11)
+ 548    0:             NULL
+         :             }
+ 550  257:           BIT STRING
+         :             05 57 B7 BF 5A 41 74 F9 5F EC 2E D2 B8 78 26 E5
+         :             EF 4F EA BF 5A 64 C9 CF 06 7F CA 8C 0A FC 1A 47
+         :             1C D6 AC ED C8 5B 54 72 00 9F B8 59 AB 73 25 B2
+         :             D6 02 A3 59 83 31 69 EE C1 5F 3D F2 2B 1B 22 CA
+         :             B6 FC F9 FB 21 32 9E 08 F3 08 54 6D C9 26 10 42
+         :             08 1D 3C B5 F0 5A B1 98 D4 68 DC 91 F1 D3 91 54
+         :             7A A0 34 8B F6 65 EB 13 9F 3A 1C BF 43 C5 D1 D0
+         :             33 23 C6 25 A0 4C E4 E9 AA 59 80 D8 02 1E B0 10
+         :                     [ Another 128 bytes skipped ]
+         :           }
+ 811  800:         SEQUENCE {
+ 815  520:           SEQUENCE {
+ 819    3:             [0] {
+ 821    1:               INTEGER 2
+         :               }
+ 824   16:             INTEGER
+         :               17 7D 2D F7 D6 6D 97 CC D6 CF 69 33 87 5B F1 5E
+ 842   13:             SEQUENCE {
+ 844    9:               OBJECT IDENTIFIER
+         :                 sha256WithRSAEncryption (1 2 840 113549 1 1 11)
+ 855    0:               NULL
+         :               }
+ 857   33:             SEQUENCE {
+ 859   31:               SET {
+ 861   29:                 SEQUENCE {
+ 863    3:                   OBJECT IDENTIFIER commonName (2 5 4 3)
+ 868   22:                   UTF8String 'Yubico PIV Attestation'
+         :                   }
+         :                 }
+         :               }
+ 892   32:             SEQUENCE {
+ 894   13:               UTCTime 14/03/2016 00:00:00 GMT
+ 909   15:               GeneralizedTime 17/04/2052 00:00:00 GMT
+         :               }
+ 926   37:             SEQUENCE {
+ 928   35:               SET {
+ 930   33:                 SEQUENCE {
+ 932    3:                   OBJECT IDENTIFIER commonName (2 5 4 3)
+ 937   26:                   UTF8String 'YubiKey PIV Attestation 9e'
+         :                   }
+         :                 }
+         :               }
+ 965  290:             SEQUENCE {
+ 969   13:               SEQUENCE {
+ 971    9:                 OBJECT IDENTIFIER
+         :                   rsaEncryption (1 2 840 113549 1 1 1)
+ 982    0:                 NULL
+         :                 }
+ 984  271:               BIT STRING
+         :                 30 82 01 0A 02 82 01 01 00 A9 02 2D 7A 4C 0B B1
+         :                 0C 02 F9 E5 9C E5 6F 20 D1 9D F9 CE B3 B3 4D 1B
+         :                 61 B0 B4 E0 3F 44 19 72 88 8B 8D 9F 86 4A 5E C7
+         :                 38 F0 AF C9 28 5C D8 A2 80 C9 43 93 2D FA 39 7F
+         :                 E9 39 2D 18 1B A7 A2 76 8F D4 6C D0 75 96 99 0D
+         :                 06 37 9D 90 D5 71 00 6E FB 82 D1 5B 2A 7C 3B 62
+         :                 9E AB 15 81 B9 AD 7F 3D 30 1C C2 4B 9D C4 D5 64
+         :                 32 9A 54 D6 23 B1 65 92 A3 D7 57 E2 62 10 2B 93
+         :                         [ Another 142 bytes skipped ]
+         :               }
+1259   78:             [3] {
+1261   76:               SEQUENCE {
+1263   17:                 SEQUENCE {
+1265   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 3'
+1277    3:                   OCTET STRING 05 01 02				-- firmware version
+         :                   }
+1282   20:                 SEQUENCE {
+1284   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 7'
+1296    6:                   OCTET STRING 02 04 00 93 6A A0 	-- serial number
+         :                   }
+1304   16:                 SEQUENCE {
+1306   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 8'
+1318    2:                   OCTET STRING 01 01					-- PIN and touch policy
+         :                   }
+1322   15:                 SEQUENCE {
+1324   10:                   OBJECT IDENTIFIER '1 3 6 1 4 1 41482 3 9'
+1336    1:                   OCTET STRING 02					-- form factor
+         :                   }
+         :                 }
+         :               }
+         :             }
+1339   13:           SEQUENCE {
+1341    9:             OBJECT IDENTIFIER
+         :               sha256WithRSAEncryption (1 2 840 113549 1 1 11)
+1352    0:             NULL
+         :             }
+1354  257:           BIT STRING
+         :             9F EB 7A 4C F0 7C 67 11 ED C5 84 07 C8 19 41 B2
+         :             71 42 08 2B D6 CD A8 5F DC AE 79 75 6C F1 E5 4D
+         :             28 95 89 69 9D C0 2E A7 D4 48 51 B0 75 FF 63 FD
+         :             B8 79 93 03 EA BB 8A 67 D8 E7 EC C9 1C 8E 3F AF
+         :             74 30 D4 7E 74 A4 26 50 9F D4 57 AE 23 C0 8A 63
+         :             4E F3 C7 CF 5A AF 91 11 A2 6B 3B 49 24 32 26 88
+         :             D8 4F 6F BE BC F0 2D A9 A2 88 B4 5F 54 AF 42 72
+         :             08 74 64 57 76 5A 02 9A 9D 21 4B FD 7F 44 8F AF
+         :                     [ Another 128 bytes skipped ]
+         :           }
+         :         }
+1615    0:       SET {}
+         :       }
+         :     }
+         :   }
 ```
 
 # Privacy Considerations.
