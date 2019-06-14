@@ -103,6 +103,23 @@ This section will grow to include forward and external references to terms
 which have been seen.  When terms need to be disambiguated they will be
 prefixed with their source, such as "TCG(claim)" or "FIDO(relying party)"
 
+Platform attestions generally come in two categories. This document will
+attempt to indicate for a particular attestion technology falls into this.
+
+## Static attestions
+
+A static attestion says something about the platform on which the code is running.
+
+## Session attestions
+
+A session attestion says something about how the shared session key was
+created.
+
+## Statements
+
+The term "statement" is used as the generic term for the semantic content
+which is being attested to.
+
 # Requirements Language {#rfc2119}
 
 This document is not a standards track document and does not make any
