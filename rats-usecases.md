@@ -186,6 +186,8 @@ The TCG uses the following terminology:
 * Device Manufacuter
 * Attester ("device under attestation")
 * Verifier (Network Management Station)
+* "Explicit Attestation" is the TCG term for a static (platform) statement.
+* "Implicit Attestation" is the TCG term for a session statement.
 * Reference Integrity Measurements (RIM), which are signed my device
   manufacturer and integrated into firmware.
 * Quotes: measured values (having been signed), and RIMs
