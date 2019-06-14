@@ -80,10 +80,18 @@ use cases that would be enabled by common formats.
 The recently chartered IETF RATS WG intends to create a system of
 attestations that can be shared across a multitude of different users.
 
-This document exists as place to collect use cases in support of the
-IETF RATS charter point 1.  This document is not expected to be published
-as an RFC, but remain open as a working document.  It could become
-an appendix to provide motivation for a protocol standards document.
+This document exists as place to collect use cases for the common RATS
+technologies in support of the IETF RATS charter point 1.  This document is
+not expected to be published as an RFC, but remain open as a working
+document.  It could become an appendix to provide motivation for a protocol
+standards document.
+
+This document will probably not deal with use cases from an end-user point of
+view, but rather on the technology verticals that wish to use RATS concepts
+(such as EAT) in their deployments.
+
+End-user use cases that would either directly leverage RATS technology, or
+would serve to inform technology choices are welcome, however.
 
 # Terminology          {#Terminology}
 
