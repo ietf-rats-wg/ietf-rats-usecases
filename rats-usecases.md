@@ -48,6 +48,13 @@ informative:
       ins: "FIDO Alliance"
       date: 2019
 
+  fidotechnote:
+    target: "https://fidoalliance.org/fido-technotes-the-truth-about-attestation/"
+    title: "FIDO TechNotes: The Truth about Attestation"
+    author:
+      ins: "FIDO Alliance"
+      date: "2018-07-19"
+
   fidoattestation:
     target: "https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html"
     title: "FIDO 2.0: Key Attestation"
@@ -247,7 +254,18 @@ FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
 The FIDO use case involves a relying party that wants to have the HW/SW
 implementation does a biometric check on the human to be strongly attested.
 
-FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP protocols.
+FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP
+protocols.
+
+According to {{fidotechnote}} FIDO uses attestion to make claims about the
+kind of device which is be used to enroll.  Keypairs are generated on a
+per-device *model* basis, with a certificate having a trust chain that leads
+back to a well-known root certificate.  It is expected that as many as
+100,000 devices in a production run would have the same public and private
+key pair.  One assumes that this is stored in a tamper-proof TPM so it is
+relatively difficult to get this key out.  The use of this key attests to the
+the device type, and the kind of protections for keys that the relying party
+may assume, not to the identity of the end user.
 
 
 # Privacy Considerations.
