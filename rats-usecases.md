@@ -85,7 +85,7 @@ that have been used in a number of industries.  The document intially focuses
 on existing industry verticals, mapping terminology used in those
 specifications to the more abstract terminology used by RATS.
 
-The document (aspires) goes on to go on to describe possible future
+The document aspires to describe possible future
 use cases that would be enabled by common formats.
 
 --- middle
@@ -154,12 +154,14 @@ This document will be expanded to include summaries from:
 Software Stack (TSS)
 * ARM "Platform Security Architecture" {{I-D.tschofenig-rats-psa-token}}
 
+And any additional sources suggested.
+
 # Use case summaries
 
 ## Trusted Computing Group (TCG)
 
 The TCG is trying to solve the problem of knowing if a networking device
-should be part a network.  If it belongs to the operator, and if it running
+should be part of a network, if it belongs to the operator, and if it is running
 approriate software.
 
 This proposal is a work-in-progress, and is available to TCG members only.
@@ -275,8 +277,9 @@ FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
 {{fidosignature}}, but these have been combined into the W3C document
 {{fido_w3c}} specification.
 
-The FIDO use case involves a relying party that wants to have the HW/SW
-implementation does a biometric check on the human to be strongly attested.
+A FIDO use case involves a relying party that having a attestion on
+the biometric system that identifies a human.  It is the state of the
+biometric system that is being attested to, not the identity of the human.
 
 FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP
 protocols.
