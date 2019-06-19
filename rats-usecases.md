@@ -40,8 +40,8 @@ informative:
     target: "https://arxiv.org/pdf/1904.05572.pdf"
     title: "The Android Platform Security Model"
     author:
-      name: "René Mayrhofer and Jeffrey Vander Stoep and Chad Brubaker and Nick Kralevich",
-      date; 2019
+      name: "René Mayrhofer and Jeffrey Vander Stoep and Chad Brubaker and Nick Kralevich"
+      date: 2019
 
   fido_w3c:
     target: https://www.w3.org/TR/webauthn-1/
