@@ -35,6 +35,14 @@ informative:
     author:
       ins: "Google"
       date: 2019
+
+  android_security:
+    target: "https://arxiv.org/pdf/1904.05572.pdf"
+    title: "The Android Platform Security Model"
+    author:
+      name: "René Mayrhofer and Jeffrey Vander Stoep and Chad Brubaker and Nick Kralevich",
+      date; 2019
+
   fido_w3c:
     target: https://www.w3.org/TR/webauthn-1/
     title: "Web Authentication: An API for accessing Public Key Credentials Level 1"
@@ -226,6 +234,22 @@ fine-grained authorization of what keys can be used by which applications.
 
 XXX - clearly there must be additional (intended?) use cases that provide
 some kind of attestion.
+
+Android 9 on Pixel 2 and 3 can provided protected confirmation messages.
+This uses hardware access from the TPM/TEE to display a message directly to
+the user, and receives confirmation directly from the user.  A hash of the
+contents of the message can provided in an attestation that the device
+provides.
+
+In addition, the Android Keystore provides attestion information about itself
+for use by FIDO.
+
+QUOTE: Finally, the Verified Boot state is included in key attestation
+certificates (provided by Keymaster/Strongbox) in the deviceLocked and
+verifiedBootState fields, which can be verified by apps as well as
+passed onto backend services to remotely verify boot integrity [**21]
+
+
 
 ## Fast IDentity Online (FIDO) Alliance
 
