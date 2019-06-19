@@ -1,7 +1,7 @@
 ---
 title: Use cases for Remote Attestation common encodings
 abbrev: useful RATS
-docname: draft-richardson-rats-usecases-01
+docname: draft-richardson-rats-usecases-02
 
 # stand_alone: true
 
