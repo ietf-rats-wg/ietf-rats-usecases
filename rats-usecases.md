@@ -420,7 +420,7 @@ for use by FIDO.
 QUOTE: Finally, the Verified Boot state is included in key attestation
 certificates (provided by Keymaster/Strongbox) in the deviceLocked and
 verifiedBootState fields, which can be verified by apps as well as
-passed onto backend services to remotely verify boot integrity [**21]
+passed onto backend services to remotely verify boot integrity
 
 
 
