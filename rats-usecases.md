@@ -1,7 +1,7 @@
 ---
 title: Use cases for Remote Attestation common encodings
 abbrev: useful RATS
-docname: draft-richardson-rats-usecases-02
+docname: draft-richardson-rats-usecases-03
 
 # stand_alone: true
 
@@ -119,7 +119,8 @@ standards document.
 
 This document will probably not deal with use cases from an end-user point of
 view, but rather on the technology verticals that wish to use RATS concepts
-(such as EAT) in their deployments.
+(such as EAT) in their deployments.  However, the end-user use cases for
+these verticales will be explained.
 
 End-user use cases that would either directly leverage RATS technology, or
 would serve to inform technology choices are welcome, however.
@@ -173,6 +174,157 @@ Software Stack (TSS)
 And any additional sources suggested.
 
 # Use case summaries
+
+This section lists a series of cases where an attestion is done.
+
+## Network Attestation
+
+A network operator wants to know the qualities of the hardware and software
+on the machines attached to their network.  The process starts with some kind
+of Root of Trust, performs a series of measurements, and expresses this
+with an attestation as to the hardware and firmware/software which is
+running.  This is a general description for which there are many specific use
+cases.
+
+### Relying on an Attestation Server
+
+The measurements from a heterogenous network of devices are provided to
+device-specific attestation servers.  The attestation servers know what the
+"golden" measurements are, and perform the appropriate evaluations, resulting
+in attestations that the relying parties can depend upon.
+
+### Autonomous Relying Party
+
+The signed measurements are sent to a relying party which must validate them
+directly.  (It may do so with the help of of a signed list of golden values,
+or some other process).  The relying party needs to validate the signed
+statements directly.
+
+This may occur because the network is not connected, or even because it can
+not be connected until the equipment is validated.
+
+### Proxy Root of Trust
+
+A variety of devices provide measurements via their Root of Trust.
+A server collects these measurements, and (having applies a local policy)
+then creates a device agnostic attestation.  The relying party can validate
+the claims in a standard format.
+
+### network scaling -- small
+
+An entire network of systems needs to be validated (such as all the desktops
+in an enterprise's building).  The infrastructure is in control of a single
+operator and is already trusted.  The network can be partitioned so that
+machines that do not pass attestation can be quarantined.  A 1:1 relationship
+between the device and the relying party can be used to maintain freshness of
+the attestation.
+
+### network scaling -- medium
+
+An entire network of systems needs to be validated: such as all the desktops
+in an enterprise's building, or all the routers at an ISP.  The
+infrastructure is not necessarily trusted: it could be subverted, and it must
+also attest.   The devices may be under a variety of operators, and may be
+mutually suspicious: each device may therefore with to process attestations
+from every other device.  An NxM mesh of attestations may be untenable, but a
+system of N:1:M relationships can be setup via proxy attestations.
+
+### network scaling -- large
+
+An entire network of systems need to be continuously attested.  This could be
+all of the smartphones on an LTE network, or every desktop system in a
+worldwide enterprise.  The network operator wishes to do this in order
+maintain identities of connected devices more than to validate correct
+firmware, but both situations are reasonable.
+
+
+## Cryptographic Attestation
+
+The relying party wants to know if how secure the private key that identifies
+a user is.  Unlike the network attestation, the relying party is not part of
+the network infrastructure, nor do they have a business relationship (such as
+ownership) over the end device.
+
+### Device Attestation
+
+This use case convinces the relying party of the characteristics of the
+device.  For privacy reasons, it might not identify the actual device itself,
+but rather the class of device.  The relying party can understand from either
+in-band (claims) or out-of-band (model numbers) whether the device has
+features such as a hardware TPM, software TPM via TEE, or software TPM
+without TEE.  Other details such as the availablility of finger-print readers
+or HDMI outputs may also be inferred.
+
+### Key storage attestation
+
+This use case convinces the relying party only about the provenance of the
+storage security of the private key.  This can be conceived of a subset of
+the previous case, but may be apply very specifically to just the keystore.
+
+### End user authorization
+
+This use case convinces the relying party that the digital signatures made by
+the indicated key pair were done with the approval of the end-user operator.
+This may also be considered possible subset of the device attestation above,
+but the attestation may be on a case-by-case basis.  The nature of the
+approval by the end-user would be indicated. Examples include: the user
+unlocked the device, the user viewed some message and acknowledge it inside
+an app, the message was displayed to the user via out-of-app control
+mechanism.  The acknowledgements could include selecting options on the
+screen, pushing physical buttons, scanning fingerprints, proximity to other
+devices (via bluetooth beacons, chargers, etc)
+
+## Geographic attestation
+
+The relying party wants to know the physical location (on the planet earth)
+of the device.  This may be provided directly by a GPS/GLONASS/Galileo module
+that is incorporated into a TPM.  This may also be provided by collecting other
+proximity messages from other device that the relying party can form a trust
+relationship with.
+
+### I am here
+
+The simplest use case is the claim of some specific coordinates.
+
+### I am near
+
+The second use case is the claim that some other devices are nearby.  This
+may be absolute ("I am near device X, which claims to be at location A"),
+or just relative, ("I am near device X").  This use could use
+"I am here" or "I am near" claims from a 1:1 basis with device X, or use
+some other protocol.  The nature of how the proximity was established would
+be part of this claim.  In order to defeat a variety of mechanisms that
+might attempt to proxy ("wormhole") radio communications, highly precise
+clocks may be required, and there may also have to be attestations as to the
+precision of those clocks.
+
+An additional example of being near would be for the case where two
+smartphones can establish that they are together by recording a common random
+movement, such as both devices being shaken together.  Each device may
+validate the claim from the other (in a disconnected fashion), or a third
+party may validate the claim as the relying party.
+
+This could be used to establish that a medical professional was in proximity
+of a patient with implanted devices who needs help.
+
+### You are here
+
+A third way to establish location is for a third party to communicate
+directly with the relying party.   The nature of how this trust is
+established (and whether it is done recursively) is outside of the scope
+here.  What is critical is that the identity of "You" can be communicated
+through the third party in a way that the relying party can use, but other
+intermediaries can not view.
+
+## Connectivity attestation
+
+The relying party wants to know what devices are connected.  A typical
+situation would be a media owner needing to know what TV device is connected
+via HDMI, and if so, if High-bandwidth Digital Content Protection (HDCP) is
+intact.
+
+
+# Technology users for RATS
 
 ## Trusted Computing Group (TCG)
 
