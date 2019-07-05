@@ -177,7 +177,7 @@ And any additional sources suggested.
 
 This section lists a series of cases where an attestion is done.
 
-## Network Attestation
+## Network Attestation {#netattest}
 
 A network operator wants to know the qualities of the hardware and software
 on the machines attached to their network.  The process starts with some kind
@@ -238,7 +238,7 @@ maintain identities of connected devices more than to validate correct
 firmware, but both situations are reasonable.
 
 
-## Cryptographic Attestation
+## Cryptographic Attestation {#cryptattest}
 
 The relying party wants to know if how secure the private key that identifies
 a user is.  Unlike the network attestation, the relying party is not part of
@@ -330,7 +330,7 @@ intact.
 
 The TCG is trying to solve the problem of knowing if a networking device
 should be part of a network, if it belongs to the operator, and if it is running
-approriate software.
+approriate software.  The work covers most of the use cases in {{netattest}}.
 
 This proposal is a work-in-progress, and is available to TCG members only.
 The goal is to be multi-vendor, scalable and extensible.   The proposal
@@ -358,9 +358,10 @@ Attestation may be performed by network management systems.  Networking
 Equipment is often highly interconnected, so it’s also possible that
 attestation could be performed by neighboring devices.
 
-Specifically listed to be out of scope includes: Linux processes, assemblies
-of hardware/software created by end-customers, and equipment that is sleepy
-(check term).
+Specifically listed to be out of scope for the first generation includes:
+Linux processes, assemblies of hardware/software created by end-customers,
+and equipment that is sleepy.  There is an intention to cover some of these
+are topics in future versions of the documents.
 
 The TCG Attestion leverages the TPM to make a series of measurements during
 the boot process, and to have the TPM sign those measurements.  The resulting
@@ -392,6 +393,8 @@ The TCG document leverages the 802.1AR IDevID and LDevID processes.
 operation system.   The system is primarily a software container to contain
 and control access to cryptographic keys, and therefore provides many of the
 same functions that a hardware Trusted Platform Module might provide.
+
+The uses described in section {{cryptattest}} are the primary focus.
 
 On hardware which is supported, the Android Keystore will make use of
 whatever trusted hardware is available, including use of Trusted Execution
@@ -428,6 +431,8 @@ eliminating the need for passwords for authentication to online services.
 The goal is to leverage asymmetric cryptographic operations in common
 browser and smart-phone platforms so that users can easily authentication.
 
+The use cases of {{cryptattest}} are primary.
+
 FIDO specifications extend to various hardware second factor authentication
 devices.
 
@@ -447,7 +452,7 @@ FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
 
 A FIDO use case involves a relying party that having a attestion on
 the biometric system that identifies a human.  It is the state of the
-biometric system that is being attested to, not the identity of the human.
+biometric system that is being attested to, not the identity of the human!
 
 FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP
 protocols.
