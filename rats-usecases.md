@@ -25,6 +25,16 @@ author:
   org: Sandelman Software Works
   email: mcr+ietf@sandelman.ca
 
+- ins: C. Wallace
+  name: Carl Wallace
+  org: Red Hound Software
+  email: carl@redhoundsoftware.com
+
+- ins: W. Pan
+  name: Wei Pan
+  org: Huawei Technologies
+  email: william.panwei@huawei.com
+
 normative:
   RFC2119:
 informative:
