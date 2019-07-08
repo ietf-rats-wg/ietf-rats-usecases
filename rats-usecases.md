@@ -238,14 +238,14 @@ maintain identities of connected devices more than to validate correct
 firmware, but both situations are reasonable.
 
 
-## Cryptographic Attestation {#cryptattest}
+## Cryptographic Key Attestation {#cryptattest}
 
 The relying party wants to know if how secure the private key that identifies
 a user is.  Unlike the network attestation, the relying party is not part of
 the network infrastructure, nor do they have a business relationship (such as
 ownership) over the end device.
 
-### Device Attestation
+### Device Type Attestation
 
 This use case convinces the relying party of the characteristics of the
 device.  For privacy reasons, it might not identify the actual device itself,
@@ -450,7 +450,7 @@ FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
 {{fidosignature}}, but these have been combined into the W3C document
 {{fido_w3c}} specification.
 
-A FIDO use case involves a relying party that having a attestion on
+A FIDO use case involves a relying party having an attestation on
 the biometric system that identifies a human.  It is the state of the
 biometric system that is being attested to, not the identity of the human!
 
