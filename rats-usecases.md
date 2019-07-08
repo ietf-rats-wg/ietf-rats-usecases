@@ -191,7 +191,7 @@ And any additional sources suggested.
 
 This section lists a series of cases where an attestation is done.
 
-## Network Attestation {#netattest}
+## Device Capabilities/Firmware Attestation {#netattest}
 
 A network operator wants to know the qualities of the hardware and software
 on the machines attached to their network.  The process starts with some kind
@@ -251,6 +251,32 @@ worldwide enterprise.  The network operator wishes to do this in order
 maintain identities of connected devices more than to validate correct
 firmware, but both situations are reasonable.
 
+### Computation characteristics
+
+A group of enterprises organized as a consortium seeks to deploy computing
+node s as the basis of their shared blockchain system. Each member of the
+consortium  must forward an equal number of computing nodes to participate in
+the P2P network of nodes that form the basis of the blockchain system. In
+order to prevent the various issues (e.g. concentration of hash power,
+anonymous mining nodes) found in other blockchain systems, each computing
+node must comply to a predefined allowable manifest of system hardware,
+software and firmware, as agreed to by the membership of the
+consortium. Thus, a given computing node must be able to report the
+(pre-boot) configuration of its system and be able to report at an y time the
+operational status of the various components that make-up its system.
+
+The consortium seeks to have the following things attested: system
+configuration, group membership, and virtualization status.
+
+This is a peer-to-peer protocol so each device in the consortium is
+a relying party.  The attestation may be requested online by another entity
+within the consortium, but not by other parties.  The attestation needs to be
+compact and interoperable and may be included in the blockchain itself at the
+completion of the consensus algorithm.
+
+The attestation will need to start in a hardware RoT in order to validate
+if the system is running real hardware rather than running a virtual
+machine.
 
 ## Cryptographic Key Attestation {#cryptattest}
 
