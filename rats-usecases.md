@@ -2414,8 +2414,17 @@ TBD.
 
 # Acknowledgements
 
+Thomas Hardjono provided the text on blockchain system.
+Dave Thaler suggested many small variations.  Frank Xialiang suggested the
+scalling scenarios that might preclude a 1:1 protocol between attesters and
+relying parties. Henk Birkholz provided many reviews. Kathleen Moriarty
+provided many useful edits.  Ned Smith, Anders Rundgren and Steve Hanna
+provided many useful pointers to TCG terms and concepts. Thomas Fossati and
+Shawn Willden elucidated the Android Keystore goals and limitations.
+
 --- back
 
 # Changes
 
+- created new section for target use cases
 - added comments from Guy, Jessica, Henk and Ned on TCG description.
