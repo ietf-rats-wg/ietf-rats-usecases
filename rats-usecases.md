@@ -25,11 +25,25 @@ author:
   org: Sandelman Software Works
   email: mcr+ietf@sandelman.ca
 
+- ins: C. Wallace
+  name: Carl Wallace
+  org: Red Hound Software
+  email: carl@redhoundsoftware.com
+
+- ins: W. Pan
+  name: Wei Pan
+  org: Huawei Technologies
+  email: william.panwei@huawei.com
+
 normative:
   RFC2119:
 informative:
   RFC5652:
+  RFC7030:
+  RFC4210:
+  RFC8555:
   I-D.tschofenig-rats-psa-token:
+  I-D.gutmann-scep:
   keystore:
     target: "https://developer.android.com/training/articles/keystore"
     title: "Android Keystore System"
@@ -135,16 +149,16 @@ This section will grow to include forward and external references to terms
 which have been seen.  When terms need to be disambiguated they will be
 prefixed with their source, such as "TCG(claim)" or "FIDO(relying party)"
 
-Platform attestions generally come in two categories. This document will
-attempt to indicate for a particular attestion technology falls into this.
+Platform attestations generally come in two categories. This document will
+attempt to indicate for a particular attestation technology falls into this.
 
-## Static attestions
+## Static attestations
 
-A static attestion says something about the platform on which the code is running.
+A static attestation says something about the platform on which the code is running.
 
-## Session attestions
+## Session attestations
 
-A session attestion says something about how the shared session key was
+A session attestation says something about how the shared session key was
 created.
 
 ## Statements
@@ -175,7 +189,7 @@ And any additional sources suggested.
 
 # Use case summaries
 
-This section lists a series of cases where an attestion is done.
+This section lists a series of cases where an attestation is done.
 
 ## Network Attestation {#netattest}
 
@@ -206,7 +220,7 @@ not be connected until the equipment is validated.
 ### Proxy Root of Trust
 
 A variety of devices provide measurements via their Root of Trust.
-A server collects these measurements, and (having applies a local policy)
+A server collects these measurements, and (having applied a local policy)
 then creates a device agnostic attestation.  The relying party can validate
 the claims in a standard format.
 
@@ -225,7 +239,7 @@ An entire network of systems needs to be validated: such as all the desktops
 in an enterprise's building, or all the routers at an ISP.  The
 infrastructure is not necessarily trusted: it could be subverted, and it must
 also attest.   The devices may be under a variety of operators, and may be
-mutually suspicious: each device may therefore with to process attestations
+mutually suspicious: each device may therefore need to process attestations
 from every other device.  An NxM mesh of attestations may be untenable, but a
 system of N:1:M relationships can be setup via proxy attestations.
 
@@ -240,26 +254,35 @@ firmware, but both situations are reasonable.
 
 ## Cryptographic Key Attestation {#cryptattest}
 
-The relying party wants to know if how secure the private key that identifies
-a user is.  Unlike the network attestation, the relying party is not part of
-the network infrastructure, nor do they have a business relationship (such as
+The relying party wants to know how secure a private key that identifies
+an entity is.  Unlike the network attestation, the relying party is not part of
+the network infrastructure, nor do they necessarily have a business relationship (such as
 ownership) over the end device.
 
 ### Device Type Attestation
 
-This use case convinces the relying party of the characteristics of the
+This use case convinces the relying party of the characteristics of a
 device.  For privacy reasons, it might not identify the actual device itself,
 but rather the class of device.  The relying party can understand from either
-in-band (claims) or out-of-band (model numbers) whether the device has
+in-band (claims) or out-of-band (model numbers, which may be expressed as a claim) whether the device has
 features such as a hardware TPM, software TPM via TEE, or software TPM
-without TEE.  Other details such as the availablility of finger-print readers
+without TEE.  Other details such as the availability of finger-print readers
 or HDMI outputs may also be inferred.
 
 ### Key storage attestation
 
-This use case convinces the relying party only about the provenance of the
-storage security of the private key.  This can be conceived of a subset of
-the previous case, but may be apply very specifically to just the keystore.
+This use case convinces the relying party only about the provenance of a private key by
+providing claims of the
+storage security of the private key.  This can be conceived as a subset of
+the previous case, but may be apply very specifically to just a keystore. Additional
+details associated with the private key may be provided as well, including limitations on
+usage of the key.
+
+Key storage attestations may be consumed by systems provisioning public
+key certificates for devices or human users. In these cases, attestations may be
+incorporated into certificate request protocols (e.g., EST {#rfc7030}, CMP {#rfc4210}, ACME {#rfc8555}, SCEP {{I-D.gutmann-scep}}, etc.) and processed by
+registration authorities or certification authorities prior to determining contents for
+any issued certificate.
 
 ### End user authorization
 
@@ -320,7 +343,7 @@ intermediaries can not view.
 
 The relying party wants to know what devices are connected.  A typical
 situation would be a media owner needing to know what TV device is connected
-via HDMI, and if so, if High-bandwidth Digital Content Protection (HDCP) is
+via HDMI and if High-bandwidth Digital Content Protection (HDCP) is
 intact.
 
 
@@ -363,7 +386,7 @@ Linux processes, assemblies of hardware/software created by end-customers,
 and equipment that is sleepy.  There is an intention to cover some of these
 are topics in future versions of the documents.
 
-The TCG Attestion leverages the TPM to make a series of measurements during
+The TCG Attestation leverages the TPM to make a series of measurements during
 the boot process, and to have the TPM sign those measurements.  The resulting
 "PCG" hashes are then available to an external verifier.
 
@@ -378,11 +401,11 @@ The TCG uses the following terminology:
   manufacturer and integrated into firmware.
 * Quotes: measured values (having been signed), and RIMs
 * Reference Integrity Values (RIV)
-* devices have a Initial Attestion Key (IAK), which is provisioned at the
+* devices have a Initial Attestation Key (IAK), which is provisioned at the
 same time as the IDevID.
 * PCR - Platform Configuration Registry (deals with hash chains)
 
-The TCG document builds upon a number of IETF technologies: SNMP (Attestion
+The TCG document builds upon a number of IETF technologies: SNMP (Attestation
 MIB), YANG, XML, JSON, CBOR, NETCONF, RESTCONF, CoAP, TLS and SSH.
 The TCG document leverages the 802.1AR IDevID and LDevID processes.
 
@@ -398,7 +421,7 @@ The uses described in section {{cryptattest}} are the primary focus.
 
 On hardware which is supported, the Android Keystore will make use of
 whatever trusted hardware is available, including use of Trusted Execution
-Environment (TEE) or Secure Element (SE)).  The Keystore therefore abstracts
+Environment (TEE) or Secure Element (SE).  The Keystore therefore abstracts
 the hardware, and guarantees to applications that the same APIs can be used
 on both more and less capable devices.
 
@@ -406,7 +429,7 @@ A great deal of focus from the Android Keystore seems to be on providing
 fine-grained authorization of what keys can be used by which applications.
 
 XXX - clearly there must be additional (intended?) use cases that provide
-some kind of attestion.
+some kind of attestation.
 
 Android 9 on Pixel 2 and 3 can provided protected confirmation messages.
 This uses hardware access from the TPM/TEE to display a message directly to
@@ -414,7 +437,7 @@ the user, and receives confirmation directly from the user.  A hash of the
 contents of the message can provided in an attestation that the device
 provides.
 
-In addition, the Android Keystore provides attestion information about itself
+In addition, the Android Keystore provides attestation information about itself
 for use by FIDO.
 
 QUOTE: Finally, the Verified Boot state is included in key attestation
@@ -446,7 +469,7 @@ Terminology includes:
 * "external authenticator" may be connected by USB, bluetooth, wifi, and may
   be an stand-alone device, USB connected key, phone or watch.
 
-FIDO2 had a Key Attestion Format {{fidoattestation}}, and a Signature Format
+FIDO2 had a Key Attestation Format {{fidoattestation}}, and a Signature Format
 {{fidosignature}}, but these have been combined into the W3C document
 {{fido_w3c}} specification.
 
@@ -457,7 +480,7 @@ biometric system that is being attested to, not the identity of the human!
 FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP
 protocols.
 
-According to {{fidotechnote}} FIDO uses attestion to make claims about the
+According to {{fidotechnote}} FIDO uses attestation to make claims about the
 kind of device which is be used to enroll.  Keypairs are generated on a
 per-device *model* basis, with a certificate having a trust chain that leads
 back to a well-known root certificate.  It is expected that as many as
