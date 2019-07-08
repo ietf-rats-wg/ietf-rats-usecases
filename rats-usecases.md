@@ -312,25 +312,38 @@ the attestation comes from a network operator, as to the device's need
 to continue operating, and is evaluated by trusted firmware (the relying
 party), which resets a watchdog timer.
 
-    > Feel free to incorporate this text:
+## IETF TEEP WG use case
 
-    > * TEEP: the "Trusted Application Manager (TAM)" server wants to verify the state of a TEE, or applications in the TEE,
-    > of a device.  The TEE attests to the TAM, which can then decide whether to install sensitive data in the TEE,
-    > or whether the TEE is out of compliance and the TAM needs to install updated code in the TEE to bring it back
-    > into compliance with the TAM's policy.
+The "Trusted Application Manager (TAM)" server wants to verify the state of a
+TEE, or applications in the TEE, of a device.  The TEE attests to the TAM,
+which can then decide whether to install sensitive data in the TEE, or
+whether the TEE is out of compliance and the TAM needs to install updated
+code in the TEE to bring it back into compliance with the TAM's policy.
 
-    > * Confidential ML model: Microsoft talked about this category of use cases at the recent Microsoft //build conference.
-    > An example use case is where a device manufacturer wants to protect its intellectual property in terms of the
-    > ML model it developed and that runs in the devices that its customers purchased, and it wants to prevent
-    > attackers, potentially including the customer themselves, from seeing the details of the model.   This works by having
-    > some protected environment (e.g., a hardware TEE) in the device attest to some manufacturer's service,
-    > which if attestation succeeds, then the manufacturer service releases the model, or a key to decrypt the model,
-    > to the requester.   If a hardware TEE is involved, then this use case overlaps with the TEEP use case.
+## Confidential Machine Learning (ML) model
 
-    > * Critical infrastructure: when a protocol operation can affect some critical system, the device attached to the critical
-    > equipment wants some assurance that the requester has not been compromised.  As such, attestation can be used
-    > to only accept commands from requesters that are within policy.   Hardware attestation in particular, especially
-    > in conjunction with a TEE on the requester side, can provide protection against many types of malware.
+
+Microsoft talked about this category of use cases at the recent Microsoft
+//build conference.
+
+An example use case is where a device manufacturer wants to protect its
+intellectual property in terms of the ML model it developed and that runs in
+the devices that its customers purchased, and it wants to prevent attackers,
+potentially including the customer themselves, from seeing the details of the
+model.   This works by having some protected environment (e.g., a hardware
+TEE) in the device attest to some manufacturer's service, which if
+attestation succeeds, then the manufacturer service releases the model, or a
+key to decrypt the model, to the requester.   If a hardware TEE is involved,
+then this use case overlaps with the TEEP use case.
+
+## Critical infrastructure
+
+When a protocol operation can affect some critical system, the device
+attached to the critical equipment wants some assurance that the requester
+has not been compromised.  As such, attestation can be used to only accept
+commands from requesters that are within policy.   Hardware attestation in
+particular, especially in conjunction with a TEE on the requester side, can
+provide protection against many types of malware.
 
 
 ### Computation characteristics
