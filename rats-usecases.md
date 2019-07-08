@@ -51,6 +51,13 @@ informative:
       ins: "Google"
       date: 2019
 
+  ieee802-1AR:
+    target: "http://standards.ieee.org/findstds/standard/802.1AR-2009.html"
+    title: "IEEE 802.1AR Secure Device Identifier"
+    author:
+      ins: "IEEE Standard"
+    date: 2009
+
   android_security:
     target: "https://arxiv.org/pdf/1904.05572.pdf"
     title: "The Android Platform Security Model"
@@ -107,13 +114,41 @@ informative:
       ins: "FIDO Alliance"
       date: 2019
 
+  intelsgx:
+    target: "https://software.intel.com/en-us/sgx/attestation-services"
+    title: "Intel® Software Guard Extensions: Attestation & Provisioning Services"
+    author:
+      ins: Intel
+      date: 2019
+
+  windowsdefender:
+    title: "Windows Defender System Guard attestation"
+    target: "https://www.microsoft.com/security/blog/2018/04/19/introducing-windows-defender-system-guard-runtime-attestation/"
+    author:
+      ins: Microsoft
+      date: 2019
+
+  windowshealth:
+    title: "Windows Device Health Attestation"
+    target: "https://docs.microsoft.com/en-us/windowsserver/security/device-health-attestation"
+    author:
+      ins: Microsoft
+      date: 2019
+
+  azureattestation:
+    title: "Azure Sphere Attestation"
+    target: "https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/"
+    author:
+      ins: Microsoft
+      date: 2019
 
 --- abstract
 
 This document details mechanisms created for performing Remote Attestation
-that have been used in a number of industries.  The document intially focuses
+that have been used in a number of industries.  The document initially focuses
 on existing industry verticals, mapping terminology used in those
-specifications to the more abstract terminology used by RATS.
+specifications to the more abstract terminology used by the IETF RATS Working
+Group.
 
 The document aspires to describe possible future
 use cases that would be enabled by common formats.
@@ -131,18 +166,13 @@ not expected to be published as an RFC, but remain open as a working
 document.  It could become an appendix to provide motivation for a protocol
 standards document.
 
-This document will probably not deal with use cases from an end-user point of
-view, but rather on the technology verticals that wish to use RATS concepts
-(such as EAT) in their deployments.  However, the end-user use cases for
-these verticales will be explained.
-
 End-user use cases that would either directly leverage RATS technology, or
 would serve to inform technology choices are welcome, however.
 
 # Terminology          {#Terminology}
 
-Critical to dealing with and constrasting different technologies is to
-collect terms with are compatible, to distinguish those terms which are
+Critical to dealing with and contrasting different technologies is to
+collect terms which are compatible, to distinguish those terms which are
 similar but used in different ways.
 
 This section will grow to include forward and external references to terms
@@ -154,17 +184,24 @@ attempt to indicate for a particular attestation technology falls into this.
 
 ## Static attestations
 
-A static attestation says something about the platform on which the code is running.
+A static attestation says something about the platform on which the code
+is running.
 
 ## Session attestations
 
-A session attestation says something about how the shared session key was
-created.
+A session attestation says something about how a session key used in a
+connection such as TLS connection was created.  It is usually the result
+of evaluating attestations that are attached to the certificates used to
+create such a session.
 
 ## Statements
 
 The term "statement" is used as the generic term for the semantic content
 which is being attested to.
+
+## Hardware Root Of Trust
+
+(TBD: Seeking something useful here.)
 
 # Requirements Language {#rfc2119}
 
@@ -184,6 +221,12 @@ This document will be expanded to include summaries from:
 * Trusted Computing Group (TCG) Trusted Platform Module (TPM)/Trusted
 Software Stack (TSS)
 * ARM "Platform Security Architecture" {{I-D.tschofenig-rats-psa-token}}
+
+* Intel SGX attestation {{intelsgx}}
+* Windows Defender System Guard attestation {{windowsdefender}}
+* Windows Device Health Attestation {{windowshealth}}
+* Azure Sphere Attestation {{azureattestation}}: https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/
+* IETF NEA WG {{RFC5209}}
 
 And any additional sources suggested.
 
@@ -250,6 +293,45 @@ all of the smartphones on an LTE network, or every desktop system in a
 worldwide enterprise.  The network operator wishes to do this in order
 maintain identities of connected devices more than to validate correct
 firmware, but both situations are reasonable.
+
+## Hardware resiliency / watchdogs
+
+One significant problem is malware that holds a device hostage and does not
+allow it to reboot to prevent updates to be applied. This is a significant
+problem, because it allows a fleet of devices to be held hostage for
+ransom. Within CyRes the TCG is defining hardware Attention Triggers that
+force a periodical reboot in hardware.
+
+This can be implemented by forcing a reboot unless attestation to an
+Attestation Server succeeds within the period interval, and having a reboot
+do remediation by bringing a device into compliance, including installation
+of patches as needed.
+
+This is unlike the previous section on Device Attestation in that
+the attestation comes from a network operator, as to the device's need
+to continue operating, and is evaluated by trusted firmware (the relying
+party), which resets a watchdog timer.
+
+    > Feel free to incorporate this text:
+
+    > * TEEP: the "Trusted Application Manager (TAM)" server wants to verify the state of a TEE, or applications in the TEE,
+    > of a device.  The TEE attests to the TAM, which can then decide whether to install sensitive data in the TEE,
+    > or whether the TEE is out of compliance and the TAM needs to install updated code in the TEE to bring it back
+    > into compliance with the TAM's policy.
+
+    > * Confidential ML model: Microsoft talked about this category of use cases at the recent Microsoft //build conference.
+    > An example use case is where a device manufacturer wants to protect its intellectual property in terms of the
+    > ML model it developed and that runs in the devices that its customers purchased, and it wants to prevent
+    > attackers, potentially including the customer themselves, from seeing the details of the model.   This works by having
+    > some protected environment (e.g., a hardware TEE) in the device attest to some manufacturer's service,
+    > which if attestation succeeds, then the manufacturer service releases the model, or a key to decrypt the model,
+    > to the requester.   If a hardware TEE is involved, then this use case overlaps with the TEEP use case.
+
+    > * Critical infrastructure: when a protocol operation can affect some critical system, the device attached to the critical
+    > equipment wants some assurance that the requester has not been compromised.  As such, attestation can be used
+    > to only accept commands from requesters that are within policy.   Hardware attestation in particular, especially
+    > in conjunction with a TEE on the requester side, can provide protection against many types of malware.
+
 
 ### Computation characteristics
 
@@ -379,15 +461,15 @@ intact.
 
 The TCG is trying to solve the problem of knowing if a networking device
 should be part of a network, if it belongs to the operator, and if it is running
-approriate software.  The work covers most of the use cases in {{netattest}}.
+appropriate software.  The work covers most of the use cases in {{netattest}}.
 
 This proposal is a work-in-progress, and is available to TCG members only.
 The goal is to be multi-vendor, scalable and extensible.   The proposal
 intentionally limits itself to:
 
 * "non-privacy-preserving applications (i.e., networking, Industrial IoT )",
-* that the firmware is provided by the device manufacturer
-* that there is a manufacturer installed hardware root of trust (such as a
+* the firmware is provided by the device manufacturer
+* there is a manufacturer installed hardware root of trust (such as a
   TPM and boot room)
 
 Service providers and enterprises deploy hundreds of routers, many of them in
@@ -401,7 +483,7 @@ remote attestation is to:
 The use case described is to be able to monitor the authenticity of software
 versions and configurations running on each device.  This allows owners and
 auditors to detect deviation from approved software and firmware versions and
-configurations, potentially identifying infected devices.
+configurations, potentially identifying infected devices. {{RFC5209}}
 
 Attestation may be performed by network management systems.  Networking
 Equipment is often highly interconnected, so it’s also possible that
@@ -418,17 +500,17 @@ the boot process, and to have the TPM sign those measurements.  The resulting
 
 The TCG uses the following terminology:
 
-* Device Manufacuter
+* Device Manufacturer
 * Attester ("device under attestation")
 * Verifier (Network Management Station)
-* "Explicit Attestation" is the TCG term for a static (platform) statement.
-* "Implicit Attestation" is the TCG term for a session statement.
+* "Explicit Attestation" is the TCG term for a static (platform) attestation
+* "Implicit Attestation" is the TCG term for a session attestation
 * Reference Integrity Measurements (RIM), which are signed my device
   manufacturer and integrated into firmware.
 * Quotes: measured values (having been signed), and RIMs
 * Reference Integrity Values (RIV)
 * devices have a Initial Attestation Key (IAK), which is provisioned at the
-same time as the IDevID.
+same time as the IDevID {{ieee802-1AR}}
 * PCR - Platform Configuration Registry (deals with hash chains)
 
 The TCG document builds upon a number of IETF technologies: SNMP (Attestation
@@ -446,7 +528,7 @@ same functions that a hardware Trusted Platform Module might provide.
 The uses described in section {{cryptattest}} are the primary focus.
 
 On hardware which is supported, the Android Keystore will make use of
-whatever trusted hardware is available, including use of Trusted Execution
+whatever trusted hardware is available, including use of a Trusted Execution
 Environment (TEE) or Secure Element (SE).  The Keystore therefore abstracts
 the hardware, and guarantees to applications that the same APIs can be used
 on both more and less capable devices.
@@ -489,7 +571,7 @@ Terminology includes:
 
 * "relying party" validates a claim
 * "relying party application" makes FIDO Authn calls
-* "browser" provides Web Authentication JS API
+* "browser" provides the Web Authentication JS API
 * "platform" is the base system
 * "internal authenticator" is some credential built-in to the device
 * "external authenticator" may be connected by USB, bluetooth, wifi, and may
@@ -499,9 +581,10 @@ FIDO2 had a Key Attestation Format {{fidoattestation}}, and a Signature Format
 {{fidosignature}}, but these have been combined into the W3C document
 {{fido_w3c}} specification.
 
-A FIDO use case involves a relying party having an attestation on
-the biometric system that identifies a human.  It is the state of the
-biometric system that is being attested to, not the identity of the human!
+A FIDO use case involves the relying party receiving a device
+attestation about the biometric system that performs the identication
+of the human.  It is the state of the biometric system that is being
+attested to, not the identity of the human!
 
 FIDO does provides a transport in the form of the WebAuthn and FIDO CTAP
 protocols.
