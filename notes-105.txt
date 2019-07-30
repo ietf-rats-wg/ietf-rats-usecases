@@ -1,0 +1,172 @@
+RATS WG - 2019-07-25 8:30am to 9:45am. COLLAR ROOM, IETF105.
+
+There was a RATS WG use case document side meeting.
+A webex was planned, but in error it was not enabled in the room.
+
+People present include:
+    Laurence Lundblade	
+    Luis (Miguel Contreras Murillo?)        
+    ** two guys from secocom
+    Gary - Qualcomm 
+    Anthony Nadalin - Microsoft    
+    Dave Thaler - Microsoft 
+    Guy Fedorkow - Juniper 
+    Jessica Fitzgerald-McKay - NSA 
+    Ned Smith - Intel
+    Guy Huawei 
+    Wei Pan   - Huawei  
+    Thomas Hardjono - MIT  
+    Eric Voit - Cisco
+    Henk Birkholz - Fraunhofer SIT
+    Frank Xia - Huawei 
+    Michael Richardson - Sandelman.
+
+
+0) we intended to bring up the webex that was announced, but we forgot this
+   part. My appologies to those who were trying to tune in from afar.
+        
+1) we did a round table to do introductions and indicate where the person
+   was coming from, and what kinds of use cases they cared about.
+
+2) we had a lot of discussions about how to organize the use cases,
+   and what made one use cases distinct from other cases.
+
+A feature of the use cases that was initially discussed had to do with
+whether the attester and relaying parties are online, offline (sneaker net?),
+or use some kind of store and forward system to communicate (e.g. email,
+delay tolerant networks, or ???).
+
+It was felt that a major aspect of attestation was about validating the
+machine that is doing the (biometric, etc.) validation of the human that is
+authorizing the "Transaction".
+
+There was a feeling that the kind/scale of the transaction would dictate
+different kinds of solutions, and thus this should feed into the use
+cases. The categories we came up with included:
+
+### Government
+### Financial institutions/transactions
+### Large value financial transactions
+### "James Bond"
+
+A strawman example of was given of an IoT Toaster that had the ability to burn an
+image into the toast.  The relying party was given as the owner of the
+images.  This was later more clearly identified as being a Content Protection
+use case, and that this use case needed to be more clearly articulated.
+
+In discussing the Example of the Toaster, the question of device
+bootstrapping at network provisioning time vs for ongoing use came up.
+
+It was suggested that the MUD file/mechanism was a good place/way for a
+verifier to learn the policy/reference values in order to do a verified boot
+process. 
+
+But, the discussion came back several times to when the attestion checked/provided:
+	* onboarding, provisioning, software-update, monitoring, data-use
+	* question about when does the check become invalid/stale, and need to be redone
+
+Fingerprint is attestation.... what is different between authentication and attestation?
+
+It was stated that in FIDO, when you enroll, you register your device to and
+then do biometric from that device to enable actions.  
+There is an attestation in the first step, but subsequently usually none
+afterwards: the device use the fingerprint (etc.) to authorize an action, but
+the initial attestation covers the correct operation of the device, which
+does not need to be attested each time.
+This was constrasted with ADAR (?) where the fingerprint *is* transmitted
+across the network.  Privacy discussions of the different systems ensued.
+
+It was pointed out that this requires attestation key material, which has to
+be trusted by the verifying and/or relying party. 
+   The key that signs the evidence has to be trusted by verifier.
+   The key that signs the attestation results has to be trusted by the relying party.
+
+A use case for Critical Infrastructure was posited, such as access to sensors
+in nuclear power plant, to actuators in a nuclear power plant.  There was
+some discussion about relative risk of different actions, and that some
+actions might not be as heavily authenticated as others, as they lead to a
+safe state.
+The example was given of sensors that might cause a vehicle network to engage
+the emergency brake might not require as strong attestation, because it would
+take too long.  {Ed: A vehicle which repeatedly make false stops would be taken
+into for repair (malware removal), while a vehicle that failed to make
+emergency stops would kill people.}
+
+This was contrasted to Transfering millions of dollars (is user
+authentication), where it is acceptable to take many minutes to confirm
+everything is in order.
+
+A positive attestation signal result changes your system trust model.
+POSITIVE Attestation builds the trust model. FAILURE also updates it.
+The trust model informs the system model.
+    {Ed: deeper comments on this sought}
+
+There was discussion of the Network Function Virtualization (NFV) example.
+There are three levels of attestation:
+      1) the NFV function itself
+      2) the virtual machine container with (1) router functionality
+      3) the physical device host that runs the container.
+These systems are relatively isolated from each other, and this was
+constrasted to an (MMU-less?) IoT device with minimal TPM functionality.
+
+It was pointed out that currently you have to trust the brand, but later on
+one will trust the signature on the hardware. 
+Each layer might have different layers of information.
+
+This lead to discussion about Virtual TPMs.
+
+The TEEP use case was brought up.
+It was pointed out that it is a tree of components, and it was felt that this
+made it a uniquely NEW USE CASE.
+
+Additionally: 
+  - multiple applications over the top running on the same TEE.
+  - chain, hardware, trusted firmware (trustzone vs SGX), different entities.
+  - TCG - DICE certificate chain, root is the hardware, and each TA is a
+  different leaf.  each entity signs the thing above it. 
+  - each layer has credentials.
+  - when you attest the health of the application chain, it is for the policy
+    to indicate which piece is out of date. 
+  - Trusted Application Manager (code and configuration of the code).  The
+    TAM is a relying party. 
+  - there are a set of slides from TEEP WG and will be in RATS WG.
+  - motivates having a set of levels of entities that are attested in the *SAME* message
+
+I asked: Is the TAM the only consumer of the EAT?
+  Within the TEEP WG, that is true,
+  but not universally the case. 
+The TAM may be a path to a verifier.
+
+The architecture talks about staged computing.
+
+## Content Protection
+
+Definitely a category of use cases!
+- Play third party content on unit X. (User, Third Party Content, manufacturer of device)
+- User content protection (only 6 people can read this email)
+- "HDCP"
+
+It was claimed:
+   "Every use case for remote authentication is a use case for remote attestation"
+
+The topic of
+
+## Mutual attestation
+
+and it would be a new category.  It was not terribly clear what this means,
+but subsequent discussion clarified how it differs from two uni-directional
+attestations.  The key point is that device A will not reveal its
+measurements to device B until it sees device B's measurements.  And VV.
+So some variation of zero-knowledge proofs may be required to make this work.
+
+It was claimed:
+   - authentication of a service is not attestation (valiating
+     www.example.com certificate)
+
+It was pointed out that with SGX it is possible to attest the enclave,
+without saying which device it is, and this applies to some kind of cloud
+situation where a service attests that it can do something, without revealing
+where/how it is actually performed.
+
+Then time ran out.
+
