@@ -4,27 +4,29 @@ There was a RATS WG use case document side meeting.
 A webex was planned, but in error it was not enabled in the room.
 
 People present include:
-    Laurence Lundblade	
-    Luis (Miguel Contreras Murillo?)        
-    ** two guys from secocom
-    Gary - Qualcomm 
-    Anthony Nadalin - Microsoft    
-    Dave Thaler - Microsoft 
-    Guy Fedorkow - Juniper 
-    Jessica Fitzgerald-McKay - NSA 
+    Laurence Lundblade
+    Luis (Miguel Contreras Murillo?)
+    Yuichi Takita, SECOM
+    Kohei Isobe, SECOM
+    Tadahiko Ito, SECOM
+    Gary - Qualcomm
+    Anthony Nadalin - Microsoft
+    Dave Thaler - Microsoft
+    Guy Fedorkow - Juniper
+    Jessica Fitzgerald-McKay - NSA
     Ned Smith - Intel
-    Guy Huawei 
-    Wei Pan   - Huawei  
-    Thomas Hardjono - MIT  
+    Guy Huawei
+    Wei Pan   - Huawei
+    Thomas Hardjono - MIT
     Eric Voit - Cisco
     Henk Birkholz - Fraunhofer SIT
-    Frank Xia - Huawei 
+    Frank Xia - Huawei
     Michael Richardson - Sandelman.
 
 
 0) we intended to bring up the webex that was announced, but we forgot this
    part. My appologies to those who were trying to tune in from afar.
-        
+
 1) we did a round table to do introductions and indicate where the person
    was coming from, and what kinds of use cases they cared about.
 
