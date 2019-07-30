@@ -22,6 +22,7 @@ People present include:
     Henk Birkholz - Fraunhofer SIT
     Frank Xia - Huawei
     Michael Richardson - Sandelman.
+    Nancy Cam-Winget - Cisco
 
 
 0) we intended to bring up the webex that was announced, but we forgot this
