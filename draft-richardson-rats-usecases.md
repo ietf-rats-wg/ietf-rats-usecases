@@ -723,7 +723,7 @@ trust anchor is available here: {{keystore_attestation}}.
 The attestations below were generated using the generateKeyPair method from the
 DevicePolicyManager class using code similar to the following.
 
-```
+~~~~~~~~~~~
 KeyGenParameterSpec.Builder builder = null;
 if(hasStrongBox) {
 	builder = new KeyGenParameterSpec.Builder(
@@ -756,22 +756,23 @@ builder.setAttestationChallenge(challenge_bytes);
 KeyGenParameterSpec keySpec = builder.build();
 AttestedKeyPair akp = dpm.generateKeyPair(componentName, algorithm, keySpec, idAttestationFlags);
 
-```
+~~~~~~~~~~~
 
 ### TEE
 Annotations included below are delimited by ASN.1 comments, i.e., --. Annotations should
 be consistent with structures described here: {{keystore_attestation}}.
 
-<figure>
-INSERT_TEXT_FROM_FILE tee-example1.txt END
-</figure>
+
+~~~~~~~~~~~
+{::include tee-example1.txt}
+~~~~~~~~~~~
 
 ### Secure Element
 
 The structures below are not annotated except where the difference is specific to the
 difference between the TEE structure shown above and artifacts emitted by StrongBox.
 
-```
+~~~~~~~~~~~
    0 5143: SEQUENCE {
    4    9:   OBJECT IDENTIFIER signedData (1 2 840 113549 1 7 2)
   15 5128:   [0] {
@@ -1390,7 +1391,7 @@ difference between the TEE structure shown above and artifacts emitted by Strong
          :     }
          :   }
 
-```
+~~~~~~~~~~~
 
 
 ## Windows 10 TPM
@@ -1398,7 +1399,7 @@ difference between the TEE structure shown above and artifacts emitted by Strong
 The next two sections provide two views of a CSR generated via invocation of the
 Certificate Enrollment Manager API similar to the below:
 
-```
+~~~~~~~~~~~
 CertificateRequestProperties request = new CertificateRequestProperties();
 request.FriendlyName = "Self-Signed Device Certificate";
 
@@ -1440,12 +1441,13 @@ request.AttestationCredentialCertificate = new Certificate(buffer); ;
 csrToDiscard = await
 CertificateEnrollmentManager.UserCertificateEnrollmentManager.\
 CreateRequestAsync(request);
-```
+~~~~~~~~~~~
 
 Attestation details are described here: https://msdn.microsoft.com/en-us/library/dn366894.aspx.
 
 The structure is essentially a Full PKI Request as described in RFC 5272.
 
+~~~~~~~~~~~
 * ContentInfo
   * SignedData
      * PKIData
@@ -1456,6 +1458,7 @@ The structure is essentially a Full PKI Request as described in RFC 5272.
        * Empty cmsSequence
        * Empty otherMsgSequence
      * Certificates bag with two certs (one of which is revoked)
+~~~~~~~~~~~
 
 ### Attestation statement
 
@@ -1463,7 +1466,7 @@ This section provides an annotation attestation statement as extracted from an e
 attestation extension. The structure of the attestation statement is defined here:
 https://msdn.microsoft.com/en-us/library/dn408990.aspx.
 
-```
+~~~~~~~~~~~
  600 1256:                         SEQUENCE {
  604    9:                           OBJECT IDENTIFIER '1 3 6 1 4 1 311 21 24'
  615 1241:                           SET {
@@ -1548,10 +1551,11 @@ https://msdn.microsoft.com/en-us/library/dn408990.aspx.
          :                   51 94 C6 58 50
          :                             }
 
-```
+~~~~~~~~~~~
+
 The format is structured as follows:
 
-```
+~~~~~~~~~~~
 typedef struct  {
    UINT32 Magic;
    UINT32 Version;
@@ -1572,11 +1576,11 @@ typedef struct  {
 00 00 00 00 - cbIdBinding
 B9 04 00 00 - cbKeyAttestation
 00 00 00 00 – cbAIKOpaque
-```
+~~~~~~~~~~~
 
 The remainder is the keyAttestation, which is structured as follows:
 
-```
+~~~~~~~~~~~
 typedef struct {
    UINT32 Magic;
    UINT32 Platform;
@@ -1595,22 +1599,22 @@ typedef struct {
 A1 00 00 00 – cbKeyAttest (161)
 00 01 00 00 – cbSignature (256)
 00 03 00 00 - cbKeyBlob
-```
+~~~~~~~~~~~
 
 keyAttest (161 bytes)
-```
+~~~~~~~~~~~
 FF 54 43 47 80 17 00 22 00 0B 9A FD AB 8A 0B E9 0B BB 3F 7F E6 B6 77 91 EF A9 15 8A 03 B2
 2B 8C BE 3F EC 56 B6 30 BF 82 73 9C 00 14 13 6E 2F 14 DD AF 30 72 A6 E3 89 4D BF 7A 54 26
 36 2F 10 D6 00 00 00 00 51 4F CB E5 AD 8C 8C 60 E6 C2 70 80 00 D4 2C 65 4C 6B 95 ED 95 00
 22 00 0B 2B E6 2C AD 8D E8 9A 85 04 D7 F3 7B B7 4C F8 32 CD B4 F1 80 CA A6 35 B9 2C 39 87
 B7 96 03 C3 A3 00 22 00 0B 6C 88 60 B2 80 E3 BE 7D 34 F2 85 DC 26 9D 1B 72 A8 0A 17 CF 31
 08 F1 55 F2 9B 4E 82 C8 5B 49 7B
-```
+~~~~~~~~~~~
 
 The keyAttest field is of type TPMS_ATTEST. The TPMS_ATTEST structure is defined in
 section 10.11.8 of
 https://trustedcomputinggroup.org/wp-content/uploads/TPM-Rev-2.0-Part-2-Structures-00.99.pdf.
-```
+~~~~~~~~~~~
 FF 54 43 47 - magic
 80 17 – type (TPM_ST_ATTEST_CERTIFY)
 00 22 – name - TPM2B_NAME.size (34 bytes)
@@ -1641,10 +1645,10 @@ F1 80 CA A6 35 B9 2C 39 87 B7
 34 F2 85 DC 26 9D 1B 72 A8 0A
 17 CF 31 08 F1 55 F2 9B 4E 82
 C8 5B 49 7B
-```
+~~~~~~~~~~~
 
 Signature (256 bytes) – generated using the AIK private key
-```
+~~~~~~~~~~~
 1A F1 4B 12 A1 C5 D1 A4 C5 A4 59 C4 0A 97 E0 88 ED 1C D3 B6 38 4A 5D 6C 27 F5 69 7D 17 AD
 F6 C0 03 27 09 5D 93 B5 13 EA 50 B5 05 27 7B A0 51 4D 1B 17 52 87 7D B8 A6 05 4A 4F 39 CA
 36 5C A1 19 19 0B 73 B4 0E 7F D3 91 DA 91 EE 37 C6 CE 78 AF 15 21 5D EB 5E 5F 23 A7 08 E9
@@ -1654,7 +1658,7 @@ F6 C0 03 27 09 5D 93 B5 13 EA 50 B5 05 27 7B A0 51 4D 1B 17 52 87 7D B8 A6 05 4A
 8C 80 32 2D 5C A3 60 48 F5 5E 8E 65 6B 5E B5 0E A4 ED B9 8B F9 C3 D9 A8 CE C0 64 71 F6 E3
 81 F7 9D 79 E5 73 7B F3 A4 6E 65 8D 72 B4 0A 3E 5E 70 5F AB 2B 89 B9 5E 65 44 BF 44 7B FB
 2E 29 39 64 36 85 63 46 62 AF 25 A5 8B 19 30 AF
-```
+~~~~~~~~~~~
 
 The remainder is the keyBlob, which is defined here:
 https://github.com/Microsoft/TSS.MSR/blob/master/PCPTool.v11/inc/TpmAtt.h.
@@ -1669,7 +1673,7 @@ yubico-piv-tool (https://github.com/Yubico/yubico-piv-tool). Details regarding
 attestations are here: https://developers.yubico.com/PIV/Introduction/PIV_attestation.html
 
 ### Yubikey 4
-```
+~~~~~~~~~~~
    0 1576: SEQUENCE {
    4    9:   OBJECT IDENTIFIER signedData (1 2 840 113549 1 7 2)
   15 1561:   [0] {
@@ -1841,12 +1845,12 @@ attestations are here: https://developers.yubico.com/PIV/Introduction/PIV_attest
          :       }
          :     }
          :   }
-```
+~~~~~~~~~~~
 
 
 ### Yubikey 5
 
-```
+~~~~~~~~~~~
    0 1613: SEQUENCE {
    4    9:   OBJECT IDENTIFIER signedData (1 2 840 113549 1 7 2)
   15 1598:   [0] {
@@ -2026,7 +2030,7 @@ attestations are here: https://developers.yubico.com/PIV/Introduction/PIV_attest
          :       }
          :     }
          :   }
-```
+~~~~~~~~~~~
 
 # Privacy Considerations.
 
