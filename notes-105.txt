@@ -62,7 +62,7 @@ bootstrapping at network provisioning time vs for ongoing use came up.
 
 It was suggested that the MUD file/mechanism was a good place/way for a
 verifier to learn the policy/reference values in order to do a verified boot
-process. 
+process.
 
 But, the discussion came back several times to when the attestion checked/provided:
 	* onboarding, provisioning, software-update, monitoring, data-use
@@ -71,7 +71,7 @@ But, the discussion came back several times to when the attestion checked/provid
 Fingerprint is attestation.... what is different between authentication and attestation?
 
 It was stated that in FIDO, when you enroll, you register your device to and
-then do biometric from that device to enable actions.  
+then do biometric from that device to enable actions.
 There is an attestation in the first step, but subsequently usually none
 afterwards: the device use the fingerprint (etc.) to authorize an action, but
 the initial attestation covers the correct operation of the device, which
@@ -80,7 +80,7 @@ This was constrasted with ADAR (?) where the fingerprint *is* transmitted
 across the network.  Privacy discussions of the different systems ensued.
 
 It was pointed out that this requires attestation key material, which has to
-be trusted by the verifying and/or relying party. 
+be trusted by the verifying and/or relying party.
    The key that signs the evidence has to be trusted by verifier.
    The key that signs the attestation results has to be trusted by the relying party.
 
@@ -113,7 +113,7 @@ These systems are relatively isolated from each other, and this was
 constrasted to an (MMU-less?) IoT device with minimal TPM functionality.
 
 It was pointed out that currently you have to trust the brand, but later on
-one will trust the signature on the hardware. 
+one will trust the signature on the hardware.
 Each layer might have different layers of information.
 
 This lead to discussion about Virtual TPMs.
@@ -122,22 +122,22 @@ The TEEP use case was brought up.
 It was pointed out that it is a tree of components, and it was felt that this
 made it a uniquely NEW USE CASE.
 
-Additionally: 
+Additionally:
   - multiple applications over the top running on the same TEE.
   - chain, hardware, trusted firmware (trustzone vs SGX), different entities.
   - TCG - DICE certificate chain, root is the hardware, and each TA is a
-  different leaf.  each entity signs the thing above it. 
+  different leaf.  each entity signs the thing above it.
   - each layer has credentials.
   - when you attest the health of the application chain, it is for the policy
-    to indicate which piece is out of date. 
+    to indicate which piece is out of date.
   - Trusted Application Manager (code and configuration of the code).  The
-    TAM is a relying party. 
+    TAM is a relying party.
   - there are a set of slides from TEEP WG and will be in RATS WG.
   - motivates having a set of levels of entities that are attested in the *SAME* message
 
 I asked: Is the TAM the only consumer of the EAT?
   Within the TEEP WG, that is true,
-  but not universally the case. 
+  but not universally the case.
 The TAM may be a path to a verifier.
 
 The architecture talks about staged computing.
