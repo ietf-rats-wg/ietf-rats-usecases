@@ -1,269 +1,3 @@
----
-title: Use cases for Remote Attestation common encodings
-abbrev: useful RATS
-docname: draft-richardson-rats-usecases-latest
-
-# stand_alone: true
-
-ipr: trust200902
-area: Internet
-wg: RATS Working Group
-kw: Internet-Draft
-cat: info
-
-coding: us-ascii
-pi:    # can use array (if all yes) or hash here
-  toc: yes
-  sortrefs:   # defaults to yes
-  symrefs: yes
-
-author:
-
-
-- ins: M. Richardson
-  name: Michael Richardson
-  org: Sandelman Software Works
-  email: mcr+ietf@sandelman.ca
-
-- ins: C. Wallace
-  name: Carl Wallace
-  org: Red Hound Software
-  email: carl@redhoundsoftware.com
-
-- ins: W. Pan
-  name: Wei Pan
-  org: Huawei Technologies
-  email: william.panwei@huawei.com
-
-normative:
-  RFC2119:
-informative:
-  RFC5652:
-  RFC5209:
-  RFC7030:
-  RFC4210:
-  RFC8555:
-  I-D.fedorkow-rats-network-device-attestation:
-  I-D.tschofenig-rats-psa-token:
-  I-D.gutmann-scep:
-  keystore:
-    target: "https://developer.android.com/training/articles/keystore"
-    title: "Android Keystore System"
-    author:
-      ins: "Google"
-      date: 2019
-
-  SP800-155:
-    target: "https://csrc.nist.gov/CSRC/media/Publications/sp/800-155/draft/documents/draft-SP800-155_Dec2011.pdf"
-    title: "BIOS Integrity Measurement Guidelines (Draft)"
-    author:
-      name: NIST
-      date: 2011
-
-  SP800-147B:
-    target: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-147B.pdf"
-    title: "BIOS Protection Guidelines for Servers"
-    author:
-      name: NIST
-      date: "August 2014"
-    
-  tcgglossary:
-    target: "https://trustedcomputinggroup.org/wp-content/uploads/TCG-Glossary-V1.1-Rev-1.0.pdf"
-    title: "TCG Glossary, Version 1.1"
-    author:
-      name: Trusted Computing Group
-      date: 2017-05-11
-
-  ieee802-1AR:
-    target: "http://standards.ieee.org/findstds/standard/802.1AR-2009.html"
-    title: "IEEE 802.1AR Secure Device Identifier"
-    author:
-      ins: "IEEE Standard"
-    date: 2009
-
-  android_security:
-    target: "https://arxiv.org/pdf/1904.05572.pdf"
-    title: "The Android Platform Security Model"
-    author:
-      name: "René Mayrhofer and Jeffrey Vander Stoep and Chad Brubaker and Nick Kralevich"
-      date: 2019
-
-  keystore_attestation:
-    target: "https://developer.android.com/training/articles/security-key-attestation"
-    title: "Verifying hardware-backed key pairs with Key Attestation"
-    author:
-      ins: "Google"
-      date: 2019
-
-  yubikey_attestation:
-    target: "https://developers.yubico.com/PIV/Introduction/PIV_attestation.html"
-    title: "PIV Attestation"
-    author:
-      ins: "Yubico"
-      date: 2019
-
-  fido_w3c:
-    target: https://www.w3.org/TR/webauthn-1/
-    title: "Web Authentication: An API for accessing Public Key Credentials Level 1"
-    author:
-      ins: "W3C"
-      date: "2019"
-
-  fido:
-    target: "https://fidoalliance.org/specifications/"
-    title: "FIDO Specification Overview"
-    author:
-      ins: "FIDO Alliance"
-      date: 2019
-
-  fidotechnote:
-    target: "https://fidoalliance.org/fido-technotes-the-truth-about-attestation/"
-    title: "FIDO TechNotes: The Truth about Attestation"
-    author:
-      ins: "FIDO Alliance"
-      date: "2018-07-19"
-
-  fidoattestation:
-    target: "https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html"
-    title: "FIDO 2.0: Key Attestation"
-    author:
-      ins: "FIDO Alliance"
-      date: 2015
-
-  fidosignature:
-    target: "https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-signature-format-v2.0-ps-20150904.html"
-    title: "FIDO 2.0: Signature Format"
-    author:
-      ins: "FIDO Alliance"
-      date: 2019
-
-  intelsgx:
-    target: "https://software.intel.com/en-us/sgx/attestation-services"
-    title: "Intel® Software Guard Extensions: Attestation & Provisioning Services"
-    author:
-      ins: Intel
-      date: 2019
-
-  windowsdefender:
-    title: "Windows Defender System Guard attestation"
-    target: "https://www.microsoft.com/security/blog/2018/04/19/introducing-windows-defender-system-guard-runtime-attestation/"
-    author:
-      ins: Microsoft
-      date: 2019
-
-  windowshealth:
-    title: "Windows Device Health Attestation"
-    target: "https://docs.microsoft.com/en-us/windowsserver/security/device-health-attestation"
-    author:
-      ins: Microsoft
-      date: 2019
-
-  azureattestation:
-    title: "Azure Sphere Attestation"
-    target: "https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/"
-    author:
-      ins: Microsoft
-      date: 2019
-
---- abstract
-
-This document details mechanisms created for performing Remote Attestation
-that have been used in a number of industries.  The document initially focuses
-on existing industry verticals, mapping terminology used in those
-specifications to the more abstract terminology used by the IETF RATS Working
-Group.
-
-The document aspires to describe possible future
-use cases that would be enabled by common formats.
-
---- middle
-
-# Introduction
-
-The recently chartered IETF RATS WG intends to create a system of
-attestations that can be shared across a multitude of different users.
-
-This document exists as place to collect use cases for the common RATS
-technologies in support of the IETF RATS charter point 1.  This document is
-not expected to be published as an RFC, but remain open as a working
-document.  It could become an appendix to provide motivation for a protocol
-standards document.
-
-End-user use cases that would either directly leverage RATS technology, or
-would serve to inform technology choices are welcome, however.
-
-# Terminology          {#Terminology}
-
-Critical to dealing with and contrasting different technologies is to
-collect terms which are compatible, to distinguish those terms which are
-similar but used in different ways.
-
-This section will grow to include forward and external references to terms
-which have been seen.  When terms need to be disambiguated they will be
-prefixed with their source, such as "TCG(claim)" or "FIDO(relying party)"
-
-Platform attestations generally come in two categories. This document will
-attempt to indicate for a particular attestation technology falls into this.
-
-## Static attestations
-
-A static attestation says something about the platform on which the code
-is running.
-
-## Session attestations
-
-A session attestation says something about how a session key used in a
-connection such as TLS connection was created.  It is usually the result
-of evaluating attestations that are attached to the certificates used to
-create such a session.
-
-## Statements
-
-The term "statement" is used as the generic term for the semantic content
-which is being attested to.
-
-## Hardware Root Of Trust
-
-{{SP800-155}} offers the following definition for root of trust.
-
-    “Roots of Trust are components (software, hardware, or hybrid) and computing
-    engines that constitute a set of unconditionally trusted functions. Reliable
-    and trustworthy BIOS integrity measurement and reporting depend upon software
-    agents; each software agent relies upon Roots of Trust, and the level of
-    trustworthiness in each agent depends on its Roots of Trust. BIOS integrity
-    measurement requires the coordination of a Measurement Agent to harvest
-    measurements, a Storage Agent to protect the measurements from modification
-    until they can be reported, and a Reporting Agent to reliably report the
-    measurements. Each of these agents has a corresponding Root of Trust (Root of
-    Trust for Measurement, etc.) These Roots of Trust must act in concert and
-    build on each other to enable reliable and trustworthy measurement,
-    reporting, and verification of BIOS integrity measurements.”
-
-SP800-155 uses the terms RoT for Reporting, Storage and Measurement, but not
-RoT for Verification – it uses “Verification Agent”. Though it is assumed the
-verifier is trustworthy. 
-
-However, {{tcgglossary}} (page 9) includes a RoT for Verification (RTV) as well.
- 
-The TCG Glossary also offers a general definition for Root of Trust “A
-component that performs one or more security-specific functions, such as
-measurement, storage, reporting, verification, and/or update. It is trusted
-always to behave in the expected manner, because its misbehavior cannot be
-detected (such as by measurement) under normal operation. “ 
-
-{{SP800-147B}} defines RoT for Update (RoTU) and RoTU verification (RoTU-v).  
-
-The TCG definition seems more concise than the NIST, but gets to the same point.
-
-For the purpose of this documenet, a hardware root of trust refers to
-security functionality that is trusted to behave in the expected manner,
-because its misbehavior cannot be detected under normal operation and resists
-soft exploits by encapsulating the functionality in hardware.
-
-# Requirements Language {#rfc2119}
-
-This document is not a standards track document and does not make any
-normative protocol requirements using terminology described in {{RFC2119}}.
 
 # Overview of Sources of Use Cases
 
@@ -310,7 +44,7 @@ in attestations that the relying parties can depend upon.
 ### Autonomous Relying Party
 
 The signed measurements are sent to a relying party which must validate them
-directly.  (It may do so with the help of a signed list of golden values,
+directly.  (It may do so with the help of of a signed list of golden values,
 or some other process).  The relying party needs to validate the signed
 statements directly.
 
@@ -320,7 +54,7 @@ not be connected until the equipment is validated.
 ### Proxy Root of Trust
 
 A variety of devices provide measurements via their Root of Trust.
-A proxy server collects these measurements, and (having applied a local policy)
+A server collects these measurements, and (having applied a local policy)
 then creates a device agnostic attestation.  The relying party can validate
 the claims in a standard format.
 
@@ -347,7 +81,7 @@ system of N:1:M relationships can be setup via proxy attestations.
 
 An entire network of systems need to be continuously attested.  This could be
 all of the smartphones on an LTE network, or every desktop system in a
-worldwide enterprise.  The network operator wishes to do this in order to
+worldwide enterprise.  The network operator wishes to do this in order
 maintain identities of connected devices more than to validate correct
 firmware, but both situations are reasonable.
 
@@ -456,8 +190,7 @@ ownership) over the end device.
 This use case convinces the relying party of the characteristics of a
 device.  For privacy reasons, it might not identify the actual device itself,
 but rather the class of device.  The relying party can understand from either
-in-band (claims) or out-of-band (model numbers, which may be expressed as a claim) 
-whether the device has trustworthy
+in-band (claims) or out-of-band (model numbers, which may be expressed as a claim) whether the device has
 features such as a hardware TPM, software TPM via TEE, or software TPM
 without TEE.  Other details such as the availability of finger-print readers
 or HDMI outputs may also be inferred.
@@ -539,41 +272,16 @@ situation would be a media owner needing to know what TV device is connected
 via HDMI and if High-bandwidth Digital Content Protection (HDCP) is
 intact.
 
-## Component connectivity attestation
-
-A management controller or similar hardware component wants to know what
-peripherals, rack scale device or other dynamically configurable components
-are currently attached to the platform that is under management controller
-control. The management controller may serve as attestation verifier over a
-local bus or backplane but may also aggregate local attestation results and
-act as a platform attester to a remote verifier. 
-
-## Device provenance attestation
-
-A newly manufactured device needs to be onboarded into a network where many
-if not all device management duties are performed by the network owner. The
-device owner wants to verify the device originated from a legitimate
-vendor. A cryptographic device identity such as an IEEE802.1AR is embedded
-during manufacturing and a certificate identifying the device is delivered to
-the owner onboarding agent. The device authenticates using its 802.1AR IDevID
-to prove it originated from the expected vendor.  
-
-The device chain of custody from the original device manufacturer to the new
-owner may also be verified as part of device provenance attestation. The
-chain of custody history may be collected by a cloud service or similar
-capability that the supply chain and owner agree to use. 
-
-
 
 # Technology users for RATS
 
 ## Trusted Computing Group (TCG)
 
-The TCG embedded systems work is trying to solve the problem of knowing if a networking device
+The TCG is trying to solve the problem of knowing if a networking device
 should be part of a network, if it belongs to the operator, and if it is running
 appropriate software.  The work covers most of the use cases in {{netattest}}.
 
-This proposal is available as {{I-D.fedorkow-rats-network-device-attestation}}.
+This proposal is a work-in-progress, and is available to TCG members only.
 The goal is to be multi-vendor, scalable and extensible.   The proposal
 intentionally limits itself to:
 
