@@ -269,7 +269,7 @@ normative protocol requirements using terminology described in {{RFC2119}}.
 
 The following specifications have been convered in this document:
 
-* The Trusted Computing Group "Network Attestation System" (private document)
+* The Trusted Computing Group "Network Device Attestation Workflow" {{I-D.fedorkow-rats-network-device-attestation}}
 * Android Keystore
 * Fast Identity Online (FIDO) Alliance attestation,
 
@@ -295,10 +295,13 @@ This section lists a series of cases where an attestation is done.
 
 A network operator wants to know the qualities of the hardware and software
 on the machines attached to their network.  The process starts with some kind
-of Root of Trust, performs a series of measurements, and expresses this
+of Root of Trust which performs a series of measurements, and expresses this
 with an attestation as to the hardware and firmware/software which is
-running.  This is a general description for which there are many specific use
-cases.
+running.
+
+This is a general description for which there are many specific use cases,
+including {{I-D.fedorkow-rats-network-device-attestation}} section 1.2,
+"Software Inventory"
 
 ### Relying on an Attestation Server
 
@@ -439,7 +442,7 @@ The tenant virtual machines will do verification as per 5.1
 The network operator wants to know if the system *as a whole* is free of
 malware, but the network operator is not allowed to know who the tenants are.
 
-This is contrasted to the Chassis + Line Cards case. XXX.
+This is contrasted to the Chassis + Line Cards case (To Be Defined: TBD).
 
 Multiple Line Cards, but a small attestation system on the main card can
 combine things together.  This is a kind of proxy.
@@ -563,7 +566,8 @@ owner may also be verified as part of device provenance attestation. The
 chain of custody history may be collected by a cloud service or similar
 capability that the supply chain and owner agree to use. 
 
-
+{{I-D.fedorkow-rats-network-device-attestation}} section 1.2 refers to this
+as "Provable Device Identity", and section 2.3 details the parties.
 
 # Technology users for RATS
 
