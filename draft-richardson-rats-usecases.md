@@ -415,7 +415,7 @@ Claims used:
 
 Description:
 
-The measurements from a heterogenous network of devices are provided to
+: The measurements from a heterogenous network of devices are provided to
 device-specific attestation servers.  The attestation servers know what the
 "golden" measurements are, and perform the appropriate evaluations, resulting
 in attestations that the relying parties can depend upon.
@@ -448,7 +448,7 @@ Claims used:
 
 Description:
 
-The signed measurements are sent to a relying party which must validate them
+: The signed measurements are sent to a relying party which must validate them
 directly.  They are not sent to a third party.
 (It may do so with the help of a signed list of golden values,
 or some other process).  The relying party needs to validate the signed
@@ -459,14 +459,66 @@ not be connected until the equipment is validated.
 
 ### Proxy Root of Trust
 
-A variety of devices provide measurements via their Root of Trust.
+Use case name:
+
+: Proxy Root of Trust
+
+Who will use it:
+
+: network operators
+
+Attestation type:
+
+: passport
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: peer systems
+
+Claims used:
+
+: TBD
+
+Description:
+
+: A variety of devices provide measurements via their Root of Trust.
 A proxy server collects these measurements, and (having applied a local policy)
 then creates a device agnostic attestation.  The relying party can validate
 the claims in a standard format.
 
 ### network scaling -- small
 
-An entire network of systems needs to be validated (such as all the desktops
+Use case name:
+
+: Network scaled -- small
+
+Who will use it:
+
+: enterprises
+
+Attestation type:
+
+: background check
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: network equipment
+
+Claims used:
+
+: TBD
+
+Description:
+
+: An entire network of systems needs to be validated (such as all the desktops
 in an enterprise's building).  The infrastructure is in control of a single
 operator and is already trusted.  The network can be partitioned so that
 machines that do not pass attestation can be quarantined.  A 1:1 relationship
@@ -475,7 +527,33 @@ the attestation.
 
 ### network scaling -- medium
 
-An entire network of systems needs to be validated: such as all the desktops
+Use case name:
+
+: Network scaled -- medium
+
+Who will use it:
+
+: larger enterprises, including network operators
+
+Attestation type:
+
+: passport 
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: network equipment
+
+Claims used:
+
+: TBD
+
+Description:
+
+: An entire network of systems needs to be validated: such as all the desktops
 in an enterprise's building, or all the routers at an ISP.  The
 infrastructure is not necessarily trusted: it could be subverted, and it must
 also attest.   The devices may be under a variety of operators, and may be
@@ -485,7 +563,33 @@ system of N:1:M relationships can be setup via proxy attestations.
 
 ### network scaling -- large
 
-An entire network of systems need to be continuously attested.  This could be
+Use case name:
+
+: Network scaled -- medium
+
+Who will use it:
+
+: telco/LTE operators
+
+Attestation type:
+
+: passport 
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: malware auditing systems
+
+Claims used:
+
+: TBD
+
+Description:
+
+: An entire network of systems need to be continuously attested.  This could be
 all of the smartphones on an LTE network, or every desktop system in a
 worldwide enterprise.  The network operator wishes to do this in order to
 maintain identities of connected devices more than to validate correct
@@ -493,7 +597,33 @@ firmware, but both situations are reasonable.
 
 ## Hardware resiliency / watchdogs
 
-One significant problem is malware that holds a device hostage and does not
+Use case name:
+
+: Hardware watchdog
+
+Who will use it:
+
+: individual system designers
+
+Attestation type:
+
+: passport 
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: bootloader or service processor
+
+Claims used:
+
+: TBD
+
+Description:
+
+: One significant problem is malware that holds a device hostage and does not
 allow it to reboot to prevent updates to be applied. This is a significant
 problem, because it allows a fleet of devices to be held hostage for
 ransom. Within CyRes the TCG is defining hardware Attention Triggers that
@@ -511,7 +641,33 @@ party), which resets a watchdog timer.
 
 ## IETF TEEP WG use case
 
-The "Trusted Application Manager (TAM)" server wants to verify the state of a
+Use case name:
+
+: TAM validation
+
+Who will use it:
+
+: The TAM server
+
+Attestation type:
+
+: background check
+
+Attesting Party:
+
+: Trusted Execution Environment (TEE)
+
+Relying Party:
+
+: end-application
+
+Claims used:
+
+: TBD
+
+Description:
+
+: The "Trusted Application Manager (TAM)" server wants to verify the state of a
 TEE, or applications in the TEE, of a device.  The TEE attests to the TAM,
 which can then decide whether to install sensitive data in the TEE, or
 whether the TEE is out of compliance and the TAM needs to install updated
@@ -519,8 +675,33 @@ code in the TEE to bring it back into compliance with the TAM's policy.
 
 ## Confidential Machine Learning (ML) model
 
+Use case name:
 
-Microsoft talked about this category of use cases at the recent Microsoft
+: Machine Learning protection
+
+Who will use it:
+
+: Machine Learning systems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: hardware TEE
+
+Relying Party:
+
+: machine learning model owner
+
+Claims used:
+
+: TBD
+
+Description:
+
+: Microsoft talked about this category of use cases at the recent Microsoft
 //build conference.
 
 An example use case is where a device manufacturer wants to protect its
@@ -535,7 +716,33 @@ then this use case overlaps with the TEEP use case.
 
 ## Critical infrastructure
 
-When a protocol operation can affect some critical system, the device
+Use case name:
+
+: Critical Infrastructure
+
+Who will use it:
+
+: devices
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: plant controller
+
+Relying Party:
+
+: actuator
+
+Claims used:
+
+: TBD
+
+Description:
+
+: When a protocol operation can affect some critical system, the device
 attached to the critical equipment wants some assurance that the requester
 has not been compromised.  As such, attestation can be used to only accept
 commands from requesters that are within policy.   Hardware attestation in
@@ -545,7 +752,33 @@ provide protection against many types of malware.
 
 ### Computation characteristics
 
-A group of enterprises organized as a consortium seeks to deploy computing
+Use case name:
+
+: Shared Block Chain Computational claims
+
+Who will use it:
+
+: Consortia of Computation systems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: computer system (physical or virtual)
+
+Relying Party:
+
+: other computer systems
+
+Claims used:
+
+: TBD
+
+Description:
+
+: A group of enterprises organized as a consortium seeks to deploy computing
 nodes as the basis of their shared blockchain system. Each member of the
 consortium  must forward an equal number of computing nodes to participate in
 the P2P network of nodes that form the basis of the blockchain system. In
@@ -572,7 +805,33 @@ machine.
 
 ## Virtualized multi-tenant hosts
 
-The host system will do verification as per 5.1.
+Use case name:
+
+: Multi-tenant hosts
+
+Who will use it:
+
+: Virtual machine systems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: virtual machine hypervisor
+
+Relying Party:
+
+: network operators
+
+Claims used:
+
+: TBD
+
+Description:
+
+: The host system will do verification as per 5.1.
 
 The tenant virtual machines will do verification as per 5.1
 
@@ -586,25 +845,103 @@ combine things together.  This is a kind of proxy.
 
 ## Cryptographic Key Attestation {#cryptattest}
 
-The relying party wants to know how secure a private key that identifies
+Use case name:
+
+: Key Attestation
+
+Who will use it:
+
+: network authentication systems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: device platform
+
+Relying Party:
+
+: internet peers
+
+Claims used:
+
+: TBD
+
+Description:
+
+: The relying party wants to know how secure a private key that identifies
 an entity is.  Unlike the network attestation, the relying party is not part of
 the network infrastructure, nor do they necessarily have a business relationship (such as
 ownership) over the end device.
 
 ### Device Type Attestation
 
-This use case convinces the relying party of the characteristics of a
+Use case name:
+
+: Device Type Attestation
+
+Who will use it:
+
+: mobile platforms
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: device platform
+
+Relying Party:
+
+: internet peers
+
+Claims used:
+
+: TBD
+
+Description:
+
+: This use case convinces the relying party of the characteristics of a
 device.  For privacy reasons, it might not identify the actual device itself,
 but rather the class of device.  The relying party can understand from either
-in-band (claims) or out-of-band (model numbers, which may be expressed as a claim) 
-whether the device has trustworthy
+in-band (claims) or out-of-band (model numbers, which may be expressed as a
+claim)  whether the device has trustworthy
 features such as a hardware TPM, software TPM via TEE, or software TPM
 without TEE.  Other details such as the availability of finger-print readers
 or HDMI outputs may also be inferred.
 
 ### Key storage attestation
 
-This use case convinces the relying party only about the provenance of a private key by
+Use case name:
+
+: Key storage Attestation
+
+Who will use it:
+
+: secure key storage subsystems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: device platform
+
+Relying Party:
+
+: internet peers
+
+Claims used:
+
+: TBD
+
+Description:
+
+: This use case convinces the relying party only about the provenance of a private key by
 providing claims of the
 storage security of the private key.  This can be conceived as a subset of
 the previous case, but may be apply very specifically to just a keystore. Additional
@@ -619,7 +956,33 @@ any issued certificate.
 
 ### End user authorization
 
-This use case convinces the relying party that the digital signatures made by
+Use case name:
+
+: End User authorization
+
+Who will use it:
+
+: authorization systems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: device platform
+
+Relying Party:
+
+: internet peers
+
+Claims used:
+
+: TBD
+
+Description:
+
+: This use case convinces the relying party that the digital signatures made by
 the indicated key pair were done with the approval of the end-user operator.
 This may also be considered possible subset of the device attestation above,
 but the attestation may be on a case-by-case basis.  The nature of the
@@ -632,7 +995,33 @@ devices (via bluetooth beacons, chargers, etc)
 
 ## Geographic attestation
 
-The relying party wants to know the physical location (on the planet earth)
+Use case name:
+
+: Location attestation
+
+Who will use it:
+
+: geo-fenced systems
+
+Attestation type:
+
+: passport (probably)
+
+Attesting Party:
+
+: secure GPS system(s)
+
+Relying Party:
+
+: internet peers
+
+Claims used:
+
+: TBD
+
+Description:
+
+: The relying party wants to know the physical location (on the planet earth)
 of the device.  This may be provided directly by a GPS/GLONASS/Galileo module
 that is incorporated into a TPM.  This may also be provided by collecting other
 proximity messages from other device that the relying party can form a trust
@@ -674,14 +1063,66 @@ intermediaries can not view.
 
 ## Connectivity attestation
 
-The relying party wants to know what devices are connected.  A typical
+Use case name:
+
+: Connectivity attestation
+
+Who will use it:
+
+: entertainment systems
+
+Attestation type:
+
+: TBD
+
+Attesting Party:
+
+: hardware-manufacturer/TEE
+
+Relying Party:
+
+: connected peer
+
+Claims used:
+
+: TBD
+
+Description:
+
+: The relying party wants to know what devices are connected.  A typical
 situation would be a media owner needing to know what TV device is connected
 via HDMI and if High-bandwidth Digital Content Protection (HDCP) is
 intact.
 
 ## Component connectivity attestation
 
-A management controller or similar hardware component wants to know what
+Use case name:
+
+: Component connectivity
+
+Who will use it:
+
+: chassis systems with pluggable components
+
+Attestation type:
+
+: background check
+
+Attesting Party:
+
+: line card
+
+Relying Party:
+
+: management/control plane software
+
+Claims used:
+
+: TBD
+
+Description:
+
+: A management controller or similar hardware component wants to know what
 peripherals, rack scale device or other dynamically configurable components
 are currently attached to the platform that is under management controller
 control. The management controller may serve as attestation verifier over a
@@ -690,7 +1131,33 @@ act as a platform attester to a remote verifier.
 
 ## Device provenance attestation
 
-A newly manufactured device needs to be onboarded into a network where many
+Use case name:
+
+: RIV - Device Provenance
+
+Who will use it:
+
+: Industrial IoT devices
+
+Attestation type:
+
+: passport
+
+Attesting Party:
+
+: network management station
+
+Relying Party:
+
+: a network entity
+
+Claims used:
+
+: TBD
+
+Description:
+
+: A newly manufactured device needs to be onboarded into a network where many
 if not all device management duties are performed by the network owner. The
 device owner wants to verify the device originated from a legitimate
 vendor. A cryptographic device identity such as an IEEE802.1AR is embedded
