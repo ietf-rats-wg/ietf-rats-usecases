@@ -74,6 +74,20 @@ informative:
       name: Trusted Computing Group
       date: 2017-05-11
 
+  tpmarchspec:
+    target: "https://trustedcomputinggroup.org/resource/tpm-2-0-mobile-reference-architecture-specification/"
+    title: "TPM 2.0 Mobile Reference Architecture"
+    author:
+      name: Trusted Computing Group
+      date: 2014-12-16
+
+  tapinfomodel:
+    target: "https://trustedcomputinggroup.org/wp-content/uploads/TNC_TAP_Information_Model_v1.00_r0.29A_publicreview.pdf"
+    title: "TCG Trusted Attestation Protocol (TAP) Information Model for TPM Families 1.2 and 2.0 and DICE Family 1.0"
+    author:
+      name: Trusted Computing Group
+      date: 2019-01-11
+      
   ieee802-1AR:
     target: "http://standards.ieee.org/findstds/standard/802.1AR-2009.html"
     title: "IEEE 802.1AR Secure Device Identifier"
@@ -260,6 +274,45 @@ security functionality that is trusted to behave in the expected manner,
 because its misbehavior cannot be detected under normal operation and resists
 soft exploits by encapsulating the functionality in hardware.
 
+## Template for Use cases
+
+Each use case will consist of a table with a number of constant fields, as
+illustrated below.  The claim names will be loosely synchronized with the EAT
+draft.  The architecture draft (will) describe two classes of attestation
+flow: the passport type (Attestee sends evidence to Attester, receives signed
+statment, which is sent to relying party), or the background check type
+(Attestee sends measurements to Relying party, Relying Party checks with
+Attester). 
+
+Use case name:
+
+: Twelve Monkeys
+
+Who will use it:
+
+: Army of the Twelve Monkeys SDO
+
+Attesting Party:
+
+: James Cole
+
+Relying Party:
+
+: Dr. Kathryn Reilly
+
+Attestation type:
+
+: Passport
+
+Claims used:
+
+: OEM Identity, Age Claim, Location Claim, ptime Claim
+
+Description:
+
+: James Cole must convince Dr. Reilly he is from the future, and
+not insane. 
+
 # Requirements Language {#rfc2119}
 
 This document is not a standards track document and does not make any
@@ -267,7 +320,7 @@ normative protocol requirements using terminology described in {{RFC2119}}.
 
 # Overview of Sources of Use Cases
 
-The following specifications have been convered in this document:
+The following specifications have been covered in this document:
 
 * The Trusted Computing Group "Network Device Attestation Workflow" {{I-D.fedorkow-rats-network-device-attestation}}
 * Android Keystore
@@ -293,9 +346,40 @@ This section lists a series of cases where an attestation is done.
 
 ## Device Capabilities/Firmware Attestation {#netattest}
 
-A network operator wants to know the qualities of the hardware and software
-on the machines attached to their network.  The process starts with some kind
-of Root of Trust which performs a series of measurements, and expresses this
+This is a category of claims
+
+Use case name:
+
+: Device Identity
+
+Who will use it:
+
+: Network Operators
+
+Attesting Party:
+
+: varies
+
+Attestation type:
+
+: varies
+
+Relying Party:
+
+: varies
+
+Claims used:
+
+: TBD
+
+Description:
+
+: Network operators want a trustworth report of identity and version of
+information of the hardware and software on the machines attached to their
+network.
+The process starts with some kind of Root of Trust that provides device
+identity and protected storage for measurements. The mechanism performs a
+series of measurements, and expresses this
 with an attestation as to the hardware and firmware/software which is
 running.
 
@@ -303,7 +387,33 @@ This is a general description for which there are many specific use cases,
 including {{I-D.fedorkow-rats-network-device-attestation}} section 1.2,
 "Software Inventory"
 
-### Relying on an Attestation Server
+### Relying on an (third-party) Attestation Server
+
+Use case name:
+
+: Third Party Attestation Server
+
+Who will use it:
+
+: Network Operators
+
+Attestation type:
+
+: background check
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: network access control systems
+
+Claims used:
+
+: TBD
+
+Description:
 
 The measurements from a heterogenous network of devices are provided to
 device-specific attestation servers.  The attestation servers know what the
@@ -312,8 +422,35 @@ in attestations that the relying parties can depend upon.
 
 ### Autonomous Relying Party
 
+Use case name:
+
+: Autonomous 
+
+Who will use it:
+
+: network operators
+
+Attestation type:
+
+: passport
+
+Attesting Party:
+
+: manufacturer of OS or hardware system
+
+Relying Party:
+
+: peer systems
+
+Claims used:
+
+: TBD
+
+Description:
+
 The signed measurements are sent to a relying party which must validate them
-directly.  (It may do so with the help of a signed list of golden values,
+directly.  They are not sent to a third party.
+(It may do so with the help of a signed list of golden values,
 or some other process).  The relying party needs to validate the signed
 statements directly.
 
@@ -571,28 +708,28 @@ as "Provable Device Identity", and section 2.3 details the parties.
 
 # Technology users for RATS
 
-## Trusted Computing Group (TCG)
+## Trusted Computing Group Remove Integrity Verification (TCG-RIV)
 
-The TCG embedded systems work is trying to solve the problem of knowing if a networking device
+The TCG RIV Reference Document addresses the problem of knowing if a networking device
 should be part of a network, if it belongs to the operator, and if it is running
 appropriate software.  The work covers most of the use cases in {{netattest}}.
 
 This proposal is available as {{I-D.fedorkow-rats-network-device-attestation}}.
-The goal is to be multi-vendor, scalable and extensible.   The proposal
+The goal is to be multi-vendor, scalable and extensible.  The proposal
 intentionally limits itself to:
 
 * "non-privacy-preserving applications (i.e., networking, Industrial IoT )",
 * the firmware is provided by the device manufacturer
 * there is a manufacturer installed hardware root of trust (such as a
-  TPM and boot room)
+  TPM and boot ROM)
 
 Service providers and enterprises deploy hundreds of routers, many of them in
 remote locations where they're difficult to access or secure.  The point of
 remote attestation is to:
 
 * identify a remote box in a way that's hard to spoof
-* report the inventory of software was launched on the box in a way that can
-  not be spoofed
+* report the inventory of software was launched on the box in a way that 
+  cannot be spoofed, that is undetectably altered by a "Lying Endpoint"
 
 The use case described is to be able to monitor the authenticity of software
 versions and configurations running on each device.  This allows owners and
@@ -604,13 +741,17 @@ Equipment is often highly interconnected, so it’s also possible that
 attestation could be performed by neighboring devices.
 
 Specifically listed to be out of scope for the first generation includes:
-Linux processes, assemblies of hardware/software created by end-customers,
-and equipment that is sleepy.  There is an intention to cover some of these
+Linux processes, composite assemblies of hardware/software created by end-customers,
+and equipment that uses Sleep or Hibernate modes.  There is an intention to cover some of these
 are topics in future versions of the documents.
 
-The TCG Attestation leverages the TPM to make a series of measurements during
+The TCG-RIV Attestation leverages the TPM to make a series of measurements during
 the boot process, and to have the TPM sign those measurements.  The resulting
-"PCG" hashes are then available to an external verifier.
+"PCR" hashes are then available to an external verifier.
+
+A critical component of the RIV is compatibility with existing TPM practice
+for attestation proceedures, as spelled out in the TCG TAP Informational
+Model {{tapinfomodel}} and TPM architecture specifications {{tpmarchspec}}.
 
 The TCG uses the following terminology:
 
