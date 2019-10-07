@@ -1,4 +1,5 @@
 LIBDIR := lib
+IETFUSER=mcr+ietf@sandelman.ca
 include $(LIBDIR)/main.mk
 
 $(LIBDIR)/main.mk:
@@ -9,3 +10,9 @@ else
 	git clone -q --depth 10 $(CLONE_ARGS) \
 	    -b master https://github.com/martinthomson/i-d-template $(LIBDIR)
 endif
+
+submitit: draft-richardson-rats-usecases-05.xml
+	curl -S -F "user=${IETFUSER}" -F "xml=@draft-richardson-rats-usecases-05.xml" https://datatracker.ietf.org/api/submit
+
+
+
