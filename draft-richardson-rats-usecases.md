@@ -1170,6 +1170,47 @@ capability that the supply chain and owner agree to use.
 {{I-D.fedorkow-rats-network-device-attestation}} section 1.2 refers to this
 as "Provable Device Identity", and section 2.3 details the parties.
 
+## DNS privacy policy
+
+Use case name:
+
+: DNS-over-TLS or DNS-over-HTTPS privacy policy
+
+Who will use it:
+
+: enterprises and browsers and BYOD operating systems
+
+Attestation type:
+
+: passport
+
+Attesting Party:
+
+: review agency
+
+Relying Party:
+
+: browsers and operating systems
+
+Claims used:
+
+: DNS identity, privinfo (see draft-reddy-dprive-dprive-privacy-policy )
+
+Description:
+
+: Users want to control how their DNS queries are handled by DNS
+servers so they can configure their system to use DNS servers that
+comply with their privacy expectations.
+
+This use case communicates an attestion from a DoX server to a
+web browser or equivalent in a desktop or mobile operating system.
+The attester is a third party which has performed some kind of review of the
+DNS server.  This may include significant levels of Device Capability
+attestation as to what is running and how it is configured (see
+{{netattest}}), in which case this is a form of Proxy Root of Trust ({{proxytrust}}).
+
+
+
 # Technology users for RATS
 
 ## Trusted Computing Group Remove Integrity Verification (TCG-RIV)
