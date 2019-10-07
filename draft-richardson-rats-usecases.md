@@ -338,7 +338,7 @@ Software Stack (TSS)
 * Azure Sphere Attestation {{azureattestation}}: https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/
 * IETF NEA WG {{RFC5209}}
 
-And any additional sources suggested.
+Additional sources are welcome and requested.
 
 # Use case summaries
 
@@ -457,7 +457,7 @@ statements directly.
 This may occur because the network is not connected, or even because it can
 not be connected until the equipment is validated.
 
-### Proxy Root of Trust
+### Proxy Root of Trust {#proxytrust}
 
 Use case name:
 
@@ -701,10 +701,7 @@ Claims used:
 
 Description:
 
-: Microsoft talked about this category of use cases at the recent Microsoft
-//build conference.
-
-An example use case is where a device manufacturer wants to protect its
+: An example use case is where a device manufacturer wants to protect its
 intellectual property in terms of the ML model it developed and that runs in
 the devices that its customers purchased, and it wants to prevent attackers,
 potentially including the customer themselves, from seeing the details of the
