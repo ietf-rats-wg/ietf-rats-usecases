@@ -66,7 +66,7 @@ informative:
     author:
       name: NIST
       date: "August 2014"
-    
+
   tcgglossary:
     target: "https://trustedcomputinggroup.org/wp-content/uploads/TCG-Glossary-V1.1-Rev-1.0.pdf"
     title: "TCG Glossary, Version 1.1"
@@ -87,7 +87,7 @@ informative:
     author:
       name: Trusted Computing Group
       date: 2019-01-11
-      
+
   ieee802-1AR:
     target: "http://standards.ieee.org/findstds/standard/802.1AR-2009.html"
     title: "IEEE 802.1AR Secure Device Identifier"
@@ -255,17 +255,17 @@ which is being attested to.
 
 SP800-155 uses the terms RoT for Reporting, Storage and Measurement, but not
 RoT for Verification – it uses “Verification Agent”. Though it is assumed the
-verifier is trustworthy. 
+verifier is trustworthy.
 
 However, {{tcgglossary}} (page 9) includes a RoT for Verification (RTV) as well.
- 
+
 The TCG Glossary also offers a general definition for Root of Trust “A
 component that performs one or more security-specific functions, such as
 measurement, storage, reporting, verification, and/or update. It is trusted
 always to behave in the expected manner, because its misbehavior cannot be
-detected (such as by measurement) under normal operation. “ 
+detected (such as by measurement) under normal operation. “
 
-{{SP800-147B}} defines RoT for Update (RoTU) and RoTU verification (RoTU-v).  
+{{SP800-147B}} defines RoT for Update (RoTU) and RoTU verification (RoTU-v).
 
 The TCG definition seems more concise than the NIST, but gets to the same point.
 
@@ -278,11 +278,12 @@ soft exploits by encapsulating the functionality in hardware.
 
 Each use case will consist of a table with a number of constant fields, as
 illustrated below.  The claim names will be loosely synchronized with the EAT
-draft.  The architecture draft (will) describe two classes of attestation
-flow: the passport type (Attestee sends evidence to Attester, receives signed
-statment, which is sent to relying party), or the background check type
+draft.  The role workflow (formerly "attestation type") will be described in
+the architecture draft. It will describe two classes of workflow: the
+passport type (Attestee sends evidence to Attester, receives signed statment,
+which is sent to relying party), or the background check type 
 (Attestee sends measurements to Relying party, Relying Party checks with
-Attester). 
+Attester).
 
 Use case name:
 
@@ -292,7 +293,7 @@ Who will use it:
 
 : Army of the Twelve Monkeys SDO
 
-Attesting Party:
+Attester:
 
 : James Cole
 
@@ -300,20 +301,20 @@ Relying Party:
 
 : Dr. Kathryn Reilly
 
-Attestation type:
+Role Workflow:
 
 : Passport
 
-Claims used:
+Claims used as evidence:
 
 : OEM Identity, Age Claim, Location Claim, ptime Claim
 
 Description:
 
 : James Cole must convince Dr. Reilly he is from the future, and
-not insane. 
+not insane.
 
-# Requirements Language {#rfc2119}
+# Requirements Language 
 
 This document is not a standards track document and does not make any
 normative protocol requirements using terminology described in {{RFC2119}}.
@@ -356,11 +357,11 @@ Who will use it:
 
 : Network Operators
 
-Attesting Party:
+Attester:
 
 : varies
 
-Attestation type:
+Role Workflow:
 
 : varies
 
@@ -368,7 +369,7 @@ Relying Party:
 
 : varies
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -397,11 +398,11 @@ Who will use it:
 
 : Network Operators
 
-Attestation type:
+Role Workflow:
 
 : background check
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -409,7 +410,7 @@ Relying Party:
 
 : network access control systems
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -424,17 +425,17 @@ in attestations that the relying parties can depend upon.
 
 Use case name:
 
-: Autonomous 
+: Autonomous
 
 Who will use it:
 
 : network operators
 
-Attestation type:
+Role Workflow:
 
 : passport
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -442,7 +443,7 @@ Relying Party:
 
 : peer systems
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -467,11 +468,11 @@ Who will use it:
 
 : network operators
 
-Attestation type:
+Role Workflow:
 
 : passport
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -479,7 +480,7 @@ Relying Party:
 
 : peer systems
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -500,11 +501,11 @@ Who will use it:
 
 : enterprises
 
-Attestation type:
+Role Workflow:
 
 : background check
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -512,14 +513,14 @@ Relying Party:
 
 : network equipment
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
 Description:
 
 : An entire network of systems needs to be validated (such as all the desktops
-in an enterprise's building).  The infrastructure is in control of a single
+in an enterprise's building).  The infrastructure is in the control of a single
 operator and is already trusted.  The network can be partitioned so that
 machines that do not pass attestation can be quarantined.  A 1:1 relationship
 between the device and the relying party can be used to maintain freshness of
@@ -535,11 +536,11 @@ Who will use it:
 
 : larger enterprises, including network operators
 
-Attestation type:
+Role Workflow:
 
-: passport 
+: passport
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -547,7 +548,7 @@ Relying Party:
 
 : network equipment
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -565,17 +566,17 @@ system of N:1:M relationships can be setup via proxy attestations.
 
 Use case name:
 
-: Network scaled -- medium
+: Network scaled -- large
 
 Who will use it:
 
 : telco/LTE operators
 
-Attestation type:
+Role Workflow:
 
-: passport 
+: passport
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -583,7 +584,7 @@ Relying Party:
 
 : malware auditing systems
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -605,11 +606,11 @@ Who will use it:
 
 : individual system designers
 
-Attestation type:
+Role Workflow:
 
-: passport 
+: passport
 
-Attesting Party:
+Attester:
 
 : manufacturer of OS or hardware system
 
@@ -617,7 +618,7 @@ Relying Party:
 
 : bootloader or service processor
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -649,11 +650,11 @@ Who will use it:
 
 : The TAM server
 
-Attestation type:
+Role Workflow:
 
 : background check
 
-Attesting Party:
+Attester:
 
 : Trusted Execution Environment (TEE)
 
@@ -661,7 +662,7 @@ Relying Party:
 
 : end-application
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -683,11 +684,11 @@ Who will use it:
 
 : Machine Learning systems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : hardware TEE
 
@@ -695,7 +696,7 @@ Relying Party:
 
 : machine learning model owner
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -721,11 +722,11 @@ Who will use it:
 
 : devices
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : plant controller
 
@@ -733,7 +734,7 @@ Relying Party:
 
 : actuator
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -757,11 +758,11 @@ Who will use it:
 
 : Consortia of Computation systems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : computer system (physical or virtual)
 
@@ -769,7 +770,7 @@ Relying Party:
 
 : other computer systems
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -810,11 +811,11 @@ Who will use it:
 
 : Virtual machine systems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : virtual machine hypervisor
 
@@ -822,7 +823,7 @@ Relying Party:
 
 : network operators
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -850,11 +851,11 @@ Who will use it:
 
 : network authentication systems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : device platform
 
@@ -862,7 +863,7 @@ Relying Party:
 
 : internet peers
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -883,11 +884,11 @@ Who will use it:
 
 : mobile platforms
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : device platform
 
@@ -895,7 +896,7 @@ Relying Party:
 
 : internet peers
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -920,11 +921,11 @@ Who will use it:
 
 : secure key storage subsystems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : device platform
 
@@ -932,7 +933,7 @@ Relying Party:
 
 : internet peers
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -961,11 +962,11 @@ Who will use it:
 
 : authorization systems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : device platform
 
@@ -973,7 +974,7 @@ Relying Party:
 
 : internet peers
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -1000,11 +1001,11 @@ Who will use it:
 
 : geo-fenced systems
 
-Attestation type:
+Role Workflow:
 
 : passport (probably)
 
-Attesting Party:
+Attester:
 
 : secure GPS system(s)
 
@@ -1012,7 +1013,7 @@ Relying Party:
 
 : internet peers
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -1068,11 +1069,11 @@ Who will use it:
 
 : entertainment systems
 
-Attestation type:
+Role Workflow:
 
 : TBD
 
-Attesting Party:
+Attester:
 
 : hardware-manufacturer/TEE
 
@@ -1080,7 +1081,7 @@ Relying Party:
 
 : connected peer
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -1101,11 +1102,11 @@ Who will use it:
 
 : chassis systems with pluggable components
 
-Attestation type:
+Role Workflow:
 
 : background check
 
-Attesting Party:
+Attester:
 
 : line card
 
@@ -1113,7 +1114,7 @@ Relying Party:
 
 : management/control plane software
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -1124,7 +1125,7 @@ peripherals, rack scale device or other dynamically configurable components
 are currently attached to the platform that is under management controller
 control. The management controller may serve as attestation verifier over a
 local bus or backplane but may also aggregate local attestation results and
-act as a platform attester to a remote verifier. 
+act as a platform attester to a remote verifier.
 
 ## Device provenance attestation
 
@@ -1136,11 +1137,11 @@ Who will use it:
 
 : Industrial IoT devices
 
-Attestation type:
+Role Workflow:
 
 : passport
 
-Attesting Party:
+Attester:
 
 : network management station
 
@@ -1148,7 +1149,7 @@ Relying Party:
 
 : a network entity
 
-Claims used:
+Claims used as evidence:
 
 : TBD
 
@@ -1160,12 +1161,12 @@ device owner wants to verify the device originated from a legitimate
 vendor. A cryptographic device identity such as an IEEE802.1AR is embedded
 during manufacturing and a certificate identifying the device is delivered to
 the owner onboarding agent. The device authenticates using its 802.1AR IDevID
-to prove it originated from the expected vendor.  
+to prove it originated from the expected vendor.
 
 The device chain of custody from the original device manufacturer to the new
 owner may also be verified as part of device provenance attestation. The
 chain of custody history may be collected by a cloud service or similar
-capability that the supply chain and owner agree to use. 
+capability that the supply chain and owner agree to use.
 
 {{I-D.fedorkow-rats-network-device-attestation}} section 1.2 refers to this
 as "Provable Device Identity", and section 2.3 details the parties.
@@ -1174,17 +1175,17 @@ as "Provable Device Identity", and section 2.3 details the parties.
 
 Use case name:
 
-: DNS-over-TLS or DNS-over-HTTPS privacy policy
+: DNS-over-TLS or DNS-over-HTTPS server privacy policy
 
 Who will use it:
 
 : enterprises and browsers and BYOD operating systems
 
-Attestation type:
+Role Workflow:
 
 : passport
 
-Attesting Party:
+Attester:
 
 : review agency
 
@@ -1192,9 +1193,9 @@ Relying Party:
 
 : browsers and operating systems
 
-Claims used:
+Claims used as evidence:
 
-: DNS identity, privinfo (see draft-reddy-dprive-dprive-privacy-policy )
+: DNS server identity, privinfo (see draft-reddy-dprive-dprive-privacy-policy )
 
 Description:
 
@@ -1202,16 +1203,60 @@ Description:
 servers so they can configure their system to use DNS servers that
 comply with their privacy expectations.
 
-This use case communicates an attestion from a DoX server to a
+This use case communicates an attestion from a DoH server to a
 web browser or equivalent in a desktop or mobile operating system.
 The attester is a third party which has performed some kind of review of the
 DNS server.  This may include significant levels of Device Capability
 attestation as to what is running and how it is configured (see
 {{netattest}}), in which case this is a form of Proxy Root of Trust ({{proxytrust}}).
 
+## Time base unidirectional attestation
+
+Use case name:
+
+: Time base unidirectional attestation (TUDA)
+
+Who will use it:
+
+: high security facilities, with network diode: air gap-ish firewall
+(information leaves, but never enters).  Any network services that are
+RESTful can fall into this category!  Clients can GET/ the info, and it must
+be complete and stand-alone without interaction.  Or it may be pushed via
+MQTT or CoAP Observe.  
+
+Role Workflow:
+
+: passport
+
+Attester:
+
+: web services and other sources of status/sensor information
+
+Relying Party:
+
+: open
+
+Claims used as evidence:
+
+: the beginning and ending time as endorsed by a Time Stamp Authority,
+represented by a time stamp token.  The real time clock of the system
+itself.  A Root of Trust for time; the TPM has a relative time from
+startup. 
+
+Description:
+
+: blah blah
+
+The output of TUDA are typically a secure audit log, where freshness is
+determined by synchronization to an source of external time.
+
+The freshness is preserved in the evidence, allowing past states of the
+device can be determined.
 
 
-# Technology users for RATS
+
+
+# Technology users for RATSnonce.
 
 ## Trusted Computing Group Remove Integrity Verification (TCG-RIV)
 
@@ -1233,7 +1278,7 @@ remote locations where they're difficult to access or secure.  The point of
 remote attestation is to:
 
 * identify a remote box in a way that's hard to spoof
-* report the inventory of software was launched on the box in a way that 
+* report the inventory of software was launched on the box in a way that
   cannot be spoofed, that is undetectably altered by a "Lying Endpoint"
 
 The use case described is to be able to monitor the authenticity of software
