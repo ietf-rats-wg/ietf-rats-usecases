@@ -301,7 +301,7 @@ Relying Party:
 
 : Dr. Kathryn Reilly
 
-Role Workflow:
+Message Flow:
 
 : Passport
 
@@ -314,7 +314,7 @@ Description:
 : James Cole must convince Dr. Reilly he is from the future, and
 not insane.
 
-# Requirements Language 
+# Requirements Language
 
 This document is not a standards track document and does not make any
 normative protocol requirements using terminology described in {{RFC2119}}.
@@ -361,7 +361,7 @@ Attester:
 
 : varies
 
-Role Workflow:
+Message Flow:
 
 : varies
 
@@ -398,7 +398,7 @@ Who will use it:
 
 : Network Operators
 
-Role Workflow:
+Message Flow:
 
 : background check
 
@@ -431,7 +431,7 @@ Who will use it:
 
 : network operators
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -468,7 +468,7 @@ Who will use it:
 
 : network operators
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -501,7 +501,7 @@ Who will use it:
 
 : enterprises
 
-Role Workflow:
+Message Flow:
 
 : background check
 
@@ -536,7 +536,7 @@ Who will use it:
 
 : larger enterprises, including network operators
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -572,7 +572,7 @@ Who will use it:
 
 : telco/LTE operators
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -606,7 +606,7 @@ Who will use it:
 
 : individual system designers
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -650,7 +650,7 @@ Who will use it:
 
 : The TAM server
 
-Role Workflow:
+Message Flow:
 
 : background check
 
@@ -684,7 +684,7 @@ Who will use it:
 
 : Machine Learning systems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -722,7 +722,7 @@ Who will use it:
 
 : devices
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -758,7 +758,7 @@ Who will use it:
 
 : Consortia of Computation systems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -811,7 +811,7 @@ Who will use it:
 
 : Virtual machine systems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -851,7 +851,7 @@ Who will use it:
 
 : network authentication systems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -884,7 +884,7 @@ Who will use it:
 
 : mobile platforms
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -921,7 +921,7 @@ Who will use it:
 
 : secure key storage subsystems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -962,7 +962,7 @@ Who will use it:
 
 : authorization systems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -1001,7 +1001,7 @@ Who will use it:
 
 : geo-fenced systems
 
-Role Workflow:
+Message Flow:
 
 : passport (probably)
 
@@ -1069,7 +1069,7 @@ Who will use it:
 
 : entertainment systems
 
-Role Workflow:
+Message Flow:
 
 : TBD
 
@@ -1102,7 +1102,7 @@ Who will use it:
 
 : chassis systems with pluggable components
 
-Role Workflow:
+Message Flow:
 
 : background check
 
@@ -1137,7 +1137,7 @@ Who will use it:
 
 : Industrial IoT devices
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -1181,7 +1181,7 @@ Who will use it:
 
 : enterprises and browsers and BYOD operating systems
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -1222,9 +1222,9 @@ Who will use it:
 (information leaves, but never enters).  Any network services that are
 RESTful can fall into this category!  Clients can GET/ the info, and it must
 be complete and stand-alone without interaction.  Or it may be pushed via
-MQTT or CoAP Observe.  
+MQTT or CoAP Observe.
 
-Role Workflow:
+Message Flow:
 
 : passport
 
@@ -1241,13 +1241,11 @@ Claims used as evidence:
 : the beginning and ending time as endorsed by a Time Stamp Authority,
 represented by a time stamp token.  The real time clock of the system
 itself.  A Root of Trust for time; the TPM has a relative time from
-startup. 
+startup.
 
 Description:
 
-: blah blah
-
-The output of TUDA are typically a secure audit log, where freshness is
+: The output of TUDA are typically a secure audit log, where freshness is
 determined by synchronization to an source of external time.
 
 The freshness is preserved in the evidence, allowing past states of the
