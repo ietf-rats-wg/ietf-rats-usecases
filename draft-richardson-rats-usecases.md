@@ -11,7 +11,6 @@ wg: RATS Working Group
 kw: Internet-Draft
 cat: info
 
-coding: us-ascii
 pi:    # can use array (if all yes) or hash here
   toc: yes
   sortrefs:   # defaults to yes
@@ -281,7 +280,7 @@ illustrated below.  The claim names will be loosely synchronized with the EAT
 draft.  The role workflow (formerly "attestation type") will be described in
 the architecture draft. It will describe two classes of workflow: the
 passport type (Attestee sends evidence to Attester, receives signed statment,
-which is sent to relying party), or the background check type 
+which is sent to relying party), or the background check type
 (Attestee sends measurements to Relying party, Relying Party checks with
 Attester).
 
@@ -981,13 +980,14 @@ Claims used as evidence:
 Description:
 
 : This use case convinces the relying party that the digital signatures made by
-the indicated key pair were done with the approval of the end-user operator.
+the indicated key pair were done with the approval of the end-user/device-operator.
 This may also be considered possible subset of the device attestation above,
 but the attestation may be on a case-by-case basis.  The nature of the
-approval by the end-user would be indicated. Examples include: the user
-unlocked the device, the user viewed some message and acknowledge it inside
-an app, the message was displayed to the user via out-of-app control
-mechanism.  The acknowledgements could include selecting options on the
+approval by the end-user would be indicated.
+Examples include: the user unlocked the device, the user viewed some message
+and acknowledge it inside an app, the message was displayed to the user via
+out-of-app control mechanism.
+The acknowledgements could include selecting options on the
 screen, pushing physical buttons, scanning fingerprints, proximity to other
 devices (via bluetooth beacons, chargers, etc)
 
@@ -1210,23 +1210,21 @@ DNS server.  This may include significant levels of Device Capability
 attestation as to what is running and how it is configured (see
 {{netattest}}), in which case this is a form of Proxy Root of Trust ({{proxytrust}}).
 
-## Time base unidirectional attestation
+## Safety Critical Systems
 
 Use case name:
 
-: Time base unidirectional attestation (TUDA)
+: Safety Critical Systems
 
 Who will use it:
 
-: high security facilities, with network diode: air gap-ish firewall
-(information leaves, but never enters).  Any network services that are
-RESTful can fall into this category!  Clients can GET/ the info, and it must
-be complete and stand-alone without interaction.  Or it may be pushed via
-MQTT or CoAP Observe.
+: Power plants and other systems that need to assert their current state, but which can not accept any inputs from the outside.  The corollory system is
+a black-box (such as in an aircraft), which needs to log the state of a system,
+but which can never initiate a handshake.
 
 Message Flow:
 
-: passport
+: background check
 
 Attester:
 
@@ -1245,16 +1243,51 @@ startup.
 
 Description:
 
-: The output of TUDA are typically a secure audit log, where freshness is
-determined by synchronization to an source of external time.
+: These requirements motivate the creation of the Time Base Unidirectional Attestation (TUDA) {{-tuda}}, the output of TUDA are typically a secure audit log, where freshness is determined by synchronization to an source of external time.
 
-The freshness is preserved in the evidence, allowing past states of the
-device can be determined.
+: The freshness is preserved in the evidence by the use of a Time Stamp Authority (TSA) which provides Time Stamp Tokens (TST).
 
+## Trusted Path Routing
 
+Use case name:
+: Trusted Path Routing
 
+Who will use it:
+: Service Providers want to offer a trustworthy transport service to Government, Military, Financial, and Medical end-users.
 
-# Technology users for RATSnonce.
+Message Flow:
+: background check model for a centralized controller based alternative, and passport model for a router/switch distributed alternative.
+
+Attester:
+: Routers/switches
+
+Relying Party:
+: Network Controllers and Peer Routers/Switches
+
+Claims used as evidence:
+: TPM Quotes, log entries passed into TPM PCRs, trustworthiness levels appraised by Verifiers, and included in passports.
+
+Description:
+
+: There are end-users who believe encryption technologies like IPsec alone are insufficient to  protect the confidentiality of their highly sensitive traffic flows.
+These end-users want their sensitive flows to be forwarded across just those network devices currently appraised as trustworthy by the TCG-RIV use case.
+
+{{?I-D.voit-rats-trusted-path-routing}} discusses two alternatives for exchanging traffic with  end-user customer identified "sensitive subnets".
+Traffic going to and from these subnets will transit a path where the IP layer and above are only interpretable by those network devices recently evaluated as trustworthy.
+
+These two alternatives are:
+
+Centralized Trusted Path Routing:
+
+: For sensitive subnets, trusted end-to-end paths are pre-assigned through a network provider domain.
+Along these paths, attestation evidence of potentially transited components has been assessed.  Each path is guaranteed to only include devices meeting the needs of a formally defined trustworthiness level.
+
+Distributed Trusted Path Routing:
+: Through the exchange of attestation evidence between peering network devices, a trusted topology  is established and maintained.
+Only devices meeting the needs of a formally defined trustworthiness level are included as members  of this topology.
+Traffic exchanged with sensitive subnets is forwarded into this topology.
+
+# Technology users for RATS.
 
 ## Trusted Computing Group Remove Integrity Verification (TCG-RIV)
 
@@ -1319,7 +1352,6 @@ same time as the IDevID {{ieee802-1AR}}
 The TCG document builds upon a number of IETF technologies: SNMP (Attestation
 MIB), YANG, XML, JSON, CBOR, NETCONF, RESTCONF, CoAP, TLS and SSH.
 The TCG document leverages the 802.1AR IDevID and LDevID processes.
-
 
 ## Android Keystore system
 
