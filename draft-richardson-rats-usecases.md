@@ -42,6 +42,7 @@ informative:
   RFC7030:
   RFC4210:
   RFC8555:
+  I-D.birkholz-rats-tuda: tuda
   I-D.fedorkow-rats-network-device-attestation:
   I-D.tschofenig-rats-psa-token:
   I-D.gutmann-scep:
