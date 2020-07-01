@@ -1,0 +1,106 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2020-07-01T04:23:06.724954+00:00",
+  "repo": "ietf-rats-wg/ietf-rats-usecases",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "MDExOlB1bGxSZXF1ZXN0MjcyMTc1MDQ3",
+      "title": "added examples",
+      "url": "https://github.com/ietf-rats-wg/ietf-rats-usecases/pull/1",
+      "state": "MERGED",
+      "author": "carl-wallace",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added some examples",
+      "createdAt": "2019-04-20T20:23:20Z",
+      "updatedAt": "2019-07-05T16:23:33Z",
+      "baseRepository": "ietf-rats-wg/ietf-rats-usecases",
+      "baseRefName": "master",
+      "baseRefOid": "66088df2019250a052bbba02146b24611c9e8d35",
+      "headRepository": "carl-wallace/ietf-rats-usecases",
+      "headRefName": "master",
+      "headRefOid": "f56bb56d96f4e2574b541c5b50d27a48482db5fa",
+      "closedAt": "2019-07-05T16:23:33Z",
+      "mergedAt": "2019-07-05T16:23:33Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "f56bb56d96f4e2574b541c5b50d27a48482db5fa"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mjk0OTg5OTc3",
+      "title": "fixed a few typos, minor additions to key attestation description",
+      "url": "https://github.com/ietf-rats-wg/ietf-rats-usecases/pull/2",
+      "state": "MERGED",
+      "author": "carl-wallace",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-07-05T21:57:51Z",
+      "updatedAt": "2019-07-06T20:18:17Z",
+      "baseRepository": "ietf-rats-wg/ietf-rats-usecases",
+      "baseRefName": "master",
+      "baseRefOid": "d57c6a3b918eca725f3f6cfd23b2db391c3d1817",
+      "headRepository": "carl-wallace/ietf-rats-usecases",
+      "headRefName": "master",
+      "headRefOid": "7d6e62fdc9abc943cdf18c1d5698feeb3be193ef",
+      "closedAt": "2019-07-06T20:18:17Z",
+      "mergedAt": "2019-07-06T20:18:17Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "b6504d1e9cede32cb2bdef25526c0a080fe2165e"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
