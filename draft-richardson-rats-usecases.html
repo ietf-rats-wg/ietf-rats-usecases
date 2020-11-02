@@ -17,9 +17,27 @@ Group.
        The document aspires to describe possible future
 use cases that would be enabled by common formats. 
     " name="description">
-<meta content="xml2rfc 2.45.3" name="generator">
+<meta content="xml2rfc 3.3.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-richardson-rats-usecases-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.3.0
+    Python 3.8.5
+    appdirs 1.4.4
+    ConfigArgParse 1.2.3
+    google-i18n-address 2.4.0
+    html5lib 1.1
+    intervaltree 3.0.2
+    Jinja2 2.11.2
+    kitchen 1.2.6
+    lxml 4.5.0
+    pycountry 19.8.18
+    pyflakes 2.1.1
+    PyYAML 5.3.1
+    requests 2.22.0
+    setuptools 45.2.0
+    six 1.14.0
+-->
 <link href="draft-richardson-rats-usecases.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@import url('https://martinthomson.github.io/i-d-template/fonts.css');
@@ -83,9 +101,6 @@ p {
   margin: 0.5em 0;
   text-align: left;
 }
-div, span {
-  position: relative;
-}
 div {
   margin: 0;
 }
@@ -143,7 +158,7 @@ svg {
 /* lists */
 ol, ul {
   padding: 0;
-  margin: 0 0 1em 2em;
+  margin: 0 0 0.5em 2em;
 }
 ol ol, ul ul, ol ul, ul ol {
   margin-left: 1em;
@@ -277,9 +292,19 @@ cite {
 
 /* tables */
 table {
-  width: 100%;
+  max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
 }
 thead, tbody {
   border: 1px solid var(--line-color);
@@ -290,8 +315,7 @@ th, td {
   padding: 5px 10px;
 }
 th {
-  text-align: left;
-  background-color: #eee;
+  background-color: var(--line-color);
 }
 tr:nth-child(2n) > td {
   background-color: var(--background-color);
@@ -307,11 +331,9 @@ thead+tbody > tr:nth-child(2n+1) > td {
 }
 table caption {
   margin: 0;
-  padding: 3px 1em;
+  padding: 3px 0 3px 1em;
 }
 table p {
-  /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
-     be allowed within tables more generally, it would be far better to select on a class. */
   margin: 0;
 }
 
@@ -769,21 +791,6 @@ address div.right {
   text-align: right;
 }
 
-/* Provide table alignment support.  We can't use the alignX classes above
-   since they do unwanted things with caption and other styling. */
-table.right {
- margin-left: auto;
- margin-right: 0;
-}
-table.center {
- margin-left: auto;
- margin-right: auto;
-}
-table.left {
- margin-left: 0;
- margin-right: auto;
-}
-
 /* Give the table caption label the same styling as the figcaption */
 
 @media print {
@@ -812,18 +819,18 @@ table.left {
   font-size: 0.9em;
 }
 </style>
-<link href="rfc-local.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">useful RATS</td>
-<td class="right">July 2020</td>
+<td class="right">November 2020</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Richardson, et al.</td>
-<td class="center">Expires 2 January 2021</td>
+<td class="center">Expires 6 May 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -836,12 +843,12 @@ table.left {
 <dd class="internet-draft">draft-richardson-rats-usecases-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2020-07-01" class="published">1 July 2020</time>
+<time datetime="2020-11-02" class="published">2 November 2020</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-01-02">2 January 2021</time></dd>
+<dd class="expires"><time datetime="2021-05-06">6 May 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -889,7 +896,7 @@ use cases that would be enabled by common formats.<a href="#section-abstract-2" 
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 January 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 May 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -917,209 +924,209 @@ use cases that would be enabled by common formats.<a href="#section-abstract-2" 
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.2">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-static-attestations" class="xref">Static attestations</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-session-attestations" class="xref">Session attestations</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-statements" class="xref">Statements</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.4">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-hardware-root-of-trust" class="xref">Hardware Root Of Trust</a><a href="#section-toc.1-1.2.2.4.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.5">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.2.2.5">
                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="xref">2.5</a>.  <a href="#name-template-for-use-cases" class="xref">Template for Use cases</a><a href="#section-toc.1-1.2.2.5.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+            </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.3">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.4">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-overview-of-sources-of-use-" class="xref">Overview of Sources of Use Cases</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-use-case-summaries" class="xref">Use case summaries</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-device-capabilities-firmwar" class="xref">Device Capabilities/Firmware Attestation</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.1">
                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-relying-on-an-third-party-a" class="xref">Relying on an (third-party) Attestation Server</a><a href="#section-toc.1-1.5.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.2">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.2">
                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-autonomous-relying-party" class="xref">Autonomous Relying Party</a><a href="#section-toc.1-1.5.2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.3">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.3">
                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="xref">5.1.3</a>.  <a href="#name-proxy-root-of-trust" class="xref">Proxy Root of Trust</a><a href="#section-toc.1-1.5.2.1.2.3.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.4">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.4">
                     <p id="section-toc.1-1.5.2.1.2.4.1"><a href="#section-5.1.4" class="xref">5.1.4</a>.  <a href="#name-network-scaling-small" class="xref">network scaling - small</a><a href="#section-toc.1-1.5.2.1.2.4.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.5">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.5">
                     <p id="section-toc.1-1.5.2.1.2.5.1"><a href="#section-5.1.5" class="xref">5.1.5</a>.  <a href="#name-network-scaling-medium" class="xref">network scaling - medium</a><a href="#section-toc.1-1.5.2.1.2.5.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.6">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.6">
                     <p id="section-toc.1-1.5.2.1.2.6.1"><a href="#section-5.1.6" class="xref">5.1.6</a>.  <a href="#name-network-scaling-large" class="xref">network scaling - large</a><a href="#section-toc.1-1.5.2.1.2.6.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-hardware-resiliency-watchdo" class="xref">Hardware resiliency / watchdogs</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.3">
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-ietf-teep-wg-use-case" class="xref">IETF TEEP WG use case</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.4">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.4">
                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-confidential-machine-learni" class="xref">Confidential Machine Learning (ML) model</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.5">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.5">
                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-critical-infrastructure" class="xref">Critical infrastructure</a><a href="#section-toc.1-1.5.2.5.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.5.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.5.2.5.2.1">
                     <p id="section-toc.1-1.5.2.5.2.1.1"><a href="#section-5.5.1" class="xref">5.5.1</a>.  <a href="#name-computation-characteristics" class="xref">Computation characteristics</a><a href="#section-toc.1-1.5.2.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.6">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.6">
                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-virtualized-multi-tenant-ho" class="xref">Virtualized multi-tenant hosts</a><a href="#section-toc.1-1.5.2.6.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.7">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.7">
                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-cryptographic-key-attestati" class="xref">Cryptographic Key Attestation</a><a href="#section-toc.1-1.5.2.7.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.7.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.5.2.7.2.1">
                     <p id="section-toc.1-1.5.2.7.2.1.1"><a href="#section-5.7.1" class="xref">5.7.1</a>.  <a href="#name-device-type-attestation" class="xref">Device Type Attestation</a><a href="#section-toc.1-1.5.2.7.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.7.2.2">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.7.2.2">
                     <p id="section-toc.1-1.5.2.7.2.2.1"><a href="#section-5.7.2" class="xref">5.7.2</a>.  <a href="#name-key-storage-attestation" class="xref">Key storage attestation</a><a href="#section-toc.1-1.5.2.7.2.2.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.7.2.3">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.7.2.3">
                     <p id="section-toc.1-1.5.2.7.2.3.1"><a href="#section-5.7.3" class="xref">5.7.3</a>.  <a href="#name-end-user-authorization" class="xref">End user authorization</a><a href="#section-toc.1-1.5.2.7.2.3.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.8">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.8">
                 <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="xref">5.8</a>.  <a href="#name-geographic-attestation" class="xref">Geographic attestation</a><a href="#section-toc.1-1.5.2.8.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.8.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.5.2.8.2.1">
                     <p id="section-toc.1-1.5.2.8.2.1.1"><a href="#section-5.8.1" class="xref">5.8.1</a>.  <a href="#name-i-am-here" class="xref">I am here</a><a href="#section-toc.1-1.5.2.8.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.8.2.2">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.8.2.2">
                     <p id="section-toc.1-1.5.2.8.2.2.1"><a href="#section-5.8.2" class="xref">5.8.2</a>.  <a href="#name-i-am-near" class="xref">I am near</a><a href="#section-toc.1-1.5.2.8.2.2.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.8.2.3">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.8.2.3">
                     <p id="section-toc.1-1.5.2.8.2.3.1"><a href="#section-5.8.3" class="xref">5.8.3</a>.  <a href="#name-you-are-here" class="xref">You are here</a><a href="#section-toc.1-1.5.2.8.2.3.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.9">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.9">
                 <p id="section-toc.1-1.5.2.9.1"><a href="#section-5.9" class="xref">5.9</a>.  <a href="#name-connectivity-attestation" class="xref">Connectivity attestation</a><a href="#section-toc.1-1.5.2.9.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.10">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.10">
                 <p id="section-toc.1-1.5.2.10.1"><a href="#section-5.10" class="xref">5.10</a>. <a href="#name-component-connectivity-atte" class="xref">Component connectivity attestation</a><a href="#section-toc.1-1.5.2.10.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.11">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.11">
                 <p id="section-toc.1-1.5.2.11.1"><a href="#section-5.11" class="xref">5.11</a>. <a href="#name-device-provenance-attestati" class="xref">Device provenance attestation</a><a href="#section-toc.1-1.5.2.11.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.12">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.12">
                 <p id="section-toc.1-1.5.2.12.1"><a href="#section-5.12" class="xref">5.12</a>. <a href="#name-dns-privacy-policy" class="xref">DNS privacy policy</a><a href="#section-toc.1-1.5.2.12.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.13">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.13">
                 <p id="section-toc.1-1.5.2.13.1"><a href="#section-5.13" class="xref">5.13</a>. <a href="#name-safety-critical-systems" class="xref">Safety Critical Systems</a><a href="#section-toc.1-1.5.2.13.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.14">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.14">
                 <p id="section-toc.1-1.5.2.14.1"><a href="#section-5.14" class="xref">5.14</a>. <a href="#name-trusted-path-routing" class="xref">Trusted Path Routing</a><a href="#section-toc.1-1.5.2.14.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+            </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.6">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-technology-users-for-rats" class="xref">Technology users for RATS.</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-trusted-computing-group-rem" class="xref">Trusted Computing Group Remove Integrity Verification (TCG-RIV)</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.2">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-android-keystore-system" class="xref">Android Keystore system</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.3">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.3">
                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-fast-identity-online-fido-a" class="xref">Fast IDentity Online (FIDO) Alliance</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+            </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.7">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-examples-of-existing-attest" class="xref">Examples of Existing Attestation Formats.</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.7.2.1">
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-android-keystore" class="xref">Android Keystore</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.7.2.1.2.1">
                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-tee" class="xref">TEE</a><a href="#section-toc.1-1.7.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1.2.2">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.1.2.2">
                     <p id="section-toc.1-1.7.2.1.2.2.1"><a href="#section-7.1.2" class="xref">7.1.2</a>.  <a href="#name-secure-element" class="xref">Secure Element</a><a href="#section-toc.1-1.7.2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.2">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2">
                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-windows-10-tpm" class="xref">Windows 10 TPM</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.2.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.1">
                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="xref">7.2.1</a>.  <a href="#name-attestation-statement" class="xref">Attestation statement</a><a href="#section-toc.1-1.7.2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.3">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3">
                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-yubikey" class="xref">Yubikey</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.3.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3.2.1">
                     <p id="section-toc.1-1.7.2.3.2.1.1"><a href="#section-7.3.1" class="xref">7.3.1</a>.  <a href="#name-yubikey-4" class="xref">Yubikey 4</a><a href="#section-toc.1-1.7.2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.3.2.2">
+                  <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3.2.2">
                     <p id="section-toc.1-1.7.2.3.2.2.1"><a href="#section-7.3.2" class="xref">7.3.2</a>.  <a href="#name-yubikey-5" class="xref">Yubikey 5</a><a href="#section-toc.1-1.7.2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+                </ul>
 </li>
-</ul>
+            </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.8">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations.</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.9">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.10">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.11">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.12">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.12">
             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.12.2.1">
+<ul class="compact toc ulEmpty">
+<li class="compact toc ulEmpty" id="section-toc.1-1.12.2.1">
                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.12.2.2">
+              <li class="compact toc ulEmpty" id="section-toc.1-1.12.2.2">
                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+            </ul>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.13">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.13">
             <p id="section-toc.1-1.13.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-changes" class="xref">Changes</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
 </li>
-<li class="ulEmpty toc compact" id="section-toc.1-1.14">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.14">
             <p id="section-toc.1-1.14.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
 </li>
-</ul>
+        </ul>
 </nav>
 </section>
 </div>
@@ -1233,43 +1240,43 @@ passport type (Attestee sends evidence to Attester, receives signed statment,
 which is sent to relying party), or the background check type
 (Attestee sends measurements to Relying party, Relying Party checks with
 Attester).<a href="#section-2.5-1" class="pilcrow">¶</a></p>
-<dl class="dlParallel" id="section-2.5-2">
+<span class="break"></span><dl class="dlParallel" id="section-2.5-2">
           <dt id="section-2.5-2.1">Use case name:</dt>
-<dd id="section-2.5-2.2">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.2">
   Twelve Monkeys<a href="#section-2.5-2.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-2.5-2.3">Who will use it:</dt>
-<dd id="section-2.5-2.4">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.4">
   Army of the Twelve Monkeys SDO<a href="#section-2.5-2.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-2.5-2.5">Attester:</dt>
-<dd id="section-2.5-2.6">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.6">
   James Cole<a href="#section-2.5-2.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-2.5-2.7">Relying Party:</dt>
-<dd id="section-2.5-2.8">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.8">
   Dr. Kathryn Reilly<a href="#section-2.5-2.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-2.5-2.9">Message Flow:</dt>
-<dd id="section-2.5-2.10">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.10">
   Passport<a href="#section-2.5-2.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-2.5-2.11">Claims used as evidence:</dt>
-<dd id="section-2.5-2.12">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.12">
   OEM Identity, Age Claim, Location Claim, ptime Claim<a href="#section-2.5-2.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-2.5-2.13">Description:</dt>
-<dd id="section-2.5-2.14">
+          <dd style="margin-left: 1.5em" id="section-2.5-2.14">
   James Cole must convince Dr. Reilly he is from the future, and
 not insane.<a href="#section-2.5-2.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1293,29 +1300,29 @@ normative protocol requirements using terminology described in <span>[<a href="#
 <ul class="normal">
 <li class="normal" id="section-4-2.1">The Trusted Computing Group "Network Device Attestation Workflow" <span>[<a href="#I-D.fedorkow-rats-network-device-attestation" class="xref">I-D.fedorkow-rats-network-device-attestation</a>]</span><a href="#section-4-2.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-2.2">Android Keystore<a href="#section-4-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-2.2">Android Keystore<a href="#section-4-2.2" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-2.3">Fast Identity Online (FIDO) Alliance attestation,<a href="#section-4-2.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-2.3">Fast Identity Online (FIDO) Alliance attestation,<a href="#section-4-2.3" class="pilcrow">¶</a>
 </li>
-</ul>
+      </ul>
 <p id="section-4-3">This document will be expanded to include summaries from:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-4.1">Trusted Computing Group (TCG) Trusted Platform Module (TPM)/Trusted
 Software Stack (TSS)<a href="#section-4-4.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-4.2">ARM "Platform Security Architecture" <span>[<a href="#I-D.tschofenig-rats-psa-token" class="xref">I-D.tschofenig-rats-psa-token</a>]</span><a href="#section-4-4.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.2">ARM "Platform Security Architecture" <span>[<a href="#I-D.tschofenig-rats-psa-token" class="xref">I-D.tschofenig-rats-psa-token</a>]</span><a href="#section-4-4.2" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-4.3">Intel SGX attestation <span>[<a href="#intelsgx" class="xref">intelsgx</a>]</span><a href="#section-4-4.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.3">Intel SGX attestation <span>[<a href="#intelsgx" class="xref">intelsgx</a>]</span><a href="#section-4-4.3" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-4.4">Windows Defender System Guard attestation <span>[<a href="#windowsdefender" class="xref">windowsdefender</a>]</span><a href="#section-4-4.4" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.4">Windows Defender System Guard attestation <span>[<a href="#windowsdefender" class="xref">windowsdefender</a>]</span><a href="#section-4-4.4" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-4.5">Windows Device Health Attestation <span>[<a href="#windowshealth" class="xref">windowshealth</a>]</span><a href="#section-4-4.5" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.5">Windows Device Health Attestation <span>[<a href="#windowshealth" class="xref">windowshealth</a>]</span><a href="#section-4-4.5" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-4.6">Azure Sphere Attestation <span>[<a href="#azureattestation" class="xref">azureattestation</a>]</span>: https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/<a href="#section-4-4.6" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.6">Azure Sphere Attestation <span>[<a href="#azureattestation" class="xref">azureattestation</a>]</span>: https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/<a href="#section-4-4.6" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-4-4.7">IETF NEA WG <span>[<a href="#RFC5209" class="xref">RFC5209</a>]</span><a href="#section-4-4.7" class="pilcrow">¶</a>
+        <li class="normal" id="section-4-4.7">IETF NEA WG <span>[<a href="#RFC5209" class="xref">RFC5209</a>]</span><a href="#section-4-4.7" class="pilcrow">¶</a>
 </li>
-</ul>
+      </ul>
 <p id="section-4-5">Additional sources are welcome and requested.<a href="#section-4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1331,39 +1338,39 @@ Software Stack (TSS)<a href="#section-4-4.1" class="pilcrow">¶</a>
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-device-capabilities-firmwar" class="section-name selfRef">Device Capabilities/Firmware Attestation</a>
         </h3>
 <p id="section-5.1-1">This is a category of claims<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<dl class="dlParallel" id="section-5.1-2">
+<span class="break"></span><dl class="dlParallel" id="section-5.1-2">
           <dt id="section-5.1-2.1">Use case name:</dt>
-<dd id="section-5.1-2.2">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.2">
   Device Identity<a href="#section-5.1-2.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.1-2.3">Who will use it:</dt>
-<dd id="section-5.1-2.4">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.4">
   Network Operators<a href="#section-5.1-2.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.1-2.5">Attester:</dt>
-<dd id="section-5.1-2.6">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.6">
   varies<a href="#section-5.1-2.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.1-2.7">Message Flow:</dt>
-<dd id="section-5.1-2.8">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.8">
   varies<a href="#section-5.1-2.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.1-2.9">Relying Party:</dt>
-<dd id="section-5.1-2.10">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.10">
   varies<a href="#section-5.1-2.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.1-2.11">Claims used as evidence:</dt>
-<dd id="section-5.1-2.12">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.12">
   TBD<a href="#section-5.1-2.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.1-2.13">Description:</dt>
-<dd id="section-5.1-2.14">
+          <dd style="margin-left: 1.5em" id="section-5.1-2.14">
   Network operators want a trustworth report of identity and version of
 information of the hardware and software on the machines attached to their
 network.
@@ -1373,7 +1380,7 @@ series of measurements, and expresses this
 with an attestation as to the hardware and firmware/software which is
 running.<a href="#section-5.1-2.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <p id="section-5.1-3">This is a general description for which there are many specific use cases,
 including <span>[<a href="#I-D.fedorkow-rats-network-device-attestation" class="xref">I-D.fedorkow-rats-network-device-attestation</a>]</span> section 1.2,
@@ -1383,45 +1390,45 @@ including <span>[<a href="#I-D.fedorkow-rats-network-device-attestation" class="
           <h4 id="name-relying-on-an-third-party-a">
 <a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-relying-on-an-third-party-a" class="section-name selfRef">Relying on an (third-party) Attestation Server</a>
           </h4>
-<dl class="dlParallel" id="section-5.1.1-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.1.1-1">
             <dt id="section-5.1.1-1.1">Use case name:</dt>
-<dd id="section-5.1.1-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.2">
   Third Party Attestation Server<a href="#section-5.1.1-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.1-1.3">Who will use it:</dt>
-<dd id="section-5.1.1-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.4">
   Network Operators<a href="#section-5.1.1-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.1-1.5">Message Flow:</dt>
-<dd id="section-5.1.1-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.6">
   background check<a href="#section-5.1.1-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.1-1.7">Attester:</dt>
-<dd id="section-5.1.1-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.8">
   manufacturer of OS or hardware system<a href="#section-5.1.1-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.1-1.9">Relying Party:</dt>
-<dd id="section-5.1.1-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.10">
   network access control systems<a href="#section-5.1.1-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.1-1.11">Claims used as evidence:</dt>
-<dd id="section-5.1.1-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.12">
   TBD<a href="#section-5.1.1-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.1-1.13">Description:</dt>
-<dd id="section-5.1.1-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.1.1-1.14">
   The measurements from a heterogenous network of devices are provided to
 device-specific attestation servers.  The attestation servers know what the
 "golden" measurements are, and perform the appropriate evaluations, resulting
 in attestations that the relying parties can depend upon.<a href="#section-5.1.1-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1430,46 +1437,46 @@ in attestations that the relying parties can depend upon.<a href="#section-5.1.1
           <h4 id="name-autonomous-relying-party">
 <a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-autonomous-relying-party" class="section-name selfRef">Autonomous Relying Party</a>
           </h4>
-<dl class="dlParallel" id="section-5.1.2-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.1.2-1">
             <dt id="section-5.1.2-1.1">Use case name:</dt>
-<dd id="section-5.1.2-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.2">
   Autonomous<a href="#section-5.1.2-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.2-1.3">Who will use it:</dt>
-<dd id="section-5.1.2-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.4">
   network operators<a href="#section-5.1.2-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.2-1.5">Message Flow:</dt>
-<dd id="section-5.1.2-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.6">
   passport<a href="#section-5.1.2-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.2-1.7">Attester:</dt>
-<dd id="section-5.1.2-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.8">
   manufacturer of OS or hardware system<a href="#section-5.1.2-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.2-1.9">Relying Party:</dt>
-<dd id="section-5.1.2-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.10">
   peer systems<a href="#section-5.1.2-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.2-1.11">Claims used as evidence:</dt>
-<dd id="section-5.1.2-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.12">
   TBD<a href="#section-5.1.2-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.2-1.13">Description:</dt>
-<dd id="section-5.1.2-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.1.2-1.14">
   The signed measurements are sent to a relying party which must validate them
 directly.  They are not sent to a third party.
 (It may do so with the help of a signed list of golden values,
 or some other process).  The relying party needs to validate the signed
 statements directly.<a href="#section-5.1.2-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 <p id="section-5.1.2-2">This may occur because the network is not connected, or even because it can
 not be connected until the equipment is validated.<a href="#section-5.1.2-2" class="pilcrow">¶</a></p>
@@ -1480,45 +1487,45 @@ not be connected until the equipment is validated.<a href="#section-5.1.2-2" cla
           <h4 id="name-proxy-root-of-trust">
 <a href="#section-5.1.3" class="section-number selfRef">5.1.3. </a><a href="#name-proxy-root-of-trust" class="section-name selfRef">Proxy Root of Trust</a>
           </h4>
-<dl class="dlParallel" id="section-5.1.3-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.1.3-1">
             <dt id="section-5.1.3-1.1">Use case name:</dt>
-<dd id="section-5.1.3-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.2">
   Proxy Root of Trust<a href="#section-5.1.3-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.3-1.3">Who will use it:</dt>
-<dd id="section-5.1.3-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.4">
   network operators<a href="#section-5.1.3-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.3-1.5">Message Flow:</dt>
-<dd id="section-5.1.3-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.6">
   passport<a href="#section-5.1.3-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.3-1.7">Attester:</dt>
-<dd id="section-5.1.3-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.8">
   manufacturer of OS or hardware system<a href="#section-5.1.3-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.3-1.9">Relying Party:</dt>
-<dd id="section-5.1.3-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.10">
   peer systems<a href="#section-5.1.3-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.3-1.11">Claims used as evidence:</dt>
-<dd id="section-5.1.3-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.12">
   TBD<a href="#section-5.1.3-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.3-1.13">Description:</dt>
-<dd id="section-5.1.3-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.1.3-1.14">
   A variety of devices provide measurements via their Root of Trust.
 A proxy server collects these measurements, and (having applied a local policy)
 then creates a device agnostic attestation.  The relying party can validate
 the claims in a standard format.<a href="#section-5.1.3-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1527,39 +1534,39 @@ the claims in a standard format.<a href="#section-5.1.3-1.14" class="pilcrow">¶
           <h4 id="name-network-scaling-small">
 <a href="#section-5.1.4" class="section-number selfRef">5.1.4. </a><a href="#name-network-scaling-small" class="section-name selfRef">network scaling - small</a>
           </h4>
-<dl class="dlParallel" id="section-5.1.4-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.1.4-1">
             <dt id="section-5.1.4-1.1">Use case name:</dt>
-<dd id="section-5.1.4-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.2">
   Network scaled - small<a href="#section-5.1.4-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.4-1.3">Who will use it:</dt>
-<dd id="section-5.1.4-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.4">
   enterprises<a href="#section-5.1.4-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.4-1.5">Message Flow:</dt>
-<dd id="section-5.1.4-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.6">
   background check<a href="#section-5.1.4-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.4-1.7">Attester:</dt>
-<dd id="section-5.1.4-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.8">
   manufacturer of OS or hardware system<a href="#section-5.1.4-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.4-1.9">Relying Party:</dt>
-<dd id="section-5.1.4-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.10">
   network equipment<a href="#section-5.1.4-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.4-1.11">Claims used as evidence:</dt>
-<dd id="section-5.1.4-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.12">
   TBD<a href="#section-5.1.4-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.4-1.13">Description:</dt>
-<dd id="section-5.1.4-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.1.4-1.14">
   An entire network of systems needs to be validated (such as all the desktops
 in an enterprise's building).  The infrastructure is in the control of a single
 operator and is already trusted.  The network can be partitioned so that
@@ -1567,7 +1574,7 @@ machines that do not pass attestation can be quarantined.  A 1:1 relationship
 between the device and the relying party can be used to maintain freshness of
 the attestation.<a href="#section-5.1.4-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1576,39 +1583,39 @@ the attestation.<a href="#section-5.1.4-1.14" class="pilcrow">¶</a>
           <h4 id="name-network-scaling-medium">
 <a href="#section-5.1.5" class="section-number selfRef">5.1.5. </a><a href="#name-network-scaling-medium" class="section-name selfRef">network scaling - medium</a>
           </h4>
-<dl class="dlParallel" id="section-5.1.5-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.1.5-1">
             <dt id="section-5.1.5-1.1">Use case name:</dt>
-<dd id="section-5.1.5-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.2">
   Network scaled - medium<a href="#section-5.1.5-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.5-1.3">Who will use it:</dt>
-<dd id="section-5.1.5-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.4">
   larger enterprises, including network operators<a href="#section-5.1.5-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.5-1.5">Message Flow:</dt>
-<dd id="section-5.1.5-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.6">
   passport<a href="#section-5.1.5-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.5-1.7">Attester:</dt>
-<dd id="section-5.1.5-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.8">
   manufacturer of OS or hardware system<a href="#section-5.1.5-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.5-1.9">Relying Party:</dt>
-<dd id="section-5.1.5-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.10">
   network equipment<a href="#section-5.1.5-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.5-1.11">Claims used as evidence:</dt>
-<dd id="section-5.1.5-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.12">
   TBD<a href="#section-5.1.5-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.5-1.13">Description:</dt>
-<dd id="section-5.1.5-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.1.5-1.14">
   An entire network of systems needs to be validated: such as all the desktops
 in an enterprise's building, or all the routers at an ISP.  The
 infrastructure is not necessarily trusted: it could be subverted, and it must
@@ -1617,7 +1624,7 @@ mutually suspicious: each device may therefore need to process attestations
 from every other device.  An NxM mesh of attestations may be untenable, but a
 system of N:1:M relationships can be setup via proxy attestations.<a href="#section-5.1.5-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1626,46 +1633,46 @@ system of N:1:M relationships can be setup via proxy attestations.<a href="#sect
           <h4 id="name-network-scaling-large">
 <a href="#section-5.1.6" class="section-number selfRef">5.1.6. </a><a href="#name-network-scaling-large" class="section-name selfRef">network scaling - large</a>
           </h4>
-<dl class="dlParallel" id="section-5.1.6-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.1.6-1">
             <dt id="section-5.1.6-1.1">Use case name:</dt>
-<dd id="section-5.1.6-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.2">
   Network scaled - large<a href="#section-5.1.6-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.6-1.3">Who will use it:</dt>
-<dd id="section-5.1.6-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.4">
   telco/LTE operators<a href="#section-5.1.6-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.6-1.5">Message Flow:</dt>
-<dd id="section-5.1.6-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.6">
   passport<a href="#section-5.1.6-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.6-1.7">Attester:</dt>
-<dd id="section-5.1.6-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.8">
   manufacturer of OS or hardware system<a href="#section-5.1.6-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.6-1.9">Relying Party:</dt>
-<dd id="section-5.1.6-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.10">
   malware auditing systems<a href="#section-5.1.6-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.6-1.11">Claims used as evidence:</dt>
-<dd id="section-5.1.6-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.12">
   TBD<a href="#section-5.1.6-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.1.6-1.13">Description:</dt>
-<dd id="section-5.1.6-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.1.6-1.14">
   An entire network of systems need to be continuously attested.  This could be
 all of the smartphones on an LTE network, or every desktop system in a
 worldwide enterprise.  The network operator wishes to do this in order to
 maintain identities of connected devices more than to validate correct
 firmware, but both situations are reasonable.<a href="#section-5.1.6-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1676,46 +1683,46 @@ firmware, but both situations are reasonable.<a href="#section-5.1.6-1.14" class
         <h3 id="name-hardware-resiliency-watchdo">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-hardware-resiliency-watchdo" class="section-name selfRef">Hardware resiliency / watchdogs</a>
         </h3>
-<dl class="dlParallel" id="section-5.2-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.2-1">
           <dt id="section-5.2-1.1">Use case name:</dt>
-<dd id="section-5.2-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.2">
   Hardware watchdog<a href="#section-5.2-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.2-1.3">Who will use it:</dt>
-<dd id="section-5.2-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.4">
   individual system designers<a href="#section-5.2-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.2-1.5">Message Flow:</dt>
-<dd id="section-5.2-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.6">
   passport<a href="#section-5.2-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.2-1.7">Attester:</dt>
-<dd id="section-5.2-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.8">
   manufacturer of OS or hardware system<a href="#section-5.2-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.2-1.9">Relying Party:</dt>
-<dd id="section-5.2-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.10">
   bootloader or service processor<a href="#section-5.2-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.2-1.11">Claims used as evidence:</dt>
-<dd id="section-5.2-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.12">
   TBD<a href="#section-5.2-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.2-1.13">Description:</dt>
-<dd id="section-5.2-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.2-1.14">
   One significant problem is malware that holds a device hostage and does not
 allow it to reboot to prevent updates to be applied. This is a significant
 problem, because it allows a fleet of devices to be held hostage for
 ransom. Within CyRes the TCG is defining hardware Attention Triggers that
 force a periodical reboot in hardware.<a href="#section-5.2-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <p id="section-5.2-2">This can be implemented by forcing a reboot unless attestation to an
 Attestation Server succeeds within the period interval, and having a reboot
@@ -1732,46 +1739,46 @@ party), which resets a watchdog timer.<a href="#section-5.2-3" class="pilcrow">�
         <h3 id="name-ietf-teep-wg-use-case">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-ietf-teep-wg-use-case" class="section-name selfRef">IETF TEEP WG use case</a>
         </h3>
-<dl class="dlParallel" id="section-5.3-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.3-1">
           <dt id="section-5.3-1.1">Use case name:</dt>
-<dd id="section-5.3-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.2">
   TAM validation<a href="#section-5.3-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.3-1.3">Who will use it:</dt>
-<dd id="section-5.3-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.4">
   The TAM server<a href="#section-5.3-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.3-1.5">Message Flow:</dt>
-<dd id="section-5.3-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.6">
   background check<a href="#section-5.3-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.3-1.7">Attester:</dt>
-<dd id="section-5.3-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.8">
   Trusted Execution Environment (TEE)<a href="#section-5.3-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.3-1.9">Relying Party:</dt>
-<dd id="section-5.3-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.10">
   end-application<a href="#section-5.3-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.3-1.11">Claims used as evidence:</dt>
-<dd id="section-5.3-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.12">
   TBD<a href="#section-5.3-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.3-1.13">Description:</dt>
-<dd id="section-5.3-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.3-1.14">
   The "Trusted Application Manager (TAM)" server wants to verify the state of a
 TEE, or applications in the TEE, of a device.  The TEE attests to the TAM,
 which can then decide whether to install sensitive data in the TEE, or
 whether the TEE is out of compliance and the TAM needs to install updated
 code in the TEE to bring it back into compliance with the TAM's policy.<a href="#section-5.3-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1780,39 +1787,39 @@ code in the TEE to bring it back into compliance with the TAM's policy.<a href="
         <h3 id="name-confidential-machine-learni">
 <a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-confidential-machine-learni" class="section-name selfRef">Confidential Machine Learning (ML) model</a>
         </h3>
-<dl class="dlParallel" id="section-5.4-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.4-1">
           <dt id="section-5.4-1.1">Use case name:</dt>
-<dd id="section-5.4-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.2">
   Machine Learning protection<a href="#section-5.4-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.4-1.3">Who will use it:</dt>
-<dd id="section-5.4-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.4">
   Machine Learning systems<a href="#section-5.4-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.4-1.5">Message Flow:</dt>
-<dd id="section-5.4-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.6">
   TBD<a href="#section-5.4-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.4-1.7">Attester:</dt>
-<dd id="section-5.4-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.8">
   hardware TEE<a href="#section-5.4-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.4-1.9">Relying Party:</dt>
-<dd id="section-5.4-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.10">
   machine learning model owner<a href="#section-5.4-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.4-1.11">Claims used as evidence:</dt>
-<dd id="section-5.4-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.12">
   TBD<a href="#section-5.4-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.4-1.13">Description:</dt>
-<dd id="section-5.4-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.4-1.14">
   An example use case is where a device manufacturer wants to protect its
 intellectual property in terms of the ML model it developed and that runs in
 the devices that its customers purchased, and it wants to prevent attackers,
@@ -1823,7 +1830,7 @@ attestation succeeds, then the manufacturer service releases the model, or a
 key to decrypt the model, to the requester.   If a hardware TEE is involved,
 then this use case overlaps with the TEEP use case.<a href="#section-5.4-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -1832,39 +1839,39 @@ then this use case overlaps with the TEEP use case.<a href="#section-5.4-1.14" c
         <h3 id="name-critical-infrastructure">
 <a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-critical-infrastructure" class="section-name selfRef">Critical infrastructure</a>
         </h3>
-<dl class="dlParallel" id="section-5.5-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.5-1">
           <dt id="section-5.5-1.1">Use case name:</dt>
-<dd id="section-5.5-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.2">
   Critical Infrastructure<a href="#section-5.5-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.5-1.3">Who will use it:</dt>
-<dd id="section-5.5-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.4">
   devices<a href="#section-5.5-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.5-1.5">Message Flow:</dt>
-<dd id="section-5.5-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.6">
   TBD<a href="#section-5.5-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.5-1.7">Attester:</dt>
-<dd id="section-5.5-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.8">
   plant controller<a href="#section-5.5-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.5-1.9">Relying Party:</dt>
-<dd id="section-5.5-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.10">
   actuator<a href="#section-5.5-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.5-1.11">Claims used as evidence:</dt>
-<dd id="section-5.5-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.12">
   TBD<a href="#section-5.5-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.5-1.13">Description:</dt>
-<dd id="section-5.5-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.5-1.14">
   When a protocol operation can affect some critical system, the device
 attached to the critical equipment wants some assurance that the requester
 has not been compromised.  As such, attestation can be used to only accept
@@ -1872,46 +1879,46 @@ commands from requesters that are within policy.   Hardware attestation in
 particular, especially in conjunction with a TEE on the requester side, can
 provide protection against many types of malware.<a href="#section-5.5-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <div id="computation-characteristics">
 <section id="section-5.5.1">
           <h4 id="name-computation-characteristics">
 <a href="#section-5.5.1" class="section-number selfRef">5.5.1. </a><a href="#name-computation-characteristics" class="section-name selfRef">Computation characteristics</a>
           </h4>
-<dl class="dlParallel" id="section-5.5.1-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.5.1-1">
             <dt id="section-5.5.1-1.1">Use case name:</dt>
-<dd id="section-5.5.1-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.2">
   Shared Block Chain Computational claims<a href="#section-5.5.1-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.5.1-1.3">Who will use it:</dt>
-<dd id="section-5.5.1-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.4">
   Consortia of Computation systems<a href="#section-5.5.1-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.5.1-1.5">Message Flow:</dt>
-<dd id="section-5.5.1-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.6">
   TBD<a href="#section-5.5.1-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.5.1-1.7">Attester:</dt>
-<dd id="section-5.5.1-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.8">
   computer system (physical or virtual)<a href="#section-5.5.1-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.5.1-1.9">Relying Party:</dt>
-<dd id="section-5.5.1-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.10">
   other computer systems<a href="#section-5.5.1-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.5.1-1.11">Claims used as evidence:</dt>
-<dd id="section-5.5.1-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.12">
   TBD<a href="#section-5.5.1-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.5.1-1.13">Description:</dt>
-<dd id="section-5.5.1-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.5.1-1.14">
   A group of enterprises organized as a consortium seeks to deploy computing
 nodes as the basis of their shared blockchain system. Each member of the
 consortium  must forward an equal number of computing nodes to participate in
@@ -1924,7 +1931,7 @@ consortium. Thus, a given computing node must be able to report the
 (pre-boot) configuration of its system and be able to report at an y time the
 operational status of the various components that make-up its system.<a href="#section-5.5.1-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 <p id="section-5.5.1-2">The consortium seeks to have the following things attested: system
 configuration, group membership, and virtualization status.<a href="#section-5.5.1-2" class="pilcrow">¶</a></p>
@@ -1945,42 +1952,42 @@ machine.<a href="#section-5.5.1-4" class="pilcrow">¶</a></p>
         <h3 id="name-virtualized-multi-tenant-ho">
 <a href="#section-5.6" class="section-number selfRef">5.6. </a><a href="#name-virtualized-multi-tenant-ho" class="section-name selfRef">Virtualized multi-tenant hosts</a>
         </h3>
-<dl class="dlParallel" id="section-5.6-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.6-1">
           <dt id="section-5.6-1.1">Use case name:</dt>
-<dd id="section-5.6-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.2">
   Multi-tenant hosts<a href="#section-5.6-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.6-1.3">Who will use it:</dt>
-<dd id="section-5.6-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.4">
   Virtual machine systems<a href="#section-5.6-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.6-1.5">Message Flow:</dt>
-<dd id="section-5.6-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.6">
   TBD<a href="#section-5.6-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.6-1.7">Attester:</dt>
-<dd id="section-5.6-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.8">
   virtual machine hypervisor<a href="#section-5.6-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.6-1.9">Relying Party:</dt>
-<dd id="section-5.6-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.10">
   network operators<a href="#section-5.6-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.6-1.11">Claims used as evidence:</dt>
-<dd id="section-5.6-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.12">
   TBD<a href="#section-5.6-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.6-1.13">Description:</dt>
-<dd id="section-5.6-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.6-1.14">
   The host system will do verification as per 5.1.<a href="#section-5.6-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <p id="section-5.6-2">The tenant virtual machines will do verification as per 5.1<a href="#section-5.6-2" class="pilcrow">¶</a></p>
 <p id="section-5.6-3">The network operator wants to know if the system <em>as a whole</em> is free of
@@ -1995,84 +2002,84 @@ combine things together.  This is a kind of proxy.<a href="#section-5.6-5" class
         <h3 id="name-cryptographic-key-attestati">
 <a href="#section-5.7" class="section-number selfRef">5.7. </a><a href="#name-cryptographic-key-attestati" class="section-name selfRef">Cryptographic Key Attestation</a>
         </h3>
-<dl class="dlParallel" id="section-5.7-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.7-1">
           <dt id="section-5.7-1.1">Use case name:</dt>
-<dd id="section-5.7-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.2">
   Key Attestation<a href="#section-5.7-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.7-1.3">Who will use it:</dt>
-<dd id="section-5.7-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.4">
   network authentication systems<a href="#section-5.7-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.7-1.5">Message Flow:</dt>
-<dd id="section-5.7-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.6">
   TBD<a href="#section-5.7-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.7-1.7">Attester:</dt>
-<dd id="section-5.7-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.8">
   device platform<a href="#section-5.7-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.7-1.9">Relying Party:</dt>
-<dd id="section-5.7-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.10">
   internet peers<a href="#section-5.7-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.7-1.11">Claims used as evidence:</dt>
-<dd id="section-5.7-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.12">
   TBD<a href="#section-5.7-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.7-1.13">Description:</dt>
-<dd id="section-5.7-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.7-1.14">
   The relying party wants to know how secure a private key that identifies
 an entity is.  Unlike the network attestation, the relying party is not part of
 the network infrastructure, nor do they necessarily have a business relationship (such as
 ownership) over the end device.<a href="#section-5.7-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <div id="device-type-attestation">
 <section id="section-5.7.1">
           <h4 id="name-device-type-attestation">
 <a href="#section-5.7.1" class="section-number selfRef">5.7.1. </a><a href="#name-device-type-attestation" class="section-name selfRef">Device Type Attestation</a>
           </h4>
-<dl class="dlParallel" id="section-5.7.1-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.7.1-1">
             <dt id="section-5.7.1-1.1">Use case name:</dt>
-<dd id="section-5.7.1-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.2">
   Device Type Attestation<a href="#section-5.7.1-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.1-1.3">Who will use it:</dt>
-<dd id="section-5.7.1-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.4">
   mobile platforms<a href="#section-5.7.1-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.1-1.5">Message Flow:</dt>
-<dd id="section-5.7.1-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.6">
   TBD<a href="#section-5.7.1-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.1-1.7">Attester:</dt>
-<dd id="section-5.7.1-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.8">
   device platform<a href="#section-5.7.1-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.1-1.9">Relying Party:</dt>
-<dd id="section-5.7.1-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.10">
   internet peers<a href="#section-5.7.1-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.1-1.11">Claims used as evidence:</dt>
-<dd id="section-5.7.1-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.12">
   TBD<a href="#section-5.7.1-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.1-1.13">Description:</dt>
-<dd id="section-5.7.1-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.7.1-1.14">
   This use case convinces the relying party of the characteristics of a
 device.  For privacy reasons, it might not identify the actual device itself,
 but rather the class of device.  The relying party can understand from either
@@ -2082,7 +2089,7 @@ features such as a hardware TPM, software TPM via TEE, or software TPM
 without TEE.  Other details such as the availability of finger-print readers
 or HDMI outputs may also be inferred.<a href="#section-5.7.1-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -2091,39 +2098,39 @@ or HDMI outputs may also be inferred.<a href="#section-5.7.1-1.14" class="pilcro
           <h4 id="name-key-storage-attestation">
 <a href="#section-5.7.2" class="section-number selfRef">5.7.2. </a><a href="#name-key-storage-attestation" class="section-name selfRef">Key storage attestation</a>
           </h4>
-<dl class="dlParallel" id="section-5.7.2-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.7.2-1">
             <dt id="section-5.7.2-1.1">Use case name:</dt>
-<dd id="section-5.7.2-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.2">
   Key storage Attestation<a href="#section-5.7.2-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.2-1.3">Who will use it:</dt>
-<dd id="section-5.7.2-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.4">
   secure key storage subsystems<a href="#section-5.7.2-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.2-1.5">Message Flow:</dt>
-<dd id="section-5.7.2-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.6">
   TBD<a href="#section-5.7.2-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.2-1.7">Attester:</dt>
-<dd id="section-5.7.2-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.8">
   device platform<a href="#section-5.7.2-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.2-1.9">Relying Party:</dt>
-<dd id="section-5.7.2-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.10">
   internet peers<a href="#section-5.7.2-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.2-1.11">Claims used as evidence:</dt>
-<dd id="section-5.7.2-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.12">
   TBD<a href="#section-5.7.2-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.2-1.13">Description:</dt>
-<dd id="section-5.7.2-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.7.2-1.14">
   This use case convinces the relying party only about the provenance of a private key by
 providing claims of the
 storage security of the private key.  This can be conceived as a subset of
@@ -2131,7 +2138,7 @@ the previous case, but may be apply very specifically to just a keystore. Additi
 details associated with the private key may be provided as well, including limitations on
 usage of the key.<a href="#section-5.7.2-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 <p id="section-5.7.2-2">Key storage attestations may be consumed by systems provisioning public
 key certificates for devices or human users. In these cases, attestations may be
@@ -2145,39 +2152,39 @@ any issued certificate.<a href="#section-5.7.2-2" class="pilcrow">¶</a></p>
           <h4 id="name-end-user-authorization">
 <a href="#section-5.7.3" class="section-number selfRef">5.7.3. </a><a href="#name-end-user-authorization" class="section-name selfRef">End user authorization</a>
           </h4>
-<dl class="dlParallel" id="section-5.7.3-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.7.3-1">
             <dt id="section-5.7.3-1.1">Use case name:</dt>
-<dd id="section-5.7.3-1.2">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.2">
   End User authorization<a href="#section-5.7.3-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.3-1.3">Who will use it:</dt>
-<dd id="section-5.7.3-1.4">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.4">
   authorization systems<a href="#section-5.7.3-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.3-1.5">Message Flow:</dt>
-<dd id="section-5.7.3-1.6">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.6">
   TBD<a href="#section-5.7.3-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.3-1.7">Attester:</dt>
-<dd id="section-5.7.3-1.8">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.8">
   device platform<a href="#section-5.7.3-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.3-1.9">Relying Party:</dt>
-<dd id="section-5.7.3-1.10">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.10">
   internet peers<a href="#section-5.7.3-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.3-1.11">Claims used as evidence:</dt>
-<dd id="section-5.7.3-1.12">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.12">
   TBD<a href="#section-5.7.3-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+            <dd class="break"></dd>
 <dt id="section-5.7.3-1.13">Description:</dt>
-<dd id="section-5.7.3-1.14">
+            <dd style="margin-left: 1.5em" id="section-5.7.3-1.14">
   This use case convinces the relying party that the digital signatures made by
 the indicated key pair were done with the approval of the end-user/device-operator.
 This may also be considered possible subset of the device attestation above,
@@ -2190,7 +2197,7 @@ The acknowledgements could include selecting options on the
 screen, pushing physical buttons, scanning fingerprints, proximity to other
 devices (via bluetooth beacons, chargers, etc)<a href="#section-5.7.3-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -2201,46 +2208,46 @@ devices (via bluetooth beacons, chargers, etc)<a href="#section-5.7.3-1.14" clas
         <h3 id="name-geographic-attestation">
 <a href="#section-5.8" class="section-number selfRef">5.8. </a><a href="#name-geographic-attestation" class="section-name selfRef">Geographic attestation</a>
         </h3>
-<dl class="dlParallel" id="section-5.8-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.8-1">
           <dt id="section-5.8-1.1">Use case name:</dt>
-<dd id="section-5.8-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.2">
   Location attestation<a href="#section-5.8-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.8-1.3">Who will use it:</dt>
-<dd id="section-5.8-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.4">
   geo-fenced systems<a href="#section-5.8-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.8-1.5">Message Flow:</dt>
-<dd id="section-5.8-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.6">
   passport (probably)<a href="#section-5.8-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.8-1.7">Attester:</dt>
-<dd id="section-5.8-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.8">
   secure GPS system(s)<a href="#section-5.8-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.8-1.9">Relying Party:</dt>
-<dd id="section-5.8-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.10">
   internet peers<a href="#section-5.8-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.8-1.11">Claims used as evidence:</dt>
-<dd id="section-5.8-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.12">
   TBD<a href="#section-5.8-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.8-1.13">Description:</dt>
-<dd id="section-5.8-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.8-1.14">
   The relying party wants to know the physical location (on the planet earth)
 of the device.  This may be provided directly by a GPS/GLONASS/Galileo module
 that is incorporated into a TPM.  This may also be provided by collecting other
 proximity messages from other device that the relying party can form a trust
 relationship with.<a href="#section-5.8-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <div id="i-am-here">
 <section id="section-5.8.1">
@@ -2293,45 +2300,45 @@ intermediaries can not view.<a href="#section-5.8.3-1" class="pilcrow">¶</a></p
         <h3 id="name-connectivity-attestation">
 <a href="#section-5.9" class="section-number selfRef">5.9. </a><a href="#name-connectivity-attestation" class="section-name selfRef">Connectivity attestation</a>
         </h3>
-<dl class="dlParallel" id="section-5.9-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.9-1">
           <dt id="section-5.9-1.1">Use case name:</dt>
-<dd id="section-5.9-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.2">
   Connectivity attestation<a href="#section-5.9-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.9-1.3">Who will use it:</dt>
-<dd id="section-5.9-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.4">
   entertainment systems<a href="#section-5.9-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.9-1.5">Message Flow:</dt>
-<dd id="section-5.9-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.6">
   TBD<a href="#section-5.9-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.9-1.7">Attester:</dt>
-<dd id="section-5.9-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.8">
   hardware-manufacturer/TEE<a href="#section-5.9-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.9-1.9">Relying Party:</dt>
-<dd id="section-5.9-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.10">
   connected peer<a href="#section-5.9-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.9-1.11">Claims used as evidence:</dt>
-<dd id="section-5.9-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.12">
   TBD<a href="#section-5.9-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.9-1.13">Description:</dt>
-<dd id="section-5.9-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.9-1.14">
   The relying party wants to know what devices are connected.  A typical
 situation would be a media owner needing to know what TV device is connected
 via HDMI and if High-bandwidth Digital Content Protection (HDCP) is
 intact.<a href="#section-5.9-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -2340,39 +2347,39 @@ intact.<a href="#section-5.9-1.14" class="pilcrow">¶</a>
         <h3 id="name-component-connectivity-atte">
 <a href="#section-5.10" class="section-number selfRef">5.10. </a><a href="#name-component-connectivity-atte" class="section-name selfRef">Component connectivity attestation</a>
         </h3>
-<dl class="dlParallel" id="section-5.10-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.10-1">
           <dt id="section-5.10-1.1">Use case name:</dt>
-<dd id="section-5.10-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.2">
   Component connectivity<a href="#section-5.10-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.10-1.3">Who will use it:</dt>
-<dd id="section-5.10-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.4">
   chassis systems with pluggable components<a href="#section-5.10-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.10-1.5">Message Flow:</dt>
-<dd id="section-5.10-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.6">
   background check<a href="#section-5.10-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.10-1.7">Attester:</dt>
-<dd id="section-5.10-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.8">
   line card<a href="#section-5.10-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.10-1.9">Relying Party:</dt>
-<dd id="section-5.10-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.10">
   management/control plane software<a href="#section-5.10-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.10-1.11">Claims used as evidence:</dt>
-<dd id="section-5.10-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.12">
   TBD<a href="#section-5.10-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.10-1.13">Description:</dt>
-<dd id="section-5.10-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.10-1.14">
   A management controller or similar hardware component wants to know what
 peripherals, rack scale device or other dynamically configurable components
 are currently attached to the platform that is under management controller
@@ -2380,7 +2387,7 @@ control. The management controller may serve as attestation verifier over a
 local bus or backplane but may also aggregate local attestation results and
 act as a platform attester to a remote verifier.<a href="#section-5.10-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -2389,39 +2396,39 @@ act as a platform attester to a remote verifier.<a href="#section-5.10-1.14" cla
         <h3 id="name-device-provenance-attestati">
 <a href="#section-5.11" class="section-number selfRef">5.11. </a><a href="#name-device-provenance-attestati" class="section-name selfRef">Device provenance attestation</a>
         </h3>
-<dl class="dlParallel" id="section-5.11-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.11-1">
           <dt id="section-5.11-1.1">Use case name:</dt>
-<dd id="section-5.11-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.2">
   RIV - Device Provenance<a href="#section-5.11-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.11-1.3">Who will use it:</dt>
-<dd id="section-5.11-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.4">
   Industrial IoT devices<a href="#section-5.11-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.11-1.5">Message Flow:</dt>
-<dd id="section-5.11-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.6">
   passport<a href="#section-5.11-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.11-1.7">Attester:</dt>
-<dd id="section-5.11-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.8">
   network management station<a href="#section-5.11-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.11-1.9">Relying Party:</dt>
-<dd id="section-5.11-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.10">
   a network entity<a href="#section-5.11-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.11-1.11">Claims used as evidence:</dt>
-<dd id="section-5.11-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.12">
   TBD<a href="#section-5.11-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.11-1.13">Description:</dt>
-<dd id="section-5.11-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.11-1.14">
   A newly manufactured device needs to be onboarded into a network where many
 if not all device management duties are performed by the network owner. The
 device owner wants to verify the device originated from a legitimate
@@ -2430,7 +2437,7 @@ during manufacturing and a certificate identifying the device is delivered to
 the owner onboarding agent. The device authenticates using its 802.1AR IDevID
 to prove it originated from the expected vendor.<a href="#section-5.11-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <p id="section-5.11-2">The device chain of custody from the original device manufacturer to the new
 owner may also be verified as part of device provenance attestation. The
@@ -2445,44 +2452,44 @@ as "Provable Device Identity", and section 2.3 details the parties.<a href="#sec
         <h3 id="name-dns-privacy-policy">
 <a href="#section-5.12" class="section-number selfRef">5.12. </a><a href="#name-dns-privacy-policy" class="section-name selfRef">DNS privacy policy</a>
         </h3>
-<dl class="dlParallel" id="section-5.12-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.12-1">
           <dt id="section-5.12-1.1">Use case name:</dt>
-<dd id="section-5.12-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.2">
   DNS-over-TLS or DNS-over-HTTPS server privacy policy<a href="#section-5.12-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.12-1.3">Who will use it:</dt>
-<dd id="section-5.12-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.4">
   enterprises and browsers and BYOD operating systems<a href="#section-5.12-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.12-1.5">Message Flow:</dt>
-<dd id="section-5.12-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.6">
   passport<a href="#section-5.12-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.12-1.7">Attester:</dt>
-<dd id="section-5.12-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.8">
   review agency<a href="#section-5.12-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.12-1.9">Relying Party:</dt>
-<dd id="section-5.12-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.10">
   browsers and operating systems<a href="#section-5.12-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.12-1.11">Claims used as evidence:</dt>
-<dd id="section-5.12-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.12">
   DNS server identity, privinfo (see draft-reddy-dprive-dprive-privacy-policy )<a href="#section-5.12-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.12-1.13">Description:</dt>
-<dd id="section-5.12-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.12-1.14">
   Users want to control how their DNS queries are handled by DNS
 servers so they can configure their system to use DNS servers that
 comply with their privacy expectations.<a href="#section-5.12-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <p id="section-5.12-2">This use case communicates an attestion from a DoH server to a
 web browser or equivalent in a desktop or mobile operating system.
@@ -2497,51 +2504,51 @@ attestation as to what is running and how it is configured (see
         <h3 id="name-safety-critical-systems">
 <a href="#section-5.13" class="section-number selfRef">5.13. </a><a href="#name-safety-critical-systems" class="section-name selfRef">Safety Critical Systems</a>
         </h3>
-<dl class="dlParallel" id="section-5.13-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.13-1">
           <dt id="section-5.13-1.1">Use case name:</dt>
-<dd id="section-5.13-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.2">
   Safety Critical Systems<a href="#section-5.13-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.3">Who will use it:</dt>
-<dd id="section-5.13-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.4">
   Power plants and other systems that need to assert their current state, but which can not accept any inputs from the outside.  The corollory system is
 a black-box (such as in an aircraft), which needs to log the state of a system,
 but which can never initiate a handshake.<a href="#section-5.13-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.5">Message Flow:</dt>
-<dd id="section-5.13-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.6">
   background check<a href="#section-5.13-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.7">Attester:</dt>
-<dd id="section-5.13-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.8">
   web services and other sources of status/sensor information<a href="#section-5.13-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.9">Relying Party:</dt>
-<dd id="section-5.13-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.10">
   open<a href="#section-5.13-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.11">Claims used as evidence:</dt>
-<dd id="section-5.13-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.12">
   the beginning and ending time as endorsed by a Time Stamp Authority,
 represented by a time stamp token.  The real time clock of the system
 itself.  A Root of Trust for time; the TPM has a relative time from
 startup.<a href="#section-5.13-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.13">Description:</dt>
-<dd id="section-5.13-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.13-1.14">
   These requirements motivate the creation of the Time Base Unidirectional Attestation (TUDA) <span>[<a href="#I-D.birkholz-rats-tuda" class="xref">I-D.birkholz-rats-tuda</a>]</span>, the output of TUDA are typically a secure audit log, where freshness is determined by synchronization to an source of external time.<a href="#section-5.13-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.13-1.15"></dt>
-<dd id="section-5.13-1.16">The freshness is preserved in the evidence by the use of a Time Stamp Authority (TSA) which provides Time Stamp Tokens (TST).<a href="#section-5.13-1.16" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-5.13-1.16">The freshness is preserved in the evidence by the use of a Time Stamp Authority (TSA) which provides Time Stamp Tokens (TST).<a href="#section-5.13-1.16" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -2550,61 +2557,61 @@ startup.<a href="#section-5.13-1.12" class="pilcrow">¶</a>
         <h3 id="name-trusted-path-routing">
 <a href="#section-5.14" class="section-number selfRef">5.14. </a><a href="#name-trusted-path-routing" class="section-name selfRef">Trusted Path Routing</a>
         </h3>
-<dl class="dlParallel" id="section-5.14-1">
+<span class="break"></span><dl class="dlParallel" id="section-5.14-1">
           <dt id="section-5.14-1.1">Use case name:</dt>
-<dd id="section-5.14-1.2">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.2">
   Trusted Path Routing<a href="#section-5.14-1.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-1.3">Who will use it:</dt>
-<dd id="section-5.14-1.4">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.4">
   Service Providers want to offer a trustworthy transport service to Government, Military, Financial, and Medical end-users.<a href="#section-5.14-1.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-1.5">Message Flow:</dt>
-<dd id="section-5.14-1.6">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.6">
   background check model for a centralized controller based alternative, and passport model for a router/switch distributed alternative.<a href="#section-5.14-1.6" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-1.7">Attester:</dt>
-<dd id="section-5.14-1.8">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.8">
   Routers/switches<a href="#section-5.14-1.8" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-1.9">Relying Party:</dt>
-<dd id="section-5.14-1.10">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.10">
   Network Controllers and Peer Routers/Switches<a href="#section-5.14-1.10" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-1.11">Claims used as evidence:</dt>
-<dd id="section-5.14-1.12">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.12">
   TPM Quotes, log entries passed into TPM PCRs, trustworthiness levels appraised by Verifiers, and included in passports.<a href="#section-5.14-1.12" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-1.13">Description:</dt>
-<dd id="section-5.14-1.14">
+          <dd style="margin-left: 1.5em" id="section-5.14-1.14">
   There are end-users who believe encryption technologies like IPsec alone are insufficient to  protect the confidentiality of their highly sensitive traffic flows.
 These end-users want their sensitive flows to be forwarded across just those network devices currently appraised as trustworthy by the TCG-RIV use case.<a href="#section-5.14-1.14" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 <p id="section-5.14-2"><span>[<a href="#I-D.voit-rats-trusted-path-routing" class="xref">I-D.voit-rats-trusted-path-routing</a>]</span> discusses two alternatives for exchanging traffic with  end-user customer identified "sensitive subnets".
 Traffic going to and from these subnets will transit a path where the IP layer and above are only interpretable by those network devices recently evaluated as trustworthy.<a href="#section-5.14-2" class="pilcrow">¶</a></p>
 <p id="section-5.14-3">These two alternatives are:<a href="#section-5.14-3" class="pilcrow">¶</a></p>
-<dl class="dlParallel" id="section-5.14-4">
+<span class="break"></span><dl class="dlParallel" id="section-5.14-4">
           <dt id="section-5.14-4.1">Centralized Trusted Path Routing:</dt>
-<dd id="section-5.14-4.2">
+          <dd style="margin-left: 1.5em" id="section-5.14-4.2">
   For sensitive subnets, trusted end-to-end paths are pre-assigned through a network provider domain.
 Along these paths, attestation evidence of potentially transited components has been assessed.  Each path is guaranteed to only include devices meeting the needs of a formally defined trustworthiness level.<a href="#section-5.14-4.2" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+          <dd class="break"></dd>
 <dt id="section-5.14-4.3">Distributed Trusted Path Routing:</dt>
-<dd id="section-5.14-4.4">
+          <dd style="margin-left: 1.5em" id="section-5.14-4.4">
   Through the exchange of attestation evidence between peering network devices, a trusted topology  is established and maintained.
 Only devices meeting the needs of a formally defined trustworthiness level are included as members  of this topology.
 Traffic exchanged with sensitive subnets is forwarded into this topology.<a href="#section-5.14-4.4" class="pilcrow">¶</a>
 </dd>
-<dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
 </section>
 </div>
@@ -2629,22 +2636,22 @@ intentionally limits itself to:<a href="#section-6.1-2" class="pilcrow">¶</a></
 <ul class="normal">
 <li class="normal" id="section-6.1-3.1">"non-privacy-preserving applications (i.e., networking, Industrial IoT )",<a href="#section-6.1-3.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-3.2">the firmware is provided by the device manufacturer<a href="#section-6.1-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-3.2">the firmware is provided by the device manufacturer<a href="#section-6.1-3.2" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-3.3">there is a manufacturer installed hardware root of trust (such as a
+          <li class="normal" id="section-6.1-3.3">there is a manufacturer installed hardware root of trust (such as a
 TPM and boot ROM)<a href="#section-6.1-3.3" class="pilcrow">¶</a>
 </li>
-</ul>
+        </ul>
 <p id="section-6.1-4">Service providers and enterprises deploy hundreds of routers, many of them in
 remote locations where they're difficult to access or secure.  The point of
 remote attestation is to:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.1-5.1">identify a remote box in a way that's hard to spoof<a href="#section-6.1-5.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-5.2">report the inventory of software was launched on the box in a way that
+          <li class="normal" id="section-6.1-5.2">report the inventory of software was launched on the box in a way that
 cannot be spoofed, that is undetectably altered by a "Lying Endpoint"<a href="#section-6.1-5.2" class="pilcrow">¶</a>
 </li>
-</ul>
+        </ul>
 <p id="section-6.1-6">The use case described is to be able to monitor the authenticity of software
 versions and configurations running on each device.  This allows owners and
 auditors to detect deviation from approved software and firmware versions and
@@ -2666,27 +2673,27 @@ Model <span>[<a href="#tapinfomodel" class="xref">tapinfomodel</a>]</span> and T
 <ul class="normal">
 <li class="normal" id="section-6.1-12.1">Device Manufacturer<a href="#section-6.1-12.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.2">Attester ("device under attestation")<a href="#section-6.1-12.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.2">Attester ("device under attestation")<a href="#section-6.1-12.2" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.3">Verifier (Network Management Station)<a href="#section-6.1-12.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.3">Verifier (Network Management Station)<a href="#section-6.1-12.3" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.4">"Explicit Attestation" is the TCG term for a static (platform) attestation<a href="#section-6.1-12.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.4">"Explicit Attestation" is the TCG term for a static (platform) attestation<a href="#section-6.1-12.4" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.5">"Implicit Attestation" is the TCG term for a session attestation<a href="#section-6.1-12.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.5">"Implicit Attestation" is the TCG term for a session attestation<a href="#section-6.1-12.5" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.6">Reference Integrity Measurements (RIM), which are signed my device
+          <li class="normal" id="section-6.1-12.6">Reference Integrity Measurements (RIM), which are signed my device
 manufacturer and integrated into firmware.<a href="#section-6.1-12.6" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.7">Quotes: measured values (having been signed), and RIMs<a href="#section-6.1-12.7" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.7">Quotes: measured values (having been signed), and RIMs<a href="#section-6.1-12.7" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.8">Reference Integrity Values (RIV)<a href="#section-6.1-12.8" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.8">Reference Integrity Values (RIV)<a href="#section-6.1-12.8" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.9">devices have a Initial Attestation Key (IAK), which is provisioned at the
+          <li class="normal" id="section-6.1-12.9">devices have a Initial Attestation Key (IAK), which is provisioned at the
 same time as the IDevID <span>[<a href="#ieee802-1AR" class="xref">ieee802-1AR</a>]</span><a href="#section-6.1-12.9" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.1-12.10">PCR - Platform Configuration Registry (deals with hash chains)<a href="#section-6.1-12.10" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-12.10">PCR - Platform Configuration Registry (deals with hash chains)<a href="#section-6.1-12.10" class="pilcrow">¶</a>
 </li>
-</ul>
+        </ul>
 <p id="section-6.1-13">The TCG document builds upon a number of IETF technologies: SNMP (Attestation
 MIB), YANG, XML, JSON, CBOR, NETCONF, RESTCONF, CoAP, TLS and SSH.
 The TCG document leverages the 802.1AR IDevID and LDevID processes.<a href="#section-6.1-13" class="pilcrow">¶</a></p>
@@ -2740,18 +2747,18 @@ devices.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.3-5.1">"relying party" validates a claim<a href="#section-6.3-5.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.3-5.2">"relying party application" makes FIDO Authn calls<a href="#section-6.3-5.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-5.2">"relying party application" makes FIDO Authn calls<a href="#section-6.3-5.2" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.3-5.3">"browser" provides the Web Authentication JS API<a href="#section-6.3-5.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-5.3">"browser" provides the Web Authentication JS API<a href="#section-6.3-5.3" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.3-5.4">"platform" is the base system<a href="#section-6.3-5.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-5.4">"platform" is the base system<a href="#section-6.3-5.4" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.3-5.5">"internal authenticator" is some credential built-in to the device<a href="#section-6.3-5.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-5.5">"internal authenticator" is some credential built-in to the device<a href="#section-6.3-5.5" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-6.3-5.6">"external authenticator" may be connected by USB, bluetooth, wifi, and may
+          <li class="normal" id="section-6.3-5.6">"external authenticator" may be connected by USB, bluetooth, wifi, and may
 be an stand-alone device, USB connected key, phone or watch.<a href="#section-6.3-5.6" class="pilcrow">¶</a>
 </li>
-</ul>
+        </ul>
 <p id="section-6.3-6">FIDO2 had a Key Attestation Format <span>[<a href="#fidoattestation" class="xref">fidoattestation</a>]</span>, and a Signature Format
 <span>[<a href="#fidosignature" class="xref">fidosignature</a>]</span>, but these have been combined into the W3C document
 <span>[<a href="#fido_w3c" class="xref">fido_w3c</a>]</span> specification.<a href="#section-6.3-6" class="pilcrow">¶</a></p>
@@ -4743,8 +4750,8 @@ Shawn Willden elucidated the Android Keystore goals and limitations.<a href="#se
         </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
-<dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+      <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -4754,120 +4761,120 @@ Shawn Willden elucidated the Android Keystore goals and limitations.<a href="#se
         </h3>
 <dl class="references">
 <dt id="android_security">[android_security]</dt>
-<dd>
-<span class="refAuthor">Kralevich, R.M.a.J.V.S.a.C.B.a.N.</span>, <span class="refTitle">"The Android Platform Security Model"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://arxiv.org/pdf/1904.05572.pdf">https://arxiv.org/pdf/1904.05572.pdf</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Kralevich, R.M.a.J.V.S.a.C.B.a.N.</span>, <span class="refTitle">"The Android Platform Security Model"</span>, <span>n.d.</span>, <span>&lt;<a href="https://arxiv.org/pdf/1904.05572.pdf">https://arxiv.org/pdf/1904.05572.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="azureattestation">[azureattestation]</dt>
-<dd>
-<span class="refAuthor">Microsoft, .</span>, <span class="refTitle">"Azure Sphere Attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/">https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Microsoft, .</span>, <span class="refTitle">"Azure Sphere Attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/">https://azure.microsoft.com/enus/resources/azure-sphere-device-authentication-andattestation-service/en-us/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fido">[fido]</dt>
-<dd>
-<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO Specification Overview"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://fidoalliance.org/specifications/">https://fidoalliance.org/specifications/</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO Specification Overview"</span>, <span>n.d.</span>, <span>&lt;<a href="https://fidoalliance.org/specifications/">https://fidoalliance.org/specifications/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fidoattestation">[fidoattestation]</dt>
-<dd>
-<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO 2.0: Key Attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html">https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO 2.0: Key Attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html">https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-key-attestation-v2.0-ps-20150904.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fidosignature">[fidosignature]</dt>
-<dd>
-<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO 2.0: Signature Format"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-signature-format-v2.0-ps-20150904.html">https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-signature-format-v2.0-ps-20150904.html</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO 2.0: Signature Format"</span>, <span>n.d.</span>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-signature-format-v2.0-ps-20150904.html">https://fidoalliance.org/specs/fido-v2.0-ps-20150904/fido-signature-format-v2.0-ps-20150904.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fidotechnote">[fidotechnote]</dt>
-<dd>
-<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO TechNotes: The Truth about Attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://fidoalliance.org/fido-technotes-the-truth-about-attestation/">https://fidoalliance.org/fido-technotes-the-truth-about-attestation/</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">FIDO Alliance, .</span>, <span class="refTitle">"FIDO TechNotes: The Truth about Attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://fidoalliance.org/fido-technotes-the-truth-about-attestation/">https://fidoalliance.org/fido-technotes-the-truth-about-attestation/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="fido_w3c">[fido_w3c]</dt>
-<dd>
-<span class="refAuthor">W3C, .</span>, <span class="refTitle">"Web Authentication: An API for accessing Public Key Credentials Level 1"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://www.w3.org/TR/webauthn-1/">https://www.w3.org/TR/webauthn-1/</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">W3C, .</span>, <span class="refTitle">"Web Authentication: An API for accessing Public Key Credentials Level 1"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.w3.org/TR/webauthn-1/">https://www.w3.org/TR/webauthn-1/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.birkholz-rats-tuda">[I-D.birkholz-rats-tuda]</dt>
-<dd>
-<span class="refAuthor">Fuchs, A.</span><span class="refAuthor">, Birkholz, H.</span><span class="refAuthor">, McDonald, I.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"Time-Based Uni-Directional Attestation"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-birkholz-rats-tuda-02</span>, <time datetime="2020-03-09">9 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-birkholz-rats-tuda-02.txt">http://www.ietf.org/internet-drafts/draft-birkholz-rats-tuda-02.txt</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Fuchs, A.</span><span class="refAuthor">, Birkholz, H.</span><span class="refAuthor">, McDonald, I.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"Time-Based Uni-Directional Attestation"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-birkholz-rats-tuda-03</span>, <time datetime="2020-07-13" class="refDate">13 July 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-birkholz-rats-tuda-03.txt">http://www.ietf.org/internet-drafts/draft-birkholz-rats-tuda-03.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.fedorkow-rats-network-device-attestation">[I-D.fedorkow-rats-network-device-attestation]</dt>
-<dd>
-<span class="refAuthor">Fedorkow, G.</span><span class="refAuthor">, Voit, E.</span><span class="refAuthor">, and J. Fitzgerald-McKay</span>, <span class="refTitle">"TPM-based Network Device Remote Integrity Verification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-fedorkow-rats-network-device-attestation-05</span>, <time datetime="2020-04-16">16 April 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-fedorkow-rats-network-device-attestation-05.txt">http://www.ietf.org/internet-drafts/draft-fedorkow-rats-network-device-attestation-05.txt</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Fedorkow, G.</span><span class="refAuthor">, Voit, E.</span><span class="refAuthor">, and J. Fitzgerald-McKay</span>, <span class="refTitle">"TPM-based Network Device Remote Integrity Verification"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-fedorkow-rats-network-device-attestation-05</span>, <time datetime="2020-04-16" class="refDate">16 April 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-fedorkow-rats-network-device-attestation-05.txt">http://www.ietf.org/internet-drafts/draft-fedorkow-rats-network-device-attestation-05.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.gutmann-scep">[I-D.gutmann-scep]</dt>
-<dd>
-<span class="refAuthor">Gutmann, P.</span>, <span class="refTitle">"Simple Certificate Enrolment Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-gutmann-scep-16</span>, <time datetime="2020-03-27">27 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-gutmann-scep-16.txt">http://www.ietf.org/internet-drafts/draft-gutmann-scep-16.txt</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Gutmann, P.</span>, <span class="refTitle">"Simple Certificate Enrolment Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-gutmann-scep-16</span>, <time datetime="2020-03-27" class="refDate">27 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-gutmann-scep-16.txt">http://www.ietf.org/internet-drafts/draft-gutmann-scep-16.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
-<dd>
-<span class="refAuthor">Tschofenig, H.</span><span class="refAuthor">, Frost, S.</span><span class="refAuthor">, Brossard, M.</span><span class="refAuthor">, Shaw, A.</span><span class="refAuthor">, and T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-05</span>, <time datetime="2020-03-06">6 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-tschofenig-rats-psa-token-05.txt">http://www.ietf.org/internet-drafts/draft-tschofenig-rats-psa-token-05.txt</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Tschofenig, H.</span><span class="refAuthor">, Frost, S.</span><span class="refAuthor">, Brossard, M.</span><span class="refAuthor">, Shaw, A.</span><span class="refAuthor">, and T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-05</span>, <time datetime="2020-03-06" class="refDate">6 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-tschofenig-rats-psa-token-05.txt">http://www.ietf.org/internet-drafts/draft-tschofenig-rats-psa-token-05.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.voit-rats-trusted-path-routing">[I-D.voit-rats-trusted-path-routing]</dt>
-<dd>
-<span class="refAuthor">Voit, E.</span>, <span class="refTitle">"Trusted Path Routing"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-voit-rats-trusted-path-routing-02</span>, <time datetime="2020-06-10">10 June 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-voit-rats-trusted-path-routing-02.txt">http://www.ietf.org/internet-drafts/draft-voit-rats-trusted-path-routing-02.txt</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Voit, E.</span>, <span class="refTitle">"Trusted Path Routing"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-voit-rats-trusted-path-routing-02</span>, <time datetime="2020-06-10" class="refDate">10 June 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-voit-rats-trusted-path-routing-02.txt">http://www.ietf.org/internet-drafts/draft-voit-rats-trusted-path-routing-02.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ieee802-1AR">[ieee802-1AR]</dt>
-<dd>
-<span class="refAuthor">IEEE Standard, .</span>, <span class="refTitle">"IEEE 802.1AR Secure Device Identifier"</span>, <time datetime="2009">2009</time>, <span>&lt;<a href="http://standards.ieee.org/findstds/standard/802.1AR-2009.html">http://standards.ieee.org/findstds/standard/802.1AR-2009.html</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">IEEE Standard, .</span>, <span class="refTitle">"IEEE 802.1AR Secure Device Identifier"</span>, <time datetime="2009" class="refDate">2009</time>, <span>&lt;<a href="http://standards.ieee.org/findstds/standard/802.1AR-2009.html">http://standards.ieee.org/findstds/standard/802.1AR-2009.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="intelsgx">[intelsgx]</dt>
-<dd>
-<span class="refAuthor">Intel, .</span>, <span class="refTitle">"Intel(R) Software Guard Extensions: Attestation &amp; Provisioning Services"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://software.intel.com/en-us/sgx/attestation-services">https://software.intel.com/en-us/sgx/attestation-services</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Intel, .</span>, <span class="refTitle">"Intel® Software Guard Extensions: Attestation &amp; Provisioning Services"</span>, <span>n.d.</span>, <span>&lt;<a href="https://software.intel.com/en-us/sgx/attestation-services">https://software.intel.com/en-us/sgx/attestation-services</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="keystore">[keystore]</dt>
-<dd>
-<span class="refAuthor">Google, .</span>, <span class="refTitle">"Android Keystore System"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://developer.android.com/training/articles/keystore">https://developer.android.com/training/articles/keystore</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Google, .</span>, <span class="refTitle">"Android Keystore System"</span>, <span>n.d.</span>, <span>&lt;<a href="https://developer.android.com/training/articles/keystore">https://developer.android.com/training/articles/keystore</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="keystore_attestation">[keystore_attestation]</dt>
-<dd>
-<span class="refAuthor">Google, .</span>, <span class="refTitle">"Verifying hardware-backed key pairs with Key Attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://developer.android.com/training/articles/security-key-attestation">https://developer.android.com/training/articles/security-key-attestation</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Google, .</span>, <span class="refTitle">"Verifying hardware-backed key pairs with Key Attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://developer.android.com/training/articles/security-key-attestation">https://developer.android.com/training/articles/security-key-attestation</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC4210">[RFC4210]</dt>
-<dd>
-<span class="refAuthor">Adams, C.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, Kause, T.</span><span class="refAuthor">, and T. Mononen</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate Management Protocol (CMP)"</span>, <span class="seriesInfo">RFC 4210</span>, <span class="seriesInfo">DOI 10.17487/RFC4210</span>, <time datetime="2005-09">September 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4210">https://www.rfc-editor.org/info/rfc4210</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Adams, C.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, Kause, T.</span><span class="refAuthor">, and T. Mononen</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate Management Protocol (CMP)"</span>, <span class="seriesInfo">RFC 4210</span>, <span class="seriesInfo">DOI 10.17487/RFC4210</span>, <time datetime="2005-09" class="refDate">September 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4210">https://www.rfc-editor.org/info/rfc4210</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5209">[RFC5209]</dt>
-<dd>
-<span class="refAuthor">Sangster, P.</span><span class="refAuthor">, Khosravi, H.</span><span class="refAuthor">, Mani, M.</span><span class="refAuthor">, Narayan, K.</span><span class="refAuthor">, and J. Tardo</span>, <span class="refTitle">"Network Endpoint Assessment (NEA): Overview and Requirements"</span>, <span class="seriesInfo">RFC 5209</span>, <span class="seriesInfo">DOI 10.17487/RFC5209</span>, <time datetime="2008-06">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5209">https://www.rfc-editor.org/info/rfc5209</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Sangster, P.</span><span class="refAuthor">, Khosravi, H.</span><span class="refAuthor">, Mani, M.</span><span class="refAuthor">, Narayan, K.</span><span class="refAuthor">, and J. Tardo</span>, <span class="refTitle">"Network Endpoint Assessment (NEA): Overview and Requirements"</span>, <span class="seriesInfo">RFC 5209</span>, <span class="seriesInfo">DOI 10.17487/RFC5209</span>, <time datetime="2008-06" class="refDate">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5209">https://www.rfc-editor.org/info/rfc5209</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5652">[RFC5652]</dt>
-<dd>
-<span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">STD 70</span>, <span class="seriesInfo">RFC 5652</span>, <span class="seriesInfo">DOI 10.17487/RFC5652</span>, <time datetime="2009-09">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5652">https://www.rfc-editor.org/info/rfc5652</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">STD 70</span>, <span class="seriesInfo">RFC 5652</span>, <span class="seriesInfo">DOI 10.17487/RFC5652</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5652">https://www.rfc-editor.org/info/rfc5652</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7030">[RFC7030]</dt>
-<dd>
-<span class="refAuthor">Pritikin, M., Ed.</span><span class="refAuthor">, Yee, P., Ed.</span><span class="refAuthor">, and D. Harkins, Ed.</span>, <span class="refTitle">"Enrollment over Secure Transport"</span>, <span class="seriesInfo">RFC 7030</span>, <span class="seriesInfo">DOI 10.17487/RFC7030</span>, <time datetime="2013-10">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7030">https://www.rfc-editor.org/info/rfc7030</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Pritikin, M., Ed.</span><span class="refAuthor">, Yee, P., Ed.</span><span class="refAuthor">, and D. Harkins, Ed.</span>, <span class="refTitle">"Enrollment over Secure Transport"</span>, <span class="seriesInfo">RFC 7030</span>, <span class="seriesInfo">DOI 10.17487/RFC7030</span>, <time datetime="2013-10" class="refDate">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7030">https://www.rfc-editor.org/info/rfc7030</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8555">[RFC8555]</dt>
-<dd>
-<span class="refAuthor">Barnes, R.</span><span class="refAuthor">, Hoffman-Andrews, J.</span><span class="refAuthor">, McCarney, D.</span><span class="refAuthor">, and J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8555">https://www.rfc-editor.org/info/rfc8555</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Barnes, R.</span><span class="refAuthor">, Hoffman-Andrews, J.</span><span class="refAuthor">, McCarney, D.</span><span class="refAuthor">, and J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8555">https://www.rfc-editor.org/info/rfc8555</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SP800-147B">[SP800-147B]</dt>
-<dd>
-<span class="refAuthor">NIST, .</span>, <span class="refTitle">"BIOS Protection Guidelines for Servers"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-147B.pdf">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-147B.pdf</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">NIST, .</span>, <span class="refTitle">"BIOS Protection Guidelines for Servers"</span>, <span>n.d.</span>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-147B.pdf">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-147B.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SP800-155">[SP800-155]</dt>
-<dd>
-<span class="refAuthor">NIST, .</span>, <span class="refTitle">"BIOS Integrity Measurement Guidelines (Draft)"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://csrc.nist.gov/CSRC/media/Publications/sp/800-155/draft/documents/draft-SP800-155_Dec2011.pdf">https://csrc.nist.gov/CSRC/media/Publications/sp/800-155/draft/documents/draft-SP800-155_Dec2011.pdf</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">NIST, .</span>, <span class="refTitle">"BIOS Integrity Measurement Guidelines (Draft)"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/CSRC/media/Publications/sp/800-155/draft/documents/draft-SP800-155_Dec2011.pdf">https://csrc.nist.gov/CSRC/media/Publications/sp/800-155/draft/documents/draft-SP800-155_Dec2011.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="tapinfomodel">[tapinfomodel]</dt>
-<dd>
-<span class="refAuthor">Group, T.C.</span>, <span class="refTitle">"TCG Trusted Attestation Protocol (TAP) Information Model for TPM Families 1.2 and 2.0 and DICE Family 1.0"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TNC_TAP_Information_Model_v1.00_r0.29A_publicreview.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TNC_TAP_Information_Model_v1.00_r0.29A_publicreview.pdf</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Group, T.C.</span>, <span class="refTitle">"TCG Trusted Attestation Protocol (TAP) Information Model for TPM Families 1.2 and 2.0 and DICE Family 1.0"</span>, <span>n.d.</span>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TNC_TAP_Information_Model_v1.00_r0.29A_publicreview.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TNC_TAP_Information_Model_v1.00_r0.29A_publicreview.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="tcgglossary">[tcgglossary]</dt>
-<dd>
-<span class="refAuthor">Group, T.C.</span>, <span class="refTitle">"TCG Glossary, Version 1.1"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG-Glossary-V1.1-Rev-1.0.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TCG-Glossary-V1.1-Rev-1.0.pdf</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Group, T.C.</span>, <span class="refTitle">"TCG Glossary, Version 1.1"</span>, <span>n.d.</span>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG-Glossary-V1.1-Rev-1.0.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TCG-Glossary-V1.1-Rev-1.0.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="tpmarchspec">[tpmarchspec]</dt>
-<dd>
-<span class="refAuthor">Group, T.C.</span>, <span class="refTitle">"TPM 2.0 Mobile Reference Architecture"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/resource/tpm-2-0-mobile-reference-architecture-specification/">https://trustedcomputinggroup.org/resource/tpm-2-0-mobile-reference-architecture-specification/</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Group, T.C.</span>, <span class="refTitle">"TPM 2.0 Mobile Reference Architecture"</span>, <span>n.d.</span>, <span>&lt;<a href="https://trustedcomputinggroup.org/resource/tpm-2-0-mobile-reference-architecture-specification/">https://trustedcomputinggroup.org/resource/tpm-2-0-mobile-reference-architecture-specification/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="windowsdefender">[windowsdefender]</dt>
-<dd>
-<span class="refAuthor">Microsoft, .</span>, <span class="refTitle">"Windows Defender System Guard attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://www.microsoft.com/security/blog/2018/04/19/introducing-windows-defender-system-guard-runtime-attestation/">https://www.microsoft.com/security/blog/2018/04/19/introducing-windows-defender-system-guard-runtime-attestation/</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Microsoft, .</span>, <span class="refTitle">"Windows Defender System Guard attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.microsoft.com/security/blog/2018/04/19/introducing-windows-defender-system-guard-runtime-attestation/">https://www.microsoft.com/security/blog/2018/04/19/introducing-windows-defender-system-guard-runtime-attestation/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="windowshealth">[windowshealth]</dt>
-<dd>
-<span class="refAuthor">Microsoft, .</span>, <span class="refTitle">"Windows Device Health Attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://docs.microsoft.com/en-us/windowsserver/security/device-health-attestation">https://docs.microsoft.com/en-us/windowsserver/security/device-health-attestation</a>&gt;</span>. </dd>
+        <dd>
+<span class="refAuthor">Microsoft, .</span>, <span class="refTitle">"Windows Device Health Attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://docs.microsoft.com/en-us/windowsserver/security/device-health-attestation">https://docs.microsoft.com/en-us/windowsserver/security/device-health-attestation</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="yubikey_attestation">[yubikey_attestation]</dt>
-<dd>
-<span class="refAuthor">Yubico, .</span>, <span class="refTitle">"PIV Attestation"</span>, <time datetime="n.d.">n.d.</time>, <span>&lt;<a href="https://developers.yubico.com/PIV/Introduction/PIV_attestation.html">https://developers.yubico.com/PIV/Introduction/PIV_attestation.html</a>&gt;</span>. </dd>
+      <dd>
+<span class="refAuthor">Yubico, .</span>, <span class="refTitle">"PIV Attestation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://developers.yubico.com/PIV/Introduction/PIV_attestation.html">https://developers.yubico.com/PIV/Introduction/PIV_attestation.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -4880,9 +4887,9 @@ Shawn Willden elucidated the Android Keystore goals and limitations.<a href="#se
 <ul class="normal">
 <li class="normal" id="section-appendix.a-1.1">created new section for target use cases<a href="#section-appendix.a-1.1" class="pilcrow">¶</a>
 </li>
-<li class="normal" id="section-appendix.a-1.2">added comments from Guy, Jessica, Henk and Ned on TCG description.<a href="#section-appendix.a-1.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-appendix.a-1.2">added comments from Guy, Jessica, Henk and Ned on TCG description.<a href="#section-appendix.a-1.2" class="pilcrow">¶</a>
 </li>
-</ul>
+      </ul>
 </section>
 </div>
 <div id="authors-addresses">
