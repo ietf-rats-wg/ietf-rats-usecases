@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-07-01T04:23:06.724954+00:00",
+  "timestamp": "2020-11-02T23:44:14.398575+00:00",
   "repo": "ietf-rats-wg/ietf-rats-usecases",
   "labels": [
     {
@@ -44,7 +44,74 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 3,
+      "id": "MDU6SXNzdWU3Mjg3MzkxMTg=",
+      "title": "Finding attestation root keys by leveraging the \"Web PKI\"",
+      "url": "https://github.com/ietf-rats-wg/ietf-rats-usecases/issues/3",
+      "state": "CLOSED",
+      "author": "cyberphone",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This is an extract of an earlier discussion on the RATS mailing list.\r\n\r\nAttestations are great but suffer from the generic PKI problem: _Where are the trust anchors ?_\r\nThe Web PKI is nowadays carefully maintained by the platform vendors.  There is no counterpart for TEE attestation keys.\r\n\r\nSome organizations are certainly prepared to go an extra mile to create their own repositories of trust anchors.\r\n\r\nHowever, for those who lack incentives for maintaining trust anchor repositories an alternative approach seems feasible:\r\nAdd a URL like `https://huawei.com/tee-roots` to the attested data.  Consumers of such a scheme would then only have to configure a list of \"trusted device vendors\" expressed as Web domains like `huawei.com`, `google.com`, `apple.com` etc. in order to _securely retrieve trust anchors_ and verify attestations.  That is, the trust model for this concept is based on 1) device vendor selection 2) the ubiquity of the Web PKI.\r\n\r\n**The text above is also supposed to qualify as a defensive publication.**\r\n\r\nI would be interested in co-editing an I-D if there is a reasonable chance getting WG adoption for the work.\r\n",
+      "createdAt": "2020-10-24T08:29:33Z",
+      "updatedAt": "2020-10-27T14:20:29Z",
+      "closedAt": "2020-10-24T22:02:15Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi, I am not really sure I understand what your solution entails.\r\nIn general, the webPKI CAs don't like additional claims being added to their system, and the browsers vendors are pretty powerful in keeping it that way.\r\nI don't see how this proposal relates to the mostly defunct use case document: so please take this suggestion to the ML (where Note Well also applies).",
+          "createdAt": "2020-10-24T22:02:15Z",
+          "updatedAt": "2020-10-24T22:02:15Z"
+        },
+        {
+          "author": "cyberphone",
+          "authorAssociation": "NONE",
+          "body": "Dear @mcr, this concept is already _firmly established_ for attestations of another kind:\r\nhttps://developer.mozilla.org/en-US/docs/Web/Manifest\r\n\r\n_\"This information is necessary for the web app to be <br>downloaded and presented to the user similarly to a native app \"_\r\n\r\nThat is, it is not about changing anything in the Web PKI it is about leveraging the trust in it. \r\n\r\nI'm personally using this for native payment apps:\r\nhttps://webpki.github.io/w3cpay/payment-manifest.json\r\nGoogle _mandates_ this arrangement.\r\n\r\nBefore taking this topic (again) to the mailing list (which one?) is it still unclear how it works?  What is RATS' method for locating attestation trust anchors?\r\n\r\nBR AR",
+          "createdAt": "2020-10-25T06:18:02Z",
+          "updatedAt": "2020-10-25T09:43:16Z"
+        },
+        {
+          "author": "cyberphone",
+          "authorAssociation": "NONE",
+          "body": "Attestation verifier algorithm:\r\n\r\n**1.** Extract an \"Authority URL\" from the attested data\r\n**2.** Verify that the \"Authority URL\" is based on the `https` scheme\r\n**3.** Verify that the domain name (like `huawei.com`) of the \"Authority URL\" matches one in a list of _locally configured_ \"Trusted Device Vendors\"\r\n**4.** If the \"Authority URL\" has not previously been accessed (\"Authority URLs\" **must** be versioned), retrieve and install the associated trust anchor\r\n**5.** Validate the attestation signature key with the trust anchor associated with the \"Authority URL\".\r\n\r\nIf any of these steps fail the attestation is considered not trustworthy.\r\n\r\n_Note that this scheme is independent of attestation key arrangements_.  The latter include hierarchical (like the PKI in Android) as well as one of the FIDO schemes (a single key vouching for hundreds of thousands of devices).",
+          "createdAt": "2020-10-25T06:33:16Z",
+          "updatedAt": "2020-10-25T13:09:10Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The IETF RATS WG can be found at https://datatracker.ietf.org/wg/rats, and the links to the mailing list are there.\r\n",
+          "createdAt": "2020-10-25T20:02:04Z",
+          "updatedAt": "2020-10-25T20:02:04Z"
+        },
+        {
+          "author": "cyberphone",
+          "authorAssociation": "NONE",
+          "body": "@mcr I'm already on the mailing list and the topic has been raised as well:\r\nhttps://mailarchive.ietf.org/arch/msg/rats/qth3-OexWYzA7mo4ZwMYYXPUuIg/\r\nBased on the responses so far it is obvious that nobody understood this (IMO) pretty simple concept \ud83d\ude15\r\nWould it be possible for you pointing out what the problem is with the 5-step algorithm above?  I would very much appreciate that!\r\n@henkbirkholz \r\n",
+          "createdAt": "2020-10-26T04:02:44Z",
+          "updatedAt": "2020-10-26T04:02:44Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "I have been summoned by utterance of my (github) username \ud83d\ude0a\r\n\r\nHi Anders!\r\n\r\nWhat if the Evidence does not include your proposed URL Claim (because I think we cannot mandate that)? I think you are describing a valid solution and are bringing this up in the context of use cases. Maybe the EAT I-D is the right place to talk about such a Claim?",
+          "createdAt": "2020-10-26T11:36:15Z",
+          "updatedAt": "2020-10-26T11:36:15Z"
+        },
+        {
+          "author": "cyberphone",
+          "authorAssociation": "NONE",
+          "body": "Thanx Henk for taking a look on this!  That was the sole purpose of the issue; getting some kind of review before entertaining a WG or mailing list with an already dead horse \ud83d\ude01\r\n\r\nEAT seems like a good choice for such a proposal.\r\n\r\nAnders\r\n",
+          "createdAt": "2020-10-27T13:22:37Z",
+          "updatedAt": "2020-10-27T14:20:29Z"
+        }
+      ]
+    }
+  ],
   "pulls": [
     {
       "number": 1,
